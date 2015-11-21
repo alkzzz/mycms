@@ -1,0 +1,70 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files (x86)\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'nested-sortable' ]
+2 info using npm@2.13.4
+3 info using node@v0.12.7
+4 verbose install initial load of C:\wamp\www\cms\package.json
+5 verbose installManyTop reading scoped package data from C:\wamp\www\cms\node_modules\bootstrap-sass\package.json
+6 verbose installManyTop reading scoped package data from C:\wamp\www\cms\node_modules\gulp\package.json
+7 verbose installManyTop reading scoped package data from C:\wamp\www\cms\node_modules\jquery\package.json
+8 verbose installManyTop reading scoped package data from C:\wamp\www\cms\node_modules\laravel-elixir\package.json
+9 info package.json jquery@2.1.4 No license field.
+10 verbose readDependencies loading dependencies from C:\wamp\www\cms\package.json
+11 silly cache add args [ 'nested-sortable', null ]
+12 verbose cache add spec nested-sortable
+13 silly cache add parsed spec { raw: 'nested-sortable',
+13 silly cache add   scope: null,
+13 silly cache add   name: 'nested-sortable',
+13 silly cache add   rawSpec: '',
+13 silly cache add   spec: '*',
+13 silly cache add   type: 'range' }
+14 silly addNamed nested-sortable@*
+15 verbose addNamed "*" is a valid semver range for nested-sortable
+16 silly addNameRange { name: 'nested-sortable', range: '*', hasData: false }
+17 silly mapToRegistry name nested-sortable
+18 silly mapToRegistry using default registry
+19 silly mapToRegistry registry http://localhost:8080/
+20 silly mapToRegistry uri http://localhost:8080/nested-sortable
+21 verbose addNameRange registry:http://localhost:8080/nested-sortable not in flight; fetching
+22 verbose request uri http://localhost:8080/nested-sortable
+23 verbose request no auth needed
+24 info attempt registry request try #1 at 14:57:02
+25 verbose request id 58a77244996d77ed
+26 http request GET http://localhost:8080/nested-sortable
+27 http 404 http://localhost:8080/nested-sortable
+28 verbose headers { date: 'Wed, 30 Sep 2015 06:57:02 GMT',
+28 verbose headers   connection: 'keep-alive',
+28 verbose headers   'transfer-encoding': 'chunked' }
+29 silly get cb [ 404,
+29 silly get   { date: 'Wed, 30 Sep 2015 06:57:02 GMT',
+29 silly get     connection: 'keep-alive',
+29 silly get     'transfer-encoding': 'chunked' } ]
+30 verbose stack Error: Registry returned 404 for GET on http://localhost:8080/nested-sortable
+30 verbose stack     at CachingRegistryClient.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:239:14)
+30 verbose stack     at Request._callback (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:170:14)
+30 verbose stack     at Request.self.callback (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\request.js:198:22)
+30 verbose stack     at Request.emit (events.js:110:17)
+30 verbose stack     at Request.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\request.js:1057:14)
+30 verbose stack     at Request.emit (events.js:129:20)
+30 verbose stack     at IncomingMessage.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\request\request.js:1003:12)
+30 verbose stack     at IncomingMessage.emit (events.js:129:20)
+30 verbose stack     at _stream_readable.js:908:16
+30 verbose stack     at process._tickCallback (node.js:355:11)
+31 verbose statusCode 404
+32 verbose pkgid nested-sortable
+33 verbose cwd C:\wamp\www\cms
+34 error Windows_NT 6.1.7601
+35 error argv "C:\\Program Files (x86)\\nodejs\\\\node.exe" "C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "nested-sortable"
+36 error node v0.12.7
+37 error npm  v2.13.4
+38 error code E404
+39 error 404 Registry returned 404 for GET on http://localhost:8080/nested-sortable
+39 error 404
+39 error 404 'nested-sortable' is not in the npm registry.
+39 error 404 You should bug the author to publish it (or use the name yourself!)
+39 error 404
+39 error 404 Note that you can also install from a
+39 error 404 tarball, folder, http url, or git url.
+40 verbose exit [ 1, true ]
