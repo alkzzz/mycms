@@ -1,1 +1,1 @@
-Template custom CMS with Laravel
+Develop custom CMS with Laravel
