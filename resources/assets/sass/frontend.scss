@@ -1,0 +1,103 @@
+$font-size-base: 15px;
+
+$primary-color-dark:   #0097A7;
+$primary-color:        #00BCD4;
+$primary-color-light:  #B2EBF2;
+$primary-color-text:   #FFFFFF;
+$accent-color:         #FF5722;
+$primary-text-color:   #212121;
+$secondary-text-color: #727272;
+$divider-color:        #B6B6B6;
+
+$text-color: $primary-text-color;
+$brand-primary: $accent-color;
+
+$navbar-default-brand-color: $primary-text-color;
+$navbar-default-brand-hover-color: $primary-color;
+
+$navbar-default-bg: $primary-color;
+$navbar-default-link-color: $primary-color;
+$navbar-default-link-active-color: $primary-color;
+$navbar-default-link-active-bg: $primary-color;
+
+$input-color: $primary-text-color;
+$input-color-placeholder: darken($primary-color-text, 30);
+
+
+$dropdown-bg: $primary-color;
+$dropdown-link-hover-bg: $primary-color;
+
+@import "resources/assets/sass/variables-bootswatch";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "resources/assets/sass/bootswatch";
+
+#top-menu {
+    height: 51px;
+    background-color: white;
+    .navbar-form {
+        margin-bottom: 5px;
+        margin-top: 5px;
+        margin-right: 0px;
+    }
+    > ul {
+    list-style-type: none;
+    margin-bottom: 0px;
+    margin-right: 10px;
+    > li {
+            margin-top: 15px;
+            margin-left: 10px;
+        }
+    }
+}
+
+.navbar {
+    box-shadow: none;
+}
+
+.navbar-default .navbar-brand {
+    &:hover, &:focus {
+    	color: $primary-text-color;
+    	font-weight: bold;
+    }
+}
+
+.navbar-default .navbar-nav > li > a {
+	margin-left: 5px;
+	margin-right: 5px;
+	color: $primary-text-color;
+	&:hover {
+		font-size: 17px;
+		font-weight: bold;
+		border-radius: 10px;
+		padding: 22px;
+	};
+}
+
+.navbar-default .navbar-nav > .active > a {
+	color: $primary-text-color;
+    &:hover {
+    color: $primary-text-color;
+    font-size: 17px;
+    padding: 22px;
+    }
+}
+
+
+.navbar-default .navbar-nav >
+.open > a, .navbar-default .navbar-nav >
+.open > a:hover, .navbar-default .navbar-nav >
+.open > a:focus {
+    color: $primary-text-color;
+}
+
+ @media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+      color: $primary-text-color; }
+  }
+
+.dropdown-menu > li > a {
+    &:hover {
+        font-weight: bold;
+        font-size : 16px;
+    }
+}

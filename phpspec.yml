@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: cms
+        psr4_prefix: cms
+        src_path: app
