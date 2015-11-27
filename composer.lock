@@ -594,16 +594,16 @@
         },
         {
             "name": "laravelcollective/html",
-            "version": "v5.1.7",
+            "version": "v5.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LaravelCollective/html.git",
-                "reference": "5ad8377968ba3b4da91fc60ca98b2eef4df380fc"
+                "reference": "f62269629b2a1093039733517bd7e75b3f98dffb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/5ad8377968ba3b4da91fc60ca98b2eef4df380fc",
-                "reference": "5ad8377968ba3b4da91fc60ca98b2eef4df380fc",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/f62269629b2a1093039733517bd7e75b3f98dffb",
+                "reference": "f62269629b2a1093039733517bd7e75b3f98dffb",
                 "shasum": ""
             },
             "require": {
@@ -640,7 +640,7 @@
                     "email": "adam@laravelcollective.com"
                 }
             ],
-            "time": "2015-11-06 18:14:38"
+            "time": "2015-11-28 08:27:09"
         },
         {
             "name": "league/flysystem",
@@ -847,16 +847,16 @@
         },
         {
             "name": "mcamara/laravel-localization",
-            "version": "1.0.11",
+            "version": "1.0.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mcamara/laravel-localization.git",
-                "reference": "bf2d8f4b179c2a72c6d30076849e286dc230416b"
+                "reference": "ebd734314f2f36ad9d9444728c19532a4cef5494"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mcamara/laravel-localization/zipball/bf2d8f4b179c2a72c6d30076849e286dc230416b",
-                "reference": "bf2d8f4b179c2a72c6d30076849e286dc230416b",
+                "url": "https://api.github.com/repos/mcamara/laravel-localization/zipball/ebd734314f2f36ad9d9444728c19532a4cef5494",
+                "reference": "ebd734314f2f36ad9d9444728c19532a4cef5494",
                 "shasum": ""
             },
             "require": {
@@ -891,7 +891,7 @@
                 "localization",
                 "php"
             ],
-            "time": "2015-11-15 18:10:54"
+            "time": "2015-11-28 12:32:19"
         },
         {
             "name": "monolog/monolog",
