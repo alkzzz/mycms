@@ -46,13 +46,13 @@ $factory->defineAs(cms\User::class, 'user', function (Faker\Generator $faker) {
     return [
         'username' => $faker->name,
         'email' => $faker->email,
-        'password' => bcrypt(str_random(10)),
+        'password' => bcrypt($faker->unique()->domainWord),
     ];
 });
 
 $factory->define(cms\Category::class, function (Faker\Generator $faker) {
     return [
-      'title_id' => $faker->firstNameMale  ,
+      'title_id' => $faker->firstNameMale ,
       'slug_id' => str_slug($faker->firstNameMale),
       'title_en' => $faker->firstNameFemale,
       'slug_en' => str_slug($faker->firstNameFemale),
@@ -63,10 +63,10 @@ $factory->defineAs(cms\Post::class, 'article', function (Faker\Generator $faker)
     return [
         'id_kategori' => $faker->numberBetween($min = 1, $max = 5),
         'title_id' => $faker->ColorName,
-        'slug_id' => str_slug($faker->ColorName),
+        'slug_id' => $faker->unique()->domainWord,
         'content_id' => $faker->paragraph,
         'title_en' => $faker->ColorName,
-        'slug_en' => str_slug($faker->ColorName),
+        'slug_en' => $faker->unique()->domainWord,
         'content_en' => $faker->paragraph,
         'post_type' => 'article',
         'has_child'=> false,
@@ -78,10 +78,10 @@ $factory->defineAs(cms\Post::class, 'singlemenu', function (Faker\Generator $fak
     return [
     	'urutan' => 1,
         'title_id' => $faker->country,
-        'slug_id' => str_slug($faker->state),
+        'slug_id' => $faker->unique()->domainWord,
         'content_id' => $faker->paragraph,
         'title_en' => $faker->country,
-        'slug_en' => str_slug($faker->state),
+        'slug_en' => $faker->unique()->domainWord,
         'content_en' => $faker->paragraph,
         'post_type' => 'page',
         'has_child'=> false,
@@ -93,9 +93,9 @@ $factory->defineAs(cms\Post::class, 'menu', function (Faker\Generator $faker) {
     return [
     	'urutan' => $faker->unique()->numberBetween($min = 2, $max = 10),
         'title_id' => $faker->country,
-        'slug_id' => str_slug($faker->state),
+        'slug_id' => $faker->unique()->domainWord,
         'title_en' => $faker->country,
-        'slug_en' => str_slug($faker->state),
+        'slug_en' => $faker->unique()->domainWord,
         'post_type' => 'page',
         'has_child'=> true,
         'post_parent' => 0,
@@ -106,10 +106,10 @@ $factory->defineAs(cms\Post::class, 'submenu', function (Faker\Generator $faker)
     return [
     	'urutan' => $faker->unique()->numberBetween($min = 1, $max = 20),
         'title_id' => $faker->country,
-        'slug_id' => str_slug($faker->state),
+        'slug_id' => $faker->unique()->domainWord,
         'content_id' => $faker->paragraph,
         'title_en' => $faker->country,
-        'slug_en' => str_slug($faker->state),
+        'slug_en' => $faker->unique()->domainWord,
         'content_en' => $faker->paragraph,
         'post_type' => 'page',
         'has_child' => false,

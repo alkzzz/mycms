@@ -33,8 +33,8 @@ class PageController extends Controller
         }
         foreach ($urutan['submenu'] as $sub => $menu) {
             foreach ($daftarsubmenu as $submenu) {
-                $i = array_search($submenu->slug_id, array_keys($urutan['submenu']));
-                $submenu->urutan = $i;
+                $j = array_search($submenu->slug_id, array_keys($urutan['submenu']));
+                $submenu->urutan = $j;
                 $submenu->save();
             }
         }
