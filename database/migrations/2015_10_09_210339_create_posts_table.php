@@ -17,10 +17,10 @@ class CreatePostsTable extends Migration
             $table->integer('id_kategori')->unsigned();
             $table->integer('urutan')->unsigned();
             $table->string('title_id');
-            $table->string('slug_id');
+            $table->string('slug_id')->unique();
             $table->text('content_id');
             $table->string('title_en');
-            $table->string('slug_en');
+            $table->string('slug_en')->unique();
             $table->text('content_en');
             $table->string('gambar');
             $table->string('file');

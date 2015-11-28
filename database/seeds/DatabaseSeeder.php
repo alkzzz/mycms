@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
 
         DB::statement("SET foreign_key_checks = 0");
 
+        DB::table('roles')->truncate();
+        DB::table('role_user')->truncate();
         DB::table('users')->truncate();
         DB::table('categories')->truncate();
         DB::table('posts')->truncate();
