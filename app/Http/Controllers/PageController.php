@@ -66,7 +66,17 @@ class PageController extends Controller
     public function tambahMenu()
     {
         $title = 'Tambah Menu';
-        return view('dashboard.tambahmenu', compact('title'));
+        return view('page.addPage', compact('title'));
+    }
+
+    public function simpanmenu(Request $request)
+    {
+        $input = $request->all();
+        $input['urutan'] = 99;
+        $input['post_type'] = 'page';
+        $input['slug_id'] = str_slug($request->input('title_id'));
+        $input['slug_en'] = str_slug($request->input('title_en'));
+        dd($input);
     }
 
 }
