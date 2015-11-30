@@ -22,13 +22,13 @@
   <div class="tab-content">
     <div id="id1" class="tab-pane fade in active">
       <div class="form-group">
-        <label for="title_id">Judul :</label>
+        <label for="title_id">Judul menu utama :</label>
         <input id="title_id" class="form-control" type="text" name="title_id">
       </div>
     </div>
     <div id="en1" class="tab-pane fade in">
       <div class="form-group">
-        <label for="title_en">Judul :</label>
+        <label for="title_en">Judul menu utama :</label>
         <input id="title_en" class="form-control" type="text" name="title_en">
       </div>
     </div>
@@ -37,6 +37,9 @@
     </div>
 </div>
 </form>
+<div class="alert alert-info">
+    * ket: Submenu dapat ditambahkan melalui edit menu.
+</div>
 </div>
 <div id="hideform">
 <ul class="nav nav-tabs">
@@ -49,7 +52,7 @@
 <div class="tab-content">
   <div id="id2" class="tab-pane fade in active">
     <div class="form-group">
-      <label for="title_id">Judul :</label>
+      <label for="title_id">Judul menu utama :</label>
       <input id="title_id" class="form-control" type="text" name="title_id">
     </div>
     <div class="form-group">
@@ -59,7 +62,7 @@
   </div>
   <div id="en2" class="tab-pane fade">
     <div class="form-group">
-      <label for="title_en">Judul :</label>
+      <label for="title_en">Judul menu utama :</label>
       <input id="title_en" class="form-control" type="text" name="title_en">
     </div>
     <div class="form-group">

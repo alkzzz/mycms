@@ -12,6 +12,10 @@ label {
   font-size: 2.2em;
 }
 
+.nav-tabs {
+  margin-bottom: 10px;
+}
+
 #wrapper {
   width: 100%;
 }
@@ -357,7 +361,7 @@ table.dataTable thead .sorting:after {
 }
 
 .parent-menu {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   margin-bottom: 0px;
   margin-top: 0px;
