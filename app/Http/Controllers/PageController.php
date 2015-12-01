@@ -63,13 +63,13 @@ class PageController extends Controller
 
     }
 
-    public function tambahMenu()
+    public function addPage()
     {
         $title = 'Tambah Menu';
         return view('page.addPage', compact('title'));
     }
 
-    public function simpanmenu(Request $request)
+    public function storePage(Request $request)
     {
         $input = $request->all();
         $input['urutan'] = 99;

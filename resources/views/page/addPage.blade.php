@@ -10,7 +10,7 @@
   <li class="active"><a data-toggle="tab" href="#id">Indonesia</a></li>
   <li><a data-toggle="tab" href="#en">English</a></li>
 </ul>
-<form role="form" action="{{ route('dashboard::simpanmenu') }}" method="POST">
+<form role="form" action="{{ route('dashboard::storePage') }}" method="POST">
   {{ csrf_field() }}
 <div class="tab-content">
   <div id="id" class="tab-pane fade in active">
