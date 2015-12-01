@@ -42,7 +42,7 @@ class PageController extends Controller
 
     public function daftarMenu()
     {
-      $title = 'Post';
+      $title = 'Daftar Menu';
     	$daftarmenu = Post::page()->menu()->get()->sortBy('urutan');
       $daftarsubmenu = Post::page()->submenu()->get()->sortBy('urutan');
     	return view('dashboard.daftarmenu', compact('title','daftarmenu','daftarsubmenu'));
