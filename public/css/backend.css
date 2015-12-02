@@ -10580,6 +10580,11 @@ label {
   margin-bottom: 10px;
 }
 
+.input-judul {
+  width: 300px;
+  font-size: 20px;
+}
+
 #wrapper {
   width: 100%;
 }
