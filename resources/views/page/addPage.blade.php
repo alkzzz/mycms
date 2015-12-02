@@ -3,19 +3,56 @@
 @section('title', $title)
 
 @section('content')
-<button type="button" id="sembunyi">Hide</button>
+    <label>Apakah menu memiliki submenu?</label>
+    <div class="radio">
+      <label><input type="radio" id="has_submenu" name="has_child" value="1">Ya</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" id="no_submenu" name="has_child" value="0">Tidak</label>
+    </div>
 
-<div id="hide">
+<div id="singlemenu">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#id1">Indonesia</a></li>
+    <li><a data-toggle="tab" href="#en1">English</a></li>
+  </ul>
+  <form role="form" action="{{ route('dashboard::storePage') }}" method="POST">
+    {{ csrf_field() }}
+    <input type="hidden" name="has_child" value="1">
+  <div class="tab-content">
+    <div id="id1" class="tab-pane fade in active">
+      <div class="form-group">
+        <label for="title_id">Judul menu utama :</label>
+        <input id="title_id" class="form-control" type="text" name="title_id">
+      </div>
+    </div>
+    <div id="en1" class="tab-pane fade in">
+      <div class="form-group">
+        <label for="title_en">Judul menu utama :</label>
+        <input id="title_en" class="form-control" type="text" name="title_en">
+      </div>
+    </div>
+    <div class="form-group">
+        <input class="btn btn-lg btn-success" type="submit" value="Save">
+    </div>
+</div>
+</form>
+<div class="alert alert-info">
+    * ket: Submenu dapat ditambahkan melalui edit menu.
+</div>
+</div>
+<div id="hideform">
 <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#id">Indonesia</a></li>
-  <li><a data-toggle="tab" href="#en">English</a></li>
+  <li class="active"><a data-toggle="tab" href="#id2">Indonesia</a></li>
+  <li><a data-toggle="tab" href="#en2">English</a></li>
 </ul>
 <form role="form" action="{{ route('dashboard::storePage') }}" method="POST">
   {{ csrf_field() }}
+  <input type="hidden" name="has_child" value="0">
 <div class="tab-content">
-  <div id="id" class="tab-pane fade in active">
+  <div id="id2" class="tab-pane fade in active">
     <div class="form-group">
-      <label for="title_id">Judul :</label>
+      <label for="title_id">Judul menu utama :</label>
       <input id="title_id" class="form-control" type="text" name="title_id">
     </div>
     <div class="form-group">
@@ -23,9 +60,9 @@
       <textarea class="form-control" id="edittext_id" name="content_id"></textarea>
     </div>
   </div>
-  <div id="en" class="tab-pane fade">
+  <div id="en2" class="tab-pane fade">
     <div class="form-group">
-      <label for="title_en">Judul :</label>
+      <label for="title_en">Judul menu utama :</label>
       <input id="title_en" class="form-control" type="text" name="title_en">
     </div>
     <div class="form-group">
@@ -48,9 +85,19 @@
 @include('includes.tinymce')
 <script type="text/javascript">
 $(document).ready(function() {
-  $("#sembunyi").click(function(){
-    $("#hide").toggle();
-  });
+  $('#singlemenu').hide();
+  $('#hideform').hide();
+  $('input:radio[name="has_child"]').change(
+      function(){
+          if ($(this).is(':checked') && $(this).attr('id') == 'has_submenu') {
+            $('#singlemenu').show(300);
+            $('#hideform').hide(300);
+          }
+          else if ($(this).is(':checked') && $(this).attr('id') == 'no_submenu') {
+            $('#singlemenu').hide(300);
+            $('#hideform').show(300);
+          }
+      });
 });
 </script>
 @endsection

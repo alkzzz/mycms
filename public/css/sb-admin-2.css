@@ -12,6 +12,10 @@ label {
   font-size: 2.2em;
 }
 
+.nav-tabs {
+  margin-bottom: 10px;
+}
+
 #wrapper {
   width: 100%;
 }
