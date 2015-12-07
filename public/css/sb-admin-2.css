@@ -17,6 +17,7 @@ label {
 }
 
 .input-judul {
+  display: inline-block;
   width: 300px;
   font-size: 20px;
 }

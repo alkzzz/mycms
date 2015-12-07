@@ -22,13 +22,13 @@
   <div class="tab-content">
     <div id="id1" class="tab-pane fade in active">
       <div class="form-group">
-        <label for="title_id">Judul menu utama :</label>
+        <label for="title_id" style="display: block">Judul menu utama :</label>
         <input id="title_id" class="form-control input-judul" type="text" name="title_id">
       </div>
     </div>
     <div id="en1" class="tab-pane fade in">
       <div class="form-group">
-        <label for="title_en">Judul menu utama :</label>
+        <label for="title_en"  style="display: block">Judul menu utama :</label>
         <input id="title_en" class="form-control input-judul" type="text" name="title_en">
       </div>
     </div>
@@ -41,7 +41,7 @@
   <div id="submenu_id" class="tab-pane fade in active">
 <div class="form-group input_fields_wrap">
     <div>
-      <label>Judul Submenu :</label>
+      <label style="display: block">Judul Submenu :</label>
       <input type="text" class="form-control input-judul" name="mytext[]">
     </div>
 </div>
@@ -49,7 +49,7 @@
 <div id="submenu_en" class="tab-pane fade in">
 <div class="form-group input_fields_wrap">
   <div>
-    <label>Judul Submenu :</label>
+    <label style="display: block">Judul Submenu :</label>
     <input type="text" class="form-control input-judul" name="mytext[]">
   </div>
 </div>
@@ -135,7 +135,7 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div style="margin-top: 5px"><label>Judul Submenu :</label><input type="text" class="form-control input-judul" name="mytext[]"/><a style="font-size:16px" href="#" class="remove_field"><i class="fa fa-remove fa-lg fa-fw"></i>Hapus</a></div>'); //add input box
+            $(wrapper).append('<div style="margin-top: 5px"><label style="display:block">Judul Submenu :</label><input type="text" class="form-control input-judul" name="mytext[]"/><a style="font-size:16px" href="#" class="remove_field"><i class="fa fa-remove fa-lg fa-fw"></i>Hapus</a></div>'); //add input box
         }
     });
 
