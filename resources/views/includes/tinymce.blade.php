@@ -2,6 +2,9 @@
 <script type="text/javascript">
         tinymce.init({
             selector: "#edittext_id",
+            content_css : "{{ asset('css/tinymce_custom.css') }}",
+            theme_advanced_font_sizes: "10px,12px,13px,14px,16px,18px,20px",
+            font_size_style_values : "10px,12px,13px,14px,16px,18px,20px",
             autoresize_min_height: 350,
             theme: "modern",
             relative_urls: false,
@@ -14,6 +17,9 @@
 <script type="text/javascript">
         tinymce.init({
             selector: "#edittext_en",
+            content_css : "{{ asset('css/tinymce_custom.css') }}",
+            theme_advanced_font_sizes: "10px,12px,13px,14px,16px,18px,20px",
+            font_size_style_values : "10px,12px,13px,14px,16px,18px,20px",
             autoresize_min_height: 350,
             theme: "modern",
             relative_urls: false,

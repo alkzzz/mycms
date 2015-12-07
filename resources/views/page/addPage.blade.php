@@ -76,7 +76,7 @@
 <div class="tab-content">
   <div id="id2" class="tab-pane fade in active">
     <div class="form-group">
-      <label for="title_id">Judul menu utama :</label>
+      <label for="title_id" style="display: block">Judul menu utama :</label>
       <input id="title_id" class="form-control input-judul" type="text" name="title_id">
     </div>
     <div class="form-group">
@@ -86,7 +86,7 @@
   </div>
   <div id="en2" class="tab-pane fade">
     <div class="form-group">
-      <label for="title_en">Judul menu utama :</label>
+      <label for="title_en" style="display: block">Judul menu utama :</label>
       <input id="title_en" class="form-control input-judul" type="text" name="title_en">
     </div>
     <div class="form-group">
