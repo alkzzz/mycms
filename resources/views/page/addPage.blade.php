@@ -39,23 +39,25 @@
 </ul>
 <div class="tab-content">
   <div id="submenu_id" class="tab-pane fade in active">
-<div class="form-group input_fields_wrap">
+<div id="input_fields_id" class="form-group">
     <div>
       <label style="display: block">Judul Submenu :</label>
-      <input type="text" class="form-control input-judul" name="mytext[]">
+      <input type="text" class="form-control input-judul" name="title_id[submenu][]">
     </div>
 </div>
+<button id="add_field_button_id" class="btn btn-primary">Tambah Submenu</button>
 </div>
 <div id="submenu_en" class="tab-pane fade in">
-<div class="form-group input_fields_wrap">
+<div id="input_fields_en" class="form-group">
   <div>
     <label style="display: block">Judul Submenu :</label>
-    <input type="text" class="form-control input-judul" name="mytext[]">
+    <input type="text" class="form-control input-judul" name="title_en[submenu][]">
   </div>
 </div>
+<button id="add_field_button_en" class="btn btn-primary">Tambah Submenu</button>
 </div>
 </div>
-    <button class="btn btn-primary add_field_button">Tambah Submenu</button>
+
 <hr>
 <div class="alert alert-info">
     * ket: Isi dari submenu dapat ditambahkan melalui edit menu.
@@ -127,19 +129,32 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
     var max_fields      = 10; //maximum input boxes allowed
-    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
-    var add_button      = $(".add_field_button"); //Add button ID
+    var wrapper_id         = $("#input_fields_id"); //Fields wrapper ID
+    var wrapper_en         = $("#input_fields_en"); //Fields wrapper ID
+    var add_button_id      = $("#add_field_button_id"); //Add button ID
+    var add_button_en      = $("#add_field_button_en"); //Add button EN
 
-    var x = 1; //initlal text box count
-    $(add_button).click(function(e){ //on add input button click
+    var x = 1; //initial text box count
+    $(add_button_id).click(function(e){ //on add input button click
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div style="margin-top: 5px"><label style="display:block">Judul Submenu :</label><input type="text" class="form-control input-judul" name="mytext[]"/><a style="font-size:16px" href="#" class="remove_field"><i class="fa fa-remove fa-lg fa-fw"></i>Hapus</a></div>'); //add input box
+            $(wrapper_id).append('<div style="margin-top: 5px"><label style="display:block">Judul Submenu :</label><input type="text" class="form-control input-judul" name="title_id[submenu][]"/><a style="font-size:16px" href="#" class="remove_field"><i class="fa fa-remove fa-lg fa-fw"></i>Hapus</a></div>'); //add input box
+        }
+    });
+    $(add_button_en).click(function(e){ //on add input button click
+        e.preventDefault();
+        if(x < max_fields){ //max input box allowed
+            x++; //text box increment
+            $(wrapper_en).append('<div style="margin-top: 5px"><label style="display:block">Judul Submenu :</label><input type="text" class="form-control input-judul" name="title_en[submenu][]"/><a style="font-size:16px" href="#" class="remove_field"><i class="fa fa-remove fa-lg fa-fw"></i>Hapus</a></div>'); //add input box
         }
     });
 
-    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+    $(wrapper_id).on("click",".remove_field", function(e){ //user click on remove text
+        e.preventDefault(); $(this).parent('div').remove(); x--;
+    })
+
+    $(wrapper_en).on("click",".remove_field", function(e){ //user click on remove text
         e.preventDefault(); $(this).parent('div').remove(); x--;
     })
 });
