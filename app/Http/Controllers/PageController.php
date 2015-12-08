@@ -74,12 +74,12 @@ class PageController extends Controller
         $input = $request->all();
         $input['urutan'] = 99;
         $input['post_type'] = 'page';
-        //dd($request->input('title_id[0]'));
-        $input['title_id'] = $request->input('title_id[0]');
 
-        //dd($inputmenu_id);
-
-        dd($input);
+        $inputmenu_id = $request->input('title_id');
+        $input['title_id'] = $inputmenu_id[0];
+        for ($i=1; $i < count($inputmenu_id); $i++) {
+          $input['title_id'] = $inputmenu_id[$i];
+        }
     }
 
 }
