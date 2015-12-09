@@ -128,33 +128,33 @@ $(document).ready(function() {
 </script>
 <script>
 $(document).ready(function() {
-    var max_fields      = 10; //maximum input boxes allowed
-    var wrapper_id         = $("#input_fields_id"); //Fields wrapper ID
-    var wrapper_en         = $("#input_fields_en"); //Fields wrapper ID
-    var add_button_id      = $("#add_field_button_id"); //Add button ID
-    var add_button_en      = $("#add_field_button_en"); //Add button EN
+    var max_fields      = 10;
+    var wrapper_id         = $("#input_fields_id");
+    var wrapper_en         = $("#input_fields_en");
+    var add_button_id      = $("#add_field_button_id");
+    var add_button_en      = $("#add_field_button_en");
 
-    var x = 1; //initial text box count
-    $(add_button_id).click(function(e){ //on add input button click
+    var x = 1;
+    $(add_button_id).click(function(e){
         e.preventDefault();
-        if(x < max_fields){ //max input box allowed
-            x++; //text box increment
-            $(wrapper_id).append('<div style="margin-top: 5px"><label style="display:block">Judul Submenu :</label><input type="text" class="form-control input-judul" name="title_id[]"/><a style="font-size:16px" href="#" class="remove_field"><i class="fa fa-remove fa-lg fa-fw"></i>Hapus</a></div>'); //add input box
+        if(x < max_fields){
+            x++;
+            $(wrapper_id).append('<div style="margin-top: 5px"><label style="display:block">Judul Submenu :</label><input type="text" class="form-control input-judul" name="title_id[]"/><a style="font-size:16px" href="#" class="remove_field"><i class="fa fa-remove fa-lg fa-fw"></i>Hapus</a></div>');
         }
     });
-    $(add_button_en).click(function(e){ //on add input button click
+    $(add_button_en).click(function(e){
         e.preventDefault();
-        if(x < max_fields){ //max input box allowed
-            x++; //text box increment
-            $(wrapper_en).append('<div style="margin-top: 5px"><label style="display:block">Judul Submenu :</label><input type="text" class="form-control input-judul" name="title_en[]"/><a style="font-size:16px" href="#" class="remove_field"><i class="fa fa-remove fa-lg fa-fw"></i>Hapus</a></div>'); //add input box
+        if(x < max_fields){
+            x++;
+            $(wrapper_en).append('<div style="margin-top: 5px"><label style="display:block">Judul Submenu :</label><input type="text" class="form-control input-judul" name="title_en[]"/><a style="font-size:16px" href="#" class="remove_field"><i class="fa fa-remove fa-lg fa-fw"></i>Hapus</a></div>');
         }
     });
 
-    $(wrapper_id).on("click",".remove_field", function(e){ //user click on remove text
+    $(wrapper_id).on("click",".remove_field", function(e){
         e.preventDefault(); $(this).parent('div').remove(); x--;
     })
 
-    $(wrapper_en).on("click",".remove_field", function(e){ //user click on remove text
+    $(wrapper_en).on("click",".remove_field", function(e){
         e.preventDefault(); $(this).parent('div').remove(); x--;
     })
 });
