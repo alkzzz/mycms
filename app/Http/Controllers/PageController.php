@@ -79,6 +79,7 @@ class PageController extends Controller
         $input['title_id'] = $inputmenu_id[0];
         for ($i=1; $i < count($inputmenu_id); $i++) {
           $input['title_id'] = $inputmenu_id[$i];
+          dd($input['title_id']);
         }
     }
 
