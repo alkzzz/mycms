@@ -8,7 +8,7 @@ class Post extends Model
 {
    	protected $table = 'posts';
 
-    protected $fillable = ['urutan','id_kategori','has_submenu','title_id', 'slug_id', 'content_id',
+    protected $fillable = ['urutan','has_submenu','title_id', 'slug_id', 'content_id',
     						'title_en', 'slug_en', 'content_en', 'post_type', 'post_parent', 'has_child'];
 
     public function scopePage($query)

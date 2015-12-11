@@ -50,15 +50,6 @@ $factory->defineAs(cms\User::class, 'user', function (Faker\Generator $faker) {
     ];
 });
 
-$factory->defineAs(cms\Category::class, 'menu', function (Faker\Generator $faker) {
-    return [
-      'title_id' => 'Menu',
-      'slug_id' => 'menu',
-      'title_en' => 'Menu',
-      'slug_en' => 'menu',
-    ];
-});
-
 $factory->define(cms\Category::class, function (Faker\Generator $faker) {
     return [
       'title_id' => $faker->firstNameMale ,

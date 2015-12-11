@@ -5,7 +5,7 @@ Route::group(['as' => 'dashboard::', 'middleware' => ['role:administrator']], fu
 		Route::get('dashboard/menu',['as'=>'menu', 'uses'=>'PageController@daftarmenu']);
 		Route::post('dashboard/menu',['as'=>'urutMenu', 'uses'=>'PageController@urutMenu']);
 		Route::get('dashboard/menu/tambah',['as'=>'addPage', 'uses'=>'PageController@addPage']);
-		Route::post('dashboard/menu/simpan',['as'=>'storePage', 'uses'=>'PageController@storePage']);
+		Route::post('dashboard/menu/tambah',['as'=>'storePage', 'uses'=>'PageController@storePage']);
 });
 
 #Auth
