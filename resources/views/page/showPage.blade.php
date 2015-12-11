@@ -26,9 +26,9 @@
 @section('content')
 	@if (Localization::getCurrentLocale() == 'id')
 	<h3>{{ $page->title_id }}</h3>
-	<p>{{ Str::words($page->content_id, 10) }} <a href="{{ route('show.page', $page->slug_id) }}">Read More</a></p>
+	<article>{!! $page->content_id !!} </article>
 	@else
 	<h3>{{ $page->title_en }}</h3>
-	<p>{{ Str::words($page->content_en, 10) }} <a href="{{ route('show.page', $page->slug_en) }}">Read More</a></p>
+	<article>{!! $page->content_id !!} </article>
 	@endif
 @stop
