@@ -112,7 +112,7 @@ class AuthController extends Controller
         $email = $request->input('username'); // cek input apakah berupa email
         $password = $request->input('password');
 
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) //validasi email
+        if (filter_var($email, FILTER_VALIDATE_EMAIL) == true) //validasi email
         {
             if (Auth::attempt(['email' => $email, 'password' => $password], $request->has('remember'))) {
             return $this->handleUserWasAuthenticated($request, $throttles);

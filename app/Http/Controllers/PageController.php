@@ -74,17 +74,13 @@ class PageController extends Controller
         $input = $request->all();
         $input['urutan'] = 99;
         $input['post_type'] = 'page';
-        $input['id_kategori'] = 1;
-        $inputjudul_id = $request->input('title_id');
-        $inputjudul_en = $request->input('title_en');
 
-        if ($request->input('has_child') == 0) {
-          $input['title_id'] = $inputjudul_id[0];
-          $input['title_en'] = $inputjudul_en[0];
-          $input['slug_id'] = str_slug($input['title_id']);
-          $input['slug_en'] = str_slug($input['title_en']);
-          Post::create($input);
-          return redirect()->route('dashboard::menu');
+        $inputmenu_id = $request->input('title_id');
+        $input['title_id'] = $inputmenu_id[0];
+        for ($i=1; $i < count($inputmenu_id); $i++)
+        {
+          $input['title_id'] = $inputmenu_id[$i];
+          dd($input['title_id']);
         }
-
-      }
+    }
+}
