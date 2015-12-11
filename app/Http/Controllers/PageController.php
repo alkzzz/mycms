@@ -87,13 +87,4 @@ class PageController extends Controller
           return redirect()->route('dashboard::menu');
         }
 
-
-        $inputjudul_id = $request->input('title_id');
-        foreach ($inputmenu_id as $judul_id) {
-          $input['title_id'] = $judul_id;
-        }
-
-
-    }
-
-}
+      }
