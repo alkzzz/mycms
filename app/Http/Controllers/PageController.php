@@ -8,6 +8,7 @@ use cms\Http\Controllers\Controller;
 use Localization;
 use cms\Post;
 use cms\Category;
+use cms\Http\Requests\MenuRequest;
 
 class PageController extends Controller
 {
@@ -69,7 +70,7 @@ class PageController extends Controller
         return view('page.addPage', compact('title'));
     }
 
-    public function storePage(Request $request)
+    public function storePage(MenuRequest $request)
     {
         $input = $request->all();
         $input['urutan'] = 99;
@@ -79,10 +80,11 @@ class PageController extends Controller
         $inputjudul_en = $request->input('title_en');
 
         if ($request->input('has_child') == 0) {
-          $input['title_id'] = $inputjudul_id[0];
-          $input['title_en'] = $inputjudul_en[0];
+          $input['title_id'] = $inputjudul_id;
+          $input['title_en'] = $inputjudul_en;
           $input['slug_id'] = str_slug($input['title_id']);
           $input['slug_en'] = str_slug($input['title_en']);
+          //dd($input);
           Post::create($input);
           return redirect()->route('dashboard::menu');
         }
