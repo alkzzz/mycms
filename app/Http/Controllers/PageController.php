@@ -84,9 +84,35 @@ class PageController extends Controller
           $input['title_en'] = $inputjudul_en;
           $input['slug_id'] = str_slug($input['title_id']);
           $input['slug_en'] = str_slug($input['title_en']);
-          //dd($input);
           Post::create($input);
           return redirect()->route('dashboard::menu');
+        }
+        else
+        {
+            $inputjudul = array_combine($inputjudul_id, $inputjudul_en); // gabung input jadi key dan value
+            $i = 0; // index = 0
+            foreach ($inputjudul as $judul_id => $judul_en) {
+              if ($i == 0) { // masukkan parent menu terlebih dahulu
+                $post_parent = $judul_id;
+                $input['title_id'] = $judul_id;
+                $input['title_en'] = $judul_en;
+                $input['slug_id'] = str_slug($input['title_id']);
+                $input['slug_en'] = str_slug($input['title_en']);
+                Post::create($input);
+                $parent_id = Post::where('title_id','=',$post_parent)->lists('id')->first(); // ambil id parent
+              }
+              else { //masukkan child menu
+                $input['title_id'] = $judul_id;
+                $input['title_en'] = $judul_en;
+                $input['slug_id'] = str_slug($input['title_id']);
+                $input['slug_en'] = str_slug($input['title_en']);
+                $input['has_child'] = 0;
+                $input['post_parent'] = $parent_id; // masukkan id parent ke child
+                Post::create($input);
+              }
+              $i++; //increment index
+            }
+            return redirect()->route('dashboard::menu');
         }
     }
 

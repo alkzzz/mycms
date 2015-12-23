@@ -27,6 +27,7 @@ class MenuRequest extends Request
         return [
             'title_id'=>'required | unique:posts',
             'title_en'=>'required | unique:posts',
+
         ];
     }
 }

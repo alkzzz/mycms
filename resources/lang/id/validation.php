@@ -104,6 +104,8 @@ return [
     */
 
     'attributes' => ['title_id'=>'Judul menu bahasa Indonesia',
-                    'title_en'=>'Judul menu bahasa Inggris'],
+                    'title_en'=>'Judul menu bahasa Inggris',
+                    'title_id[]'=>'Judul menu bahasa Indonesia',
+                    'title_en[]'=>'Judul menu bahasa Inggris'],
 
 ];
