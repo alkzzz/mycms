@@ -27,14 +27,14 @@ class PageController extends Controller
 
         foreach ($urutan['menu'] as $slug => $value) {
             foreach ($daftarmenu as $menu) {
-                $i = array_search($menu->slug_id, array_keys($urutan['menu']));
+                $i = array_search($menu->id, array_keys($urutan['menu']));
                 $menu->urutan = $i;
                 $menu->save();
             }
         }
         foreach ($urutan['submenu'] as $sub => $menu) {
             foreach ($daftarsubmenu as $submenu) {
-                $j = array_search($submenu->slug_id, array_keys($urutan['submenu']));
+                $j = array_search($submenu->id, array_keys($urutan['submenu']));
                 $submenu->urutan = $j;
                 $submenu->save();
             }
@@ -57,7 +57,8 @@ class PageController extends Controller
           return view('page.showPage', compact('page'));
         }
         else {
-          $page = Category::where('slug_'.$locale, '=', $menu)->firstOrFail();
+          $page = Category::where('id','!=',1)
+                          ->where('slug_'.$locale, '=', $menu)->firstOrFail();
           $daftar_artikel = Post::article()->where('id_kategori', '=', $page->id)->get();
           return view('kategori.index', compact('page', 'daftar_artikel'));
         }
