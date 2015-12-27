@@ -25,21 +25,20 @@ class MenuRequest extends Request
     public function rules()
     {
       $rules = [
-        'title_id' => 'required | unique:posts',
-        'title_en' => 'required | unique:posts',
+        'title_id' => 'required',
+        'title_en' => 'required',
       ];
 
       if ($this->request->get('title_id') and $this->request->get('title_en') > 0) {
       foreach($this->request->get('title_id') as $key => $val)
       {
-        $rules['title_id.'.$key] = 'required | unique:posts';
+        $rules['title_id.'.$key] = 'required';
       }
       foreach($this->request->get('title_en') as $key => $val)
       {
-        $rules['title_en.'.$key] = 'required | unique:posts';
+        $rules['title_en.'.$key] = 'required';
       }
     }
-
       return $rules;
     }
 
