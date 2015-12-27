@@ -146,6 +146,8 @@ return [
         Caffeinated\Menus\MenusServiceProvider::class,
         #Entrust
         Zizaco\Entrust\EntrustServiceProvider::class,
+        #Flash
+        Laracasts\Flash\FlashServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -208,6 +210,7 @@ return [
         'Localization'   => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
         'MainMenu' => Caffeinated\Menus\Facades\Menu::class,
         'Entrust' => Zizaco\Entrust\EntrustFacade::class,
+        'Flash' => Laracasts\Flash\Flash::class,
     ],
 
 ];

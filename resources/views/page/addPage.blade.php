@@ -3,6 +3,9 @@
 @section('title', $title)
 
 @section('content')
+
+    @include('includes.alert')
+
     <label>Apakah menu memiliki submenu?</label>
     <div class="radio">
       <label><input type="radio" id="has_submenu" name="has_child" value="1">Ya</label>
@@ -79,7 +82,7 @@
   <div id="id2" class="tab-pane fade in active">
     <div class="form-group">
       <label for="title_id" style="display: block">Judul menu utama :</label>
-      <input id="title_id" class="form-control input-judul" type="text" name="title_id[]">
+      <input id="title_id" class="form-control input-judul" type="text" name="title_id">
     </div>
     <div class="form-group">
       <label for="edittext_id">Isi Halaman Menu :</label>
@@ -89,7 +92,7 @@
   <div id="en2" class="tab-pane fade">
     <div class="form-group">
       <label for="title_en" style="display: block">Judul menu utama :</label>
-      <input id="title_en" class="form-control input-judul" type="text" name="title_en[]">
+      <input id="title_en" class="form-control input-judul" type="text" name="title_en">
     </div>
     <div class="form-group">
       <label for="edittext_en">Isi Halaman Menu :</label>

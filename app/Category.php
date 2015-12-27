@@ -10,4 +10,5 @@ class Category extends Model
     {
       return $this->hasMany('cms\Post');
     }
+
 }

@@ -22,7 +22,8 @@ class PostController extends Controller
     {
         $locale = Localization::getCurrentLocale();
         $article = Post::article()->where('slug_'.$locale, '=', $post)->firstOrFail();
-        $kat = Category::where('slug_'.$locale, '=', $kategori)
+        $kat = Category::where('id','!=',1) // bukan kategori 1 yaitu menu
+                          ->where('slug_'.$locale, '=', $kategori)
                           ->where('id', '=', $article->id_kategori)
                           ->firstOrFail();
         return view('article.showPost', compact('kat', 'article'));
