@@ -53,7 +53,7 @@ class PageController extends Controller
     public function showPage($menu)
     {
         $locale = Localization::getCurrentLocale();
-        if ($page = Post::where('slug_'.$locale, '=', $menu)->first())
+        if ($page = Post::page()->where('slug_'.$locale, '=', $menu)->first())
         {
           return view('page.showPage', compact('page'));
         }
@@ -94,7 +94,7 @@ class PageController extends Controller
               return redirect()->back();
             }
           }
-
+          Flash::success('Menu telah berhasil ditambahkan.');
           return redirect()->route('dashboard::menu');
         }
         else
@@ -124,7 +124,7 @@ class PageController extends Controller
                     return redirect()->back();
                   }
                 }
-                $parent_id = Post::where('title_id','=',$post_parent)->lists('id')->first(); // ambil id parent
+                $parent_id = Post::page()->where('title_id','=',$post_parent)->lists('id')->first(); // ambil id parent
               }
               else { //masukkan child menu
                 $input['title_id'] = $judul_id;
@@ -145,8 +145,36 @@ class PageController extends Controller
               }
               $i++; //increment index
             }
+            Flash::success('Menu telah berhasil ditambahkan.');
             return redirect()->route('dashboard::menu');
         }
+    }
+
+    public function editPage($slug)
+    {
+      $title = "Edit Menu";
+      $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      return view('page.editPage', compact('title', 'page'));
+    }
+
+    public function updatePage(MenuRequest $request, $slug)
+    {
+      $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $input = $request->all();
+      $input['slug_id'] = str_slug($request->input('title_id'));
+      $input['slug_en'] = str_slug($request->input('title_en'));
+      //dd($input);
+      try {
+      $page->update($input);
+      } catch (\Illuminate\Database\QueryException $e) {
+        $errorCode = $e->errorInfo[1];
+        if($errorCode == 1062) { // duplicate entry
+          Flash::error('Judul menu yang anda masukkan sudah digunakan.');
+          return redirect()->back();
+        }
+      }
+      Flash::success('Menu telah berhasil diupdate.');
+      return redirect()->route('dashboard::menu');
     }
 
 }

@@ -103,8 +103,8 @@ return [
     |
     */
 
-    'attributes' => ['title_id'=>'Judul menu bahasa Indonesia',
-                    'title_en'=>'Judul menu bahasa Inggris',
+    'attributes' => ['title_id'=>'Judul menu utama bahasa Indonesia',
+                    'title_en'=>'Judul menu utama bahasa Inggris',
                     ],
 
 ];
