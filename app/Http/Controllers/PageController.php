@@ -154,7 +154,8 @@ class PageController extends Controller
     {
       $title = "Edit Menu";
       $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
-      return view('page.editPage', compact('title', 'page'));
+      $submenu = Post::page()->where('post_parent', '=', $page->id)->get();
+      return view('page.editPage', compact('title', 'page', 'submenu'));
     }
 
     public function updatePage(MenuRequest $request, $slug)
@@ -163,7 +164,6 @@ class PageController extends Controller
       $input = $request->all();
       $input['slug_id'] = str_slug($request->input('title_id'));
       $input['slug_en'] = str_slug($request->input('title_en'));
-      //dd($input);
       try {
       $page->update($input);
       } catch (\Illuminate\Database\QueryException $e) {
