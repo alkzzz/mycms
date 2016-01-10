@@ -28,39 +28,32 @@
         <label for="title_id" style="display: block">Judul menu utama :</label>
         <input id="title_id" class="form-control input-judul" type="text" name="title_id[]">
       </div>
+      <div id="submenu_id" class="tab-pane fade in active">
+        <div id="input_fields_id" class="form-group">
+      <div>
+        <label style="display: block">Judul Submenu :</label>
+        <input type="text" class="form-control input-judul" name="title_id[]">
+      </div>
+      </div>
+      <button id="add_field_button_id" class="btn btn-primary">Tambah Submenu</button>
+      </div>
     </div>
     <div id="en1" class="tab-pane fade in">
       <div class="form-group">
         <label for="title_en"  style="display: block">Judul menu utama :</label>
         <input id="title_en" class="form-control input-judul" type="text" name="title_en[]">
       </div>
+      <div id="submenu_en" class="tab-pane fade in">
+      <div id="input_fields_en" class="form-group">
+        <div>
+          <label style="display: block">Judul Submenu :</label>
+          <input type="text" class="form-control input-judul" name="title_en[]">
+        </div>
+      </div>
+      <button id="add_field_button_en" class="btn btn-primary">Tambah Submenu</button>
+      </div>
     </div>
 </div>
-<ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#submenu_id">Indonesia</a></li>
-  <li><a data-toggle="tab" href="#submenu_en">English</a></li>
-</ul>
-<div class="tab-content">
-  <div id="submenu_id" class="tab-pane fade in active">
-<div id="input_fields_id" class="form-group">
-    <div>
-      <label style="display: block">Judul Submenu :</label>
-      <input type="text" class="form-control input-judul" name="title_id[]">
-    </div>
-</div>
-<button id="add_field_button_id" class="btn btn-primary">Tambah Submenu</button>
-</div>
-<div id="submenu_en" class="tab-pane fade in">
-<div id="input_fields_en" class="form-group">
-  <div>
-    <label style="display: block">Judul Submenu :</label>
-    <input type="text" class="form-control input-judul" name="title_en[]">
-  </div>
-</div>
-<button id="add_field_button_en" class="btn btn-primary">Tambah Submenu</button>
-</div>
-</div>
-
 <hr>
 <div class="alert alert-info">
     * ket: Isi dari submenu dapat ditambahkan melalui edit menu.
@@ -100,7 +93,6 @@
     </div>
   </div>
 </div>
-
   <div class="form-group">
     <input class="btn btn-lg btn-success" type="submit" value="Save">
   </div>

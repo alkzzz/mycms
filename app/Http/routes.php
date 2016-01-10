@@ -7,6 +7,8 @@ Route::group(['as' => 'dashboard::', 'middleware' => ['role:administrator']], fu
 		Route::get('dashboard/menu/tambah',['as'=>'addPage', 'uses'=>'PageController@addPage']);
 		Route::post('dashboard/menu/simpan',['as'=>'storePage', 'uses'=>'PageController@storePage']);
 		Route::get('dashboard/menu/{slug}/edit',['as'=>'editPage', 'uses'=>'PageController@editPage']);
+		Route::get('dashboard/menu/tambah/{slug}/submenu',['as'=>'addSubmenu', 'uses'=>'PageController@addSubmenu']);
+		Route::post('dashboard/menu/simpan/{slug}/submenu',['as'=>'storeSubmenu', 'uses'=>'PageController@storeSubmenu']);
 		Route::patch('dashboard/menu/{slug}/update',['as'=>'updatePage', 'uses'=>'PageController@updatePage']);
 });
 

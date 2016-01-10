@@ -43,6 +43,8 @@
     @endforeach
     @endif
   </div>
+  <a href="{{ route('dashboard::addSubmenu', $page->slug_id) }}" class="btn btn-info">Tambah Submenu</a>
+  <hr>
   <div class="form-group">
       <input class="btn btn-lg btn-success" type="submit" value="Save">
   </div>

@@ -158,6 +158,14 @@ class PageController extends Controller
       return view('page.editPage', compact('title', 'page', 'submenu'));
     }
 
+    public function addSubmenu($slug)
+    {
+      $title = "Tambah Sub Menu";
+      $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $submenu = Post::page()->where('post_parent', '=', $page->id)->get();
+      return view('page.addSubmenu', compact('title', 'page', 'submenu'));
+    }
+
     public function updatePage(MenuRequest $request, $slug)
     {
       $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
