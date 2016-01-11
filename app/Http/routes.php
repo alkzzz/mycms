@@ -10,6 +10,8 @@ Route::group(['as' => 'dashboard::', 'middleware' => ['role:administrator']], fu
 		Route::get('dashboard/menu/tambah/{slug}/submenu',['as'=>'addSubmenu', 'uses'=>'PageController@addSubmenu']);
 		Route::post('dashboard/menu/simpan/{slug}/submenu',['as'=>'storeSubmenu', 'uses'=>'PageController@storeSubmenu']);
 		Route::patch('dashboard/menu/{slug}/update',['as'=>'updatePage', 'uses'=>'PageController@updatePage']);
+		Route::get('dashboard/menu/{slug}/delete',['as'=>'showDeletePage', 'uses'=>'PageController@showDeletePage']);
+		Route::delete('dashboard/menu/{slug}/delete',['as'=>'deletePage', 'uses'=>'PageController@deletePage']);
 });
 
 #Auth

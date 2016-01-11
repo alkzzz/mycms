@@ -224,4 +224,28 @@ class PageController extends Controller
       return redirect()->route('dashboard::menu');
     }
 
+    public function showDeletePage($slug)
+    {
+      $title = "Delete Menu";
+      $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $submenu = Post::page()->where('post_parent', '=', $page->id)->get();
+      return view('page.showDeletePage', compact('title', 'page', 'submenu'));
+    }
+
+    public function deletePage($slug)
+    {
+      $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $submenu = Post::page()->where('post_parent', '=', $page->id)->get();
+      $page->delete();
+      if (count($submenu))
+      {
+        foreach ($submenu as $submenu) {
+          $submenu->delete();
+        }
+      }
+
+      Flash::success('Menu telah berhasil dihapus.');
+      return redirect()->route('dashboard::menu');
+    }
+
 }
