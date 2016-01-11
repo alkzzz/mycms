@@ -13,35 +13,18 @@
 <form role="form" action="{{ route('dashboard::updatePage', $page->slug_id) }}" method="POST">
   {{ csrf_field() }}
   <input type="hidden" name="_method" value="PATCH">
-  <input type="hidden" name="has_child" value="1">
 <div class="tab-content">
   <div id="id1" class="tab-pane fade in active">
     <div class="form-group">
       <label for="title_id" style="display: block">Judul menu utama :</label>
-      <input id="title_id" class="form-control input-judul" type="text" name="title_id[]" value="{{ $page->title_id }}">
+      <input id="title_id" class="form-control input-judul" type="text" name="title_id" value="{{ $page->title_id }}">
     </div>
-    @if(count($submenu))
-    @foreach($submenu as $submenu_id)
-    <div class="form-group">
-      <label for="title_id" style="display: block">Judul submenu :</label>
-      <input id="title_id" class="form-control input-judul" type="text" name="title_id[]" value="{{ $submenu_id->title_id }}">
-    </div>
-    @endforeach
-    @endif
   </div>
   <div id="en1" class="tab-pane fade in">
     <div class="form-group">
       <label for="title_en"  style="display: block">Judul menu utama :</label>
-      <input id="title_en" class="form-control input-judul" type="text" name="title_en[]" value="{{ $page->title_en }}">
+      <input id="title_en" class="form-control input-judul" type="text" name="title_en" value="{{ $page->title_en }}">
     </div>
-    @if(count($submenu))
-    @foreach($submenu as $submenu_en)
-    <div class="form-group">
-      <label for="title_en"  style="display: block">Judul submenu :</label>
-      <input id="title_en" class="form-control input-judul" type="text" name="title_en[]" value="{{ $submenu_en->title_en }}">
-    </div>
-    @endforeach
-    @endif
   </div>
   <a href="{{ route('dashboard::addSubmenu', $page->slug_id) }}" class="btn btn-info">Tambah Submenu</a>
   <hr>
@@ -57,7 +40,6 @@
 <form role="form" action="{{ route('dashboard::updatePage', $page->slug_id) }}" method="POST">
   {{ csrf_field() }}
   <input type="hidden" name="_method" value="PATCH">
-  <input type="hidden" name="has_child" value="0">
 <div class="tab-content">
   <div id="id2" class="tab-pane fade in active">
     <div class="form-group">
