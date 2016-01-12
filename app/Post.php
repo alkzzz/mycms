@@ -23,7 +23,7 @@ class Post extends Model
 
     public function scopeSubmenu($query)
     {
-        return $query->where('post_parent', '!=', '0');
+        return $query->where('post_parent', '<>', '0');
     }
 
     public function scopeArticle($query)
