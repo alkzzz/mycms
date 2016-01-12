@@ -25,7 +25,9 @@
   <div class="container">
   <div id="top-menu" class="hidden-xs">
   <ul class="list-inline navbar-left">
-    <li><a href="">Test</a></li>
+    <li><a href="">Top Menu 1</a></li>
+    <li><a href="">Top Menu 2</a></li>
+    <li><a href="">Top Menu 3</a></li>
   </ul>
   <ul class="list-inline navbar-right">
     @section('lang')
