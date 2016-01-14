@@ -10,6 +10,7 @@ use cms\Post;
 use cms\Category;
 use cms\Http\Requests\MenuRequest;
 use Flash;
+use Log;
 
 class PageController extends Controller
 {
@@ -52,7 +53,7 @@ class PageController extends Controller
 
     public function showPage($menu)
     {
-        
+
         $locale = Localization::getCurrentLocale();
         if ($page = Post::page()->where('slug_'.$locale, '=', $menu)->first())
         {

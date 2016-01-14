@@ -14,6 +14,8 @@ Route::group(['as' => 'dashboard::', 'middleware' => ['role:administrator']], fu
 		Route::delete('dashboard/menu/{slug}/delete',['as'=>'deletePage', 'uses'=>'PageController@deletePage']);
 });
 
+Route::get('get/chart', ['as'=>'getChartData', 'uses'=>'HomeController@getChartData']);
+Route::get('chart', 'HomeController@chart');
 #Auth
 Route::get('login', 'Auth\AuthController@getLogin');
 Route::post('login', ['as'=>'login','uses'=>'Auth\AuthController@postLogin']);
