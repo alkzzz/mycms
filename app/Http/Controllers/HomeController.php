@@ -29,12 +29,11 @@ class HomeController extends Controller
 
     public function getChartData()
     {
-      $data=[
-        ['tahun'=>'2011', 'nilai'=>20],
-        ['tahun'=>'2012', 'nilai'=>30],
-        ['tahun'=>'2013', 'nilai'=>40],
-        ['tahun'=>'2014', 'nilai'=>50],
-      ];
+      $tahun = ['2010','2011','2012','2013','2014'];
+      $nilai = [15,20,25,30,35];
+      for ($i=0; $i < count($tahun) ; $i++) {
+        $data[$i] = array('tahun'=>$tahun[$i], 'nilai'=>$nilai[$i]);
+      }
       return $data;
     }
 
