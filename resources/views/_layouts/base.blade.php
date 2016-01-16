@@ -25,7 +25,9 @@
   <div class="container">
   <div id="top-menu" class="hidden-xs">
   <ul class="list-inline navbar-left">
-    <li><a href="">Test</a></li>
+    @foreach($top_menu as $top_menu)
+      <li><a href="{{ 'http://'.$top_menu->link }}" target="_blank">{{ $top_menu->nama }}</a></li>
+    @endforeach
   </ul>
   <ul class="list-inline navbar-right">
     @section('lang')
@@ -57,7 +59,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{ url('/') }}">Teknik Informatika</a>
+      <a class="navbar-brand" href="{{ url('/') }}">Fakultas Teknik</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

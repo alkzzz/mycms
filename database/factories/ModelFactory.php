@@ -125,3 +125,12 @@ $factory->defineAs(cms\Post::class, 'submenu', function (Faker\Generator $faker)
         'post_parent' => $faker->numberBetween(2, 5),
     ];
 });
+
+$factory->define(cms\TopMenu::class, function (Faker\Generator $faker) {
+    return [
+    	'urutan' => $faker->unique()->numberBetween($min = 1, $max = 20),
+      'nama' => $faker->country,
+      'link' => $faker->randomElement($array = array ('www.google.com','www.facebook.com','www.twitter.com','www.youtube.com')),
+
+    ];
+});

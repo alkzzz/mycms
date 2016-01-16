@@ -362,8 +362,12 @@ table.dataTable thead .sorting:after {
   color: #df8a13;
 }
 
-#sortable {
-  cursor: pointer;
+.ui-sortable {
+  cursor: move;
+}
+
+.ui-sortable-disabled {
+  cursor: text;
 }
 
 .parent-menu {
@@ -371,6 +375,7 @@ table.dataTable thead .sorting:after {
   font-weight: bold;
   margin-bottom: 0px;
   margin-top: 0px;
+  padding: 5px;
 }
 
 .child-menu {
@@ -379,11 +384,11 @@ table.dataTable thead .sorting:after {
   font-weight: bold;
   margin-bottom: 0px;
   margin-top: 0px;
+  padding: 5px;
 }
 
 .default {
   list-style: none;
-  padding: 5px;
 }
 
 .highlight {
@@ -396,4 +401,17 @@ table.dataTable thead .sorting:after {
 .lang-help {
   margin-left: 45px;
   color: #5f82d7;
+}
+
+.topmenu-title {
+  display: inline-block;
+  margin-top: 0px;
+  margin-left: 45px;
+  color: #5f82d7;
+}
+
+.topmenu-list {
+  margin-left: 2.1em;
+  padding: 5px;
+  margin-bottom: 5px;
 }

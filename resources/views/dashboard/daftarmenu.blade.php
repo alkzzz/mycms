@@ -19,7 +19,8 @@
 		<li id="menu_{{ $menu->id }}" class="parent-menu default">
 		<div>{{ $menu->title_id }} / {{ $menu->title_en }} @if ($menu->has_child)
 			<a class="arrow-toggle" href="#menu_{{ $menu->slug_id }}" data-toggle="collapse" aria-expanded="false" aria-controls="{{ $menu->slug_id }}"><span class="fa fa-caret-down fa-fw"></span></a> @endif
-		<span class="pull-right">@if (!$menu->has_child)<a style="margin-right:20px" href="{{ route('show.page', $menu->slug_id) }}">Show <i class="fa fa-eye fa-fw"></i></a>@endif<a style="margin-right:20px" href="">Edit <i class="fa fa-edit fa-fw"></i></a><a href="">Delete <i class="fa fa-trash fa-fw"></i></a></span></div>
+		<span class="pull-right">@if (!$menu->has_child)<a style="margin-right:20px" href="{{ route('show.page', $menu->slug_id) }}">Show <i class="fa fa-eye fa-fw"></i></a>
+		@endif<a style="margin-right:20px" href="{{ route('dashboard::editPage', $menu->slug_id) }}">Edit <i class="fa fa-edit fa-fw"></i></a><a href="{{ route('dashboard::showDeletePage', $menu->slug_id) }}">Delete <i class="fa fa-trash fa-fw"></i></a></span></div>
  	@if(!$menu->has_child) </li>
 	@else
 			<ul id= "menu_{{ $menu->slug_id }}" class="collapse child-menu default">
@@ -27,7 +28,7 @@
 			@if($submenu->post_parent == $menu->id)
 				<li id="submenu_{{ $submenu->id }}">
 				<div>{{ $submenu->title_id }} / {{ $submenu->title_en }}
-				<span class="pull-right"><a style="margin-right:20px" href="{{ route('show.page', $submenu->slug_id) }}">Show <i class="fa fa-eye fa-fw"></i></a><a style="margin-right:20px" href="">Edit <i class="fa fa-edit fa-fw"></i></a><a style="margin-right:-5px" href="">Delete <i class="fa fa-trash fa-fw"></i></a>
+				<span class="pull-right"><a style="margin-right:20px" href="{{ route('show.page', $submenu->slug_id) }}">Show <i class="fa fa-eye fa-fw"></i></a><a style="margin-right:20px" href="{{ route('dashboard::editPage', $submenu->slug_id) }}">Edit <i class="fa fa-edit fa-fw"></i></a><a style="margin-right:-5px" href="{{ route('dashboard::showDeletePage', $submenu->slug_id) }}">Delete <i class="fa fa-trash fa-fw"></i></a>
 				</div></li>
 		</li>
 			@endif

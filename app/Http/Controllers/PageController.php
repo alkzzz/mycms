@@ -10,6 +10,7 @@ use cms\Post;
 use cms\Category;
 use cms\Http\Requests\MenuRequest;
 use Flash;
+use Log;
 
 class PageController extends Controller
 {
@@ -52,8 +53,9 @@ class PageController extends Controller
 
     public function showPage($menu)
     {
+
         $locale = Localization::getCurrentLocale();
-        if ($page = Post::where('slug_'.$locale, '=', $menu)->first())
+        if ($page = Post::page()->where('slug_'.$locale, '=', $menu)->first())
         {
           return view('page.showPage', compact('page'));
         }
@@ -94,7 +96,7 @@ class PageController extends Controller
               return redirect()->back();
             }
           }
-
+          Flash::success('Menu telah berhasil ditambahkan.');
           return redirect()->route('dashboard::menu');
         }
         else
@@ -124,7 +126,7 @@ class PageController extends Controller
                     return redirect()->back();
                   }
                 }
-                $parent_id = Post::where('title_id','=',$post_parent)->lists('id')->first(); // ambil id parent
+                $parent_id = Post::page()->where('title_id','=',$post_parent)->lists('id')->first(); // ambil id parent
               }
               else { //masukkan child menu
                 $input['title_id'] = $judul_id;
@@ -145,8 +147,107 @@ class PageController extends Controller
               }
               $i++; //increment index
             }
+            Flash::success('Menu telah berhasil ditambahkan.');
             return redirect()->route('dashboard::menu');
         }
+    }
+
+    public function editPage($slug)
+    {
+      $title = "Edit Menu";
+      $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      return view('page.editPage', compact('title', 'page', 'submenu'));
+    }
+
+    public function addSubmenu($slug)
+    {
+      $title = "Tambah Sub Menu";
+      $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $submenu = Post::page()->where('post_parent', '=', $page->id)->get();
+      return view('page.addSubmenu', compact('title', 'page', 'submenu'));
+    }
+
+    public function storeSubmenu(MenuRequest $request, $slug)
+    {
+      $parent = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $input = $request->all();
+      $input['urutan'] = 99;
+      $input['post_type'] = 'page';
+      $input['id_kategori'] = 1;
+      $inputjudul_id = $request->input('title_id');
+      $inputjudul_en = $request->input('title_en');
+      if (count($inputjudul_id) == count($inputjudul_en)) { // kalo jumlahnya sama
+        $inputjudul = array_combine($inputjudul_id, $inputjudul_en); // gabung input jadi key dan value
+      }
+      else
+      {
+        Flash::error('Jumlah submenu yang dimasukkan untuk bahasa Indonesia dan bahasa Inggris tidak sama.');
+        return redirect()->back();
+      }
+      foreach ($inputjudul as $judul_id => $judul_en) {
+        $input['title_id'] = $judul_id;
+        $input['title_en'] = $judul_en;
+        $input['slug_id'] = str_slug($input['title_id']);
+        $input['slug_en'] = str_slug($input['title_en']);
+        $input['has_child'] = 0;
+        $input['post_parent'] = $parent->id; // masukkan id parent ke child
+        try {
+        Post::create($input);
+        } catch (\Illuminate\Database\QueryException $e) {
+          $errorCode = $e->errorInfo[1];
+          if($errorCode == 1062) { // duplicate entry
+            Flash::error('Judul menu yang anda masukkan sudah digunakan.');
+            return redirect()->back();
+          }
+        }
+      }
+      Flash::success('Sub Menu telah berhasil ditambahkan.');
+      return redirect()->route('dashboard::menu');
+
+    }
+
+    public function updatePage(MenuRequest $request, $slug)
+    {
+      $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $input = $request->all();
+      $input['slug_id'] = str_slug($input['title_id']);
+      $input['slug_en'] = str_slug($input['title_en']);
+      try {
+      $page->update($input);
+      } catch (\Illuminate\Database\QueryException $e) {
+        $errorCode = $e->errorInfo[1];
+        if($errorCode == 1062) { // duplicate entry
+          Flash::error('Judul menu yang anda masukkan sudah digunakan.');
+          return redirect()->back();
+        }
+      }
+
+      Flash::success('Menu telah berhasil diupdate.');
+      return redirect()->route('dashboard::menu');
+    }
+
+    public function showDeletePage($slug)
+    {
+      $title = "Delete Menu";
+      $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $submenu = Post::page()->where('post_parent', '=', $page->id)->get();
+      return view('page.showDeletePage', compact('title', 'page', 'submenu'));
+    }
+
+    public function deletePage($slug)
+    {
+      $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $submenu = Post::page()->where('post_parent', '=', $page->id)->get();
+      $page->delete();
+      if (count($submenu))
+      {
+        foreach ($submenu as $submenu) {
+          $submenu->delete();
+        }
+      }
+
+      Flash::success('Menu telah berhasil dihapus.');
+      return redirect()->route('dashboard::menu');
     }
 
 }

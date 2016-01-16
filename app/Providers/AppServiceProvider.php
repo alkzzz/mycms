@@ -3,6 +3,7 @@
 namespace cms\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use cms\TopMenu;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +15,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         \Localization::setLocale('id');
+        $top_menu = TopMenu::all()->sortBy('urutan');
+        view()->share('top_menu', $top_menu);
     }
 
     /**

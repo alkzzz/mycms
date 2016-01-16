@@ -21,10 +21,12 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->truncate();
         DB::table('categories')->truncate();
         DB::table('posts')->truncate();
+        DB::table('top_menu')->truncate();
 
         $this->call(UserTableSeeder::class);
         $this->call(CategoryTableSeeder::class);
         $this->call(PostTableSeeder::class);
+        $this->call(TopMenuSeeder::class);
 
         $admin = cms\User::find(1);
         $admin->attachRole(1);
