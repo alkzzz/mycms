@@ -78,8 +78,10 @@
                             <a href="{{ route('dashboard::home') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
+                            <a href="{{ route('dashboard::topmenu') }}"><i class="fa fa-ellipsis-h fa-fw"></i> Top Menu</a>
+                        </li>
+                        <li>
                             <a href="{{ route('dashboard::menu') }}"><i class="fa fa-th-list fa-fw"></i> Menu</a>
-                            <!-- /.nav-second-level -->
                         </li>
                         <li>
                             <a href=""><i class="fa fa-picture-o fa-fw"></i> Slider</a>

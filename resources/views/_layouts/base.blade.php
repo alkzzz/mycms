@@ -25,9 +25,9 @@
   <div class="container">
   <div id="top-menu" class="hidden-xs">
   <ul class="list-inline navbar-left">
-    <li><a href="">Top Menu 1</a></li>
-    <li><a href="">Top Menu 2</a></li>
-    <li><a href="">Top Menu 3</a></li>
+    @foreach($top_menu as $top_menu)
+      <li><a href="{{ 'http://'.$top_menu->link }}" target="_blank">{{ $top_menu->nama }}</a></li>
+    @endforeach
   </ul>
   <ul class="list-inline navbar-right">
     @section('lang')

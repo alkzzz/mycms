@@ -202,7 +202,7 @@ class PageController extends Controller
         }
       }
       Flash::success('Sub Menu telah berhasil ditambahkan.');
-      return redirect()->route('dashboard::menu', $parent->slug_id);
+      return redirect()->route('dashboard::menu');
 
     }
 
