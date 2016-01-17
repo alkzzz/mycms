@@ -17,13 +17,16 @@
   <h3 class="topmenu-title">Link Menu</h3>
   <ul id="sortable" class="parent-menu default">
     @foreach($topmenu as $top)
-        <li id="topmenu_{{ $top->id }}">
+        <li style="margin-bottom:15px" id="topmenu_{{ $top->id }}">
           <div class="topmenu-list" style="width:30%" >
               {{ $top->nama }}
           </div>
           <div class="topmenu-list">
               {{ $top->link }}
           </div>
+              <a style="margin-left:20px" href="#" class="btn btn-danger pull-right">Delete <i class="fa fa-trash fa-fw"></i></a>
+              <a style="margin-left:20px" href="#" class="btn btn-warning pull-right">Edit <i class="fa fa-edit fa-fw"></i></a>
+              <a style="margin-left:20px" href="#" class="btn btn-info pull-right">Show <i class="fa fa-eye fa-fw"></i></a>
         </li>
     @endforeach
   </ul>
