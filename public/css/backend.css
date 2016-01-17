@@ -10969,13 +10969,11 @@ table.dataTable thead .sorting:after {
 
 .topmenu-title {
   display: inline-block;
-  margin-top: 0px;
-  margin-left: 45px;
+  padding: 5px;
   color: #5f82d7;
 }
 
 .topmenu-list {
-  margin-left: 2.1em;
+  display: inline-block;
   padding: 5px;
-  margin-bottom: 5px;
 }

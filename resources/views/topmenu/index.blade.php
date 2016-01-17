@@ -13,23 +13,21 @@
 @if(!count($topmenu))
 <h3>Website belum memiliki top menu. Silahkan tambahkan top menu dengan mengklik tombol <b>Tambah</b>.</h3>
 @else
-<div style="display:inline-block" class="pull-left">
-  <h3 class="topmenu-title">Nama Menu</h3>
+  <h3 class="topmenu-title" style="width:30%">Nama Menu</h3>
+  <h3 class="topmenu-title">Link Menu</h3>
   <ul class="parent-menu default">
     @foreach($topmenu as $top)
-        <li class="topmenu-list">{{ $top->nama }}</li>
+        <li>
+          <div class="topmenu-list" style="width:30%" >
+              {{ $top->nama }}
+          </div>
+          <div class="topmenu-list">
+              {{ $top->link }}
+          </div>
+        </li>
     @endforeach
   </ul>
 </div>
-<div style="display:inline-block;margin-left:20%" class="pull-left">
-  <h3 class="topmenu-title">Link Menu</h3>
-  <ul class="parent-menu default">
-      @foreach($topmenu as $menu)
-        <li class="topmenu-list">{{ $menu->link }}</li>
-      @endforeach
-  </ul>
-</div>
-<hr style="clear:left">
-<button id="urut" type="button" class="btn btn-primary">Urutkan Menu</button>
+<button id="urut" type="button" class="btn btn-primary" style="margin-top:2%">Urutkan Menu</button>
 @endif
 @stop
