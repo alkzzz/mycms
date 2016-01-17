@@ -3,9 +3,9 @@
 Route::group(['as' => 'dashboard::', 'middleware' => ['role:administrator']], function () {
 		Route::get('dashboard',['as'=>'home', 'uses'=>'DashboardController@index']);
 		Route::get('dashboard/menu',['as'=>'menu', 'uses'=>'PageController@daftarmenu']);
-		Route::post('dashboard/menu',['as'=>'urutMenu', 'uses'=>'PageController@urutMenu']);
+		Route::post('dashboard/menu/urut',['as'=>'urutMenu', 'uses'=>'PageController@urutMenu']);
 		Route::get('dashboard/menu/tambah',['as'=>'addPage', 'uses'=>'PageController@addPage']);
-		Route::post('dashboard/menu/simpan',['as'=>'storePage', 'uses'=>'PageController@storePage']);
+		Route::post('dashboard/menu',['as'=>'storePage', 'uses'=>'PageController@storePage']);
 		Route::get('dashboard/menu/{slug}/edit',['as'=>'editPage', 'uses'=>'PageController@editPage']);
 		Route::get('dashboard/submenu/{slug}/tambah',['as'=>'addSubmenu', 'uses'=>'PageController@addSubmenu']);
 		Route::post('dashboard/submenu/{slug}',['as'=>'storeSubmenu', 'uses'=>'PageController@storeSubmenu']);
@@ -14,6 +14,7 @@ Route::group(['as' => 'dashboard::', 'middleware' => ['role:administrator']], fu
 		Route::delete('dashboard/menu/{slug}',['as'=>'deletePage', 'uses'=>'PageController@deletePage']);
 		Route::get('dashboard/topmenu',['as'=>'topmenu', 'uses'=>'TopMenuController@daftartopmenu']);
 		Route::get('dashboard/topmenu/tambah', ['as'=>'addTopMenu', 'uses'=>'TopMenuController@addTopMenu']);
+		Route::post('dashboard/topmenu/urut',['as'=>'urutTopMenu', 'uses'=>'TopMenuController@urutTopMenu']);
 });
 
 Route::get('get/chart', ['as'=>'getChartData', 'uses'=>'HomeController@getChartData']);

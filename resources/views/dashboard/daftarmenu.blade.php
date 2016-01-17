@@ -87,9 +87,10 @@
         			cursor : "move",
 		        	listType: "ul",
 		        	handle: 'div',
-		            items: 'li',
-		            toleranceElement: '> div',
-		            placeholder: "highlight",
+	            items: 'li',
+	            toleranceElement: '> div',
+	            placeholder: "highlight",
+							opacity: 0.8,
 		        });
 		        $('#sortable').disableSelection();
 
