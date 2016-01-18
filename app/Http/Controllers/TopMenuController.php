@@ -31,6 +31,16 @@ class TopMenuController extends Controller
                 $topmenu->save();
             }
         }
+    }
+
+    public function addTopMenu()
+    {
+      $title = 'Tambah Top Menu';
+      return view('topmenu.tambah', compact('title'));
+    }
+
+    public function storeTopMenu(Request $request)
+    {
 
     }
 }

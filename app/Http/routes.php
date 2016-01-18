@@ -13,8 +13,9 @@ Route::group(['as' => 'dashboard::', 'middleware' => ['role:administrator']], fu
 		Route::get('dashboard/menu/{slug}/delete',['as'=>'showDeletePage', 'uses'=>'PageController@showDeletePage']);
 		Route::delete('dashboard/menu/{slug}',['as'=>'deletePage', 'uses'=>'PageController@deletePage']);
 		Route::get('dashboard/topmenu',['as'=>'topmenu', 'uses'=>'TopMenuController@daftartopmenu']);
-		Route::get('dashboard/topmenu/tambah', ['as'=>'addTopMenu', 'uses'=>'TopMenuController@addTopMenu']);
 		Route::post('dashboard/topmenu/urut',['as'=>'urutTopMenu', 'uses'=>'TopMenuController@urutTopMenu']);
+		Route::get('dashboard/topmenu/tambah', ['as'=>'addTopMenu', 'uses'=>'TopMenuController@addTopMenu']);
+		Route::post('dashboard/topmenu', ['as'=>'storeTopMenu', 'uses'=>'TopMenuController@storeTopMenu']);
 });
 
 Route::get('get/chart', ['as'=>'getChartData', 'uses'=>'HomeController@getChartData']);
