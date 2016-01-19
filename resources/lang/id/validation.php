@@ -87,8 +87,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'link_topmenu' => [
+            'regex' => 'Link top menu harus berupa url yang valid.',
         ],
     ],
 
@@ -105,6 +105,8 @@ return [
 
     'attributes' => ['title_id'=>'Judul menu utama bahasa Indonesia',
                     'title_en'=>'Judul menu utama bahasa Inggris',
+                    'nama_topmenu'=> 'Judul top menu',
+                    'link_topmenu'=> 'Link top menu',
                     ],
 
 ];

@@ -19,13 +19,13 @@
     @foreach($topmenu as $top)
         <li style="margin-bottom:15px" id="topmenu_{{ $top->id }}">
           <div class="topmenu-list" style="width:30%" >
-              {{ $top->nama }}
+              {{ $top->nama_topmenu }}
           </div>
           <div class="topmenu-list">
-              <a href="{{ 'http://'.$top->link }}" style="color:#333" target="_blank">{{ $top->link }}</a>
+              <a href="{{ $top->link_topmenu }}" style="color:#333" target="_blank">{{ $top->link_topmenu }}</a>
           </div>
               <a style="margin-left:20px" href="#" class="btn btn-danger pull-right">Delete <i class="fa fa-trash fa-fw"></i></a>
-              <a style="margin-left:20px" href="#" class="btn btn-warning pull-right">Edit <i class="fa fa-edit fa-fw"></i></a>
+              <a style="margin-left:20px" href="{{ route('dashboard::editTopMenu', $top->id) }}" class="btn btn-warning pull-right">Edit <i class="fa fa-edit fa-fw"></i></a>
         </li>
     @endforeach
   </ul>

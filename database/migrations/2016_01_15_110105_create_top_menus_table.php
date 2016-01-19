@@ -15,8 +15,8 @@ class CreateTopMenusTable extends Migration
         Schema::create('top_menu', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('urutan')->unsigned();
-            $table->string('nama');
-            $table->string('link');
+            $table->string('nama_topmenu');
+            $table->string('link_topmenu');
             $table->timestamps();
         });
     }

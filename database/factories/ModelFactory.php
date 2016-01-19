@@ -129,8 +129,8 @@ $factory->defineAs(cms\Post::class, 'submenu', function (Faker\Generator $faker)
 $factory->define(cms\TopMenu::class, function (Faker\Generator $faker) {
     return [
     	'urutan' => $faker->unique()->numberBetween($min = 1, $max = 20),
-      'nama' => $faker->country,
-      'link' => $faker->randomElement($array = array ('www.google.com','www.facebook.com','www.twitter.com','www.youtube.com')),
+      'nama_topmenu' => $faker->country,
+      'link_topmenu' => $faker->randomElement($array = array ('http://www.google.com','http://www.facebook.com','http://www.twitter.com','http://www.youtube.com')),
 
     ];
 });

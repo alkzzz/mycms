@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use cms\Http\Requests;
 use cms\Http\Controllers\Controller;
 use cms\TopMenu;
-use Log;
+use Flash;
 
 class TopMenuController extends Controller
 {
@@ -23,7 +23,6 @@ class TopMenuController extends Controller
         $data = $request->all();
         parse_str($data['urutan'], $urutan);
         $daftartopmenu = TopMenu::all();
-        Log::info($urutan);
         foreach ($urutan['topmenu'] as $key => $value) {
             foreach ($daftartopmenu as $topmenu) {
                 $i = array_search($topmenu->id, $urutan['topmenu']);
@@ -41,6 +40,30 @@ class TopMenuController extends Controller
 
     public function storeTopMenu(Request $request)
     {
+      #validasi
+      $this->validate($request, [
+        'nama_topmenu' => 'required',
+        'link_topmenu' => 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/', #format_url
+        ]);
 
+        $input = $request->all();
+        try {
+        TopMenu::create($input);
+        } catch (\Illuminate\Database\QueryException $e) {
+          $errorCode = $e->errorInfo[1];
+          if($errorCode == 1062) { // duplicate entry
+            Flash::error('Judul top menu yang anda masukkan sudah digunakan.');
+            return redirect()->back();
+          }
+        }
+        Flash::success('Top menu telah berhasil ditambahkan.');
+        return redirect()->route('dashboard::topmenu');
+    }
+
+    public function editTopMenu($id)
+    {
+      $title = 'Edit Top Menu';
+      $top = TopMenu::find($id);
+      return view('topmenu.edit', compact('title','top'));
     }
 }

@@ -8,9 +8,9 @@
 <form role="form" action="{{ route('dashboard::storeTopMenu') }}" method="POST">
       {{ csrf_field() }}
       <label for="title" style="display:block">Judul top menu :</label>
-      <input id="title" name="nama_topmenu" style="margin-bottom:1%" type="text" class="form-control input-judul">
+      <input id="title" name="nama_topmenu" value="{{ $top->nama_topmenu }}" style="margin-bottom:1%" type="text" class="form-control input-judul">
       <label for="link" style="display:block">Link top menu :</label>
-      <input id="link" name="link_topmenu" style="margin-bottom:1%" type="url" class="form-control input-judul">
+      <input id="link" name="link_topmenu" value="{{ $top->link_topmenu }}" style="margin-bottom:1%" type="url" class="form-control input-judul">
       <input type="submit" class="btn btn-lg btn-success" style="display:block;margin-top:2%" value="Save">
 </form>
 
