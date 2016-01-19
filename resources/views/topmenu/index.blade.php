@@ -22,11 +22,10 @@
               {{ $top->nama }}
           </div>
           <div class="topmenu-list">
-              {{ $top->link }}
+              <a href="{{ 'http://'.$top->link }}" style="color:#333" target="_blank">{{ $top->link }}</a>
           </div>
               <a style="margin-left:20px" href="#" class="btn btn-danger pull-right">Delete <i class="fa fa-trash fa-fw"></i></a>
               <a style="margin-left:20px" href="#" class="btn btn-warning pull-right">Edit <i class="fa fa-edit fa-fw"></i></a>
-              <a style="margin-left:20px" href="#" class="btn btn-info pull-right">Show <i class="fa fa-eye fa-fw"></i></a>
         </li>
     @endforeach
   </ul>
