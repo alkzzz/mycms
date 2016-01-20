@@ -26,7 +26,7 @@
               <a href="{{ $top->link_topmenu }}" style="color:#333" target="_blank">{{ $top->link_topmenu }}</a>
           </div>
           <div style="display:inline-block;margin-left:2em" class="pull-right">
-            <form action="{{ route('dashboard::deleteTopMenu', $top->id) }}" method="POST">
+            <form id="formDelete" action="{{ route('dashboard::deleteTopMenu', $top->id) }}" method="POST">
               {{ csrf_field() }}
               <input type="hidden" name="_method" value="DELETE">
               <input id="delete" class="btn btn-danger" type="submit" value="Delete">
@@ -46,23 +46,22 @@
 <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.min.js') }}"> </script>
 <script type="text/javascript">
-$(document).ready(function() {
-  $('#delete').onclick = function() {
-   swal({
-     title: 'Are you sure?',
-     text: 'You will not be able to recover this imaginary file!',
-     type: 'warning',
-     showCancelButton: true,
-     confirmButtonColor: '#3085d6',
-     cancelButtonColor: '#d33',
-     confirmButtonText: 'Yes, delete it!',
-     closeOnConfirm: false
-   },
-   function() {
-     swal('Deleted!', 'Your file has been deleted!', 'success');
-   });
- });
-});
+$('input#delete').on('click', function(e){
+  e.preventDefault();
+  swal({
+    title: "Are you sure?",
+    text: "Anda yakin akan menghapus top menu ini",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#DD6B55",
+    confirmButtonText: "Delete",
+    closeOnConfirm: false
+  },
+    function(){
+    $("#formDelete").submit();
+    swal('Delete','Top menu telah didelete','success');
+  });
+})
 </script>
 <script type="text/javascript">
 $(document).ready(function() {
