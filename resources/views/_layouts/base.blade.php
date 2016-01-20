@@ -26,7 +26,7 @@
   <div id="top-menu" class="hidden-xs">
   <ul class="list-inline navbar-left">
     @foreach($top_menu as $top_menu)
-      <li><a href="{{ 'http://'.$top_menu->link }}" target="_blank">{{ $top_menu->nama }}</a></li>
+      <li><a href="{{ $top_menu->link_topmenu }}" target="_blank">{{ $top_menu->nama_topmenu }}</a></li>
     @endforeach
   </ul>
   <ul class="list-inline navbar-right">
