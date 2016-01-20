@@ -8,6 +8,7 @@
 @stop
 
 @section('content')
+@include('includes.alert')
 <a href="{{ route('dashboard::addTopMenu') }}"><button type="button" class="btn btn-success">Tambah <i class="fa fa-plus-square fa-fw"></i></button></a>
 <hr>
 @if(!count($topmenu))
@@ -24,8 +25,14 @@
           <div class="topmenu-list">
               <a href="{{ $top->link_topmenu }}" style="color:#333" target="_blank">{{ $top->link_topmenu }}</a>
           </div>
-              <a style="margin-left:20px" href="#" class="btn btn-danger pull-right">Delete <i class="fa fa-trash fa-fw"></i></a>
-              <a style="margin-left:20px" href="{{ route('dashboard::editTopMenu', $top->id) }}" class="btn btn-warning pull-right">Edit <i class="fa fa-edit fa-fw"></i></a>
+          <div style="display:inline-block;margin-left:2em" class="pull-right">
+            <form action="{{ route('dashboard::deleteTopMenu', $top->id) }}" method="POST">
+              {{ csrf_field() }}
+              <input type="hidden" name="_method" value="DELETE">
+              <input id="delete" class="btn btn-danger" type="submit" value="Delete">
+            </form>
+          </div>
+           <a style="margin-left:2em" href="{{ route('dashboard::editTopMenu', $top->id) }}" class="btn btn-warning pull-right">Edit <i class="fa fa-edit fa-fw"></i></a>
         </li>
     @endforeach
   </ul>
@@ -38,6 +45,25 @@
 @parent
 <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.min.js') }}"> </script>
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#delete').onclick = function() {
+   swal({
+     title: 'Are you sure?',
+     text: 'You will not be able to recover this imaginary file!',
+     type: 'warning',
+     showCancelButton: true,
+     confirmButtonColor: '#3085d6',
+     cancelButtonColor: '#d33',
+     confirmButtonText: 'Yes, delete it!',
+     closeOnConfirm: false
+   },
+   function() {
+     swal('Deleted!', 'Your file has been deleted!', 'success');
+   });
+ });
+});
+</script>
 <script type="text/javascript">
 $(document).ready(function() {
   $('#urut').click(function() {

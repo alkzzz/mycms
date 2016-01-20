@@ -43,7 +43,7 @@ class TopMenuController extends Controller
       #validasi
       $this->validate($request, [
         'nama_topmenu' => 'required',
-        'link_topmenu' => 'regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/', #format_url
+        'link_topmenu' => 'required | active_url',
         ]);
 
         $input = $request->all();
@@ -65,5 +65,36 @@ class TopMenuController extends Controller
       $title = 'Edit Top Menu';
       $top = TopMenu::find($id);
       return view('topmenu.edit', compact('title','top'));
+    }
+
+    public function updateTopMenu(Request $request, $id)
+    {
+      #validasi
+      $this->validate($request, [
+        'nama_topmenu' => 'required',
+        'link_topmenu' => 'required | active_url',
+        ]);
+
+      $top = TopMenu::find($id);
+      $input = $request->all();
+      try {
+      $top->update($input);
+      } catch (\Illuminate\Database\QueryException $e) {
+        $errorCode = $e->errorInfo[1];
+        if($errorCode == 1062) { // duplicate entry
+          Flash::error('Judul top menu yang anda masukkan sudah digunakan.');
+          return redirect()->back();
+        }
+      }
+      Flash::success('Top menu telah berhasil diupdate.');
+      return redirect()->route('dashboard::topmenu');
+    }
+
+    public function deleteTopMenu($id)
+    {
+      $top = TopMenu::find($id);
+      $top->delete();
+      Flash::success('Top menu telah berhasil didelete.');
+      return redirect()->route('dashboard::topmenu');
     }
 }

@@ -17,6 +17,8 @@ Route::group(['as' => 'dashboard::', 'middleware' => ['role:administrator']], fu
 		Route::get('dashboard/topmenu/tambah', ['as'=>'addTopMenu', 'uses'=>'TopMenuController@addTopMenu']);
 		Route::post('dashboard/topmenu', ['as'=>'storeTopMenu', 'uses'=>'TopMenuController@storeTopMenu']);
 		Route::get('dashboard/topmenu/{id}/edit', ['as'=>'editTopMenu', 'uses'=>'TopMenuController@editTopMenu']);
+		Route::patch('dashboard/topmenu/{id}', ['as'=>'updateTopMenu', 'uses'=>'TopMenuController@updateTopMenu']);
+		Route::delete('dashboard/topmenu/{id}', ['as'=>'deleteTopMenu', 'uses'=>'TopMenuController@deleteTopMenu']);
 });
 
 Route::get('get/chart', ['as'=>'getChartData', 'uses'=>'HomeController@getChartData']);

@@ -5,8 +5,9 @@
 @section('content')
 @include('includes.alert')
 
-<form role="form" action="{{ route('dashboard::storeTopMenu') }}" method="POST">
+<form role="form" action="{{ route('dashboard::updateTopMenu', $top->id) }}" method="POST">
       {{ csrf_field() }}
+      <input type="hidden" name="_method" value="PATCH">
       <label for="title" style="display:block">Judul top menu :</label>
       <input id="title" name="nama_topmenu" value="{{ $top->nama_topmenu }}" style="margin-bottom:1%" type="text" class="form-control input-judul">
       <label for="link" style="display:block">Link top menu :</label>

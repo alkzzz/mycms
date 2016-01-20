@@ -14,7 +14,7 @@ return [
     */
 
     'accepted'             => 'The :attribute must be accepted.',
-    'active_url'           => 'The :attribute is not a valid URL.',
+    'active_url'           => ':attribute harus berupa url yang valid.',
     'after'                => 'The :attribute must be a date after :date.',
     'alpha'                => 'The :attribute may only contain letters.',
     'alpha_dash'           => 'The :attribute may only contain letters, numbers, and dashes.',
@@ -87,8 +87,8 @@ return [
     */
 
     'custom' => [
-        'link_topmenu' => [
-            'regex' => 'Link top menu harus berupa url yang valid.',
+        'attribute' => [
+            'rule' => 'message',
         ],
     ],
 
