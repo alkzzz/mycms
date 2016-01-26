@@ -18,8 +18,8 @@ label {
 
 .input-judul {
   display: inline-block;
-  width: 300px;
-  font-size: 20px;
+  width: 20em;
+  font-size: 1.5em;
 }
 
 #wrapper {

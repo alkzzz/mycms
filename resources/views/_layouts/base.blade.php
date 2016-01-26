@@ -26,7 +26,7 @@
   <div id="top-menu" class="hidden-xs">
   <ul class="list-inline navbar-left">
     @foreach($top_menu as $top_menu)
-      <li><a href="{{ 'http://'.$top_menu->link }}" target="_blank">{{ $top_menu->nama }}</a></li>
+      <li><a href="{{ $top_menu->link_topmenu }}" target="_blank">{{ $top_menu->nama_topmenu }}</a></li>
     @endforeach
   </ul>
   <ul class="list-inline navbar-right">
@@ -38,9 +38,9 @@
     @endif
     @show
   </ul>
-  <form class="navbar-form navbar-right" role="search">
+  <form class="navbar-form navbar-right" role="search" action="{{ url('search') }}">
   <div class="form-group">
-      <input type="text" class="form-control" placeholder="Search">
+      <input type="text" name="q" class="form-control" placeholder="Search">
   </div>
       <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
   </form>

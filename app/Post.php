@@ -2,14 +2,19 @@
 
 namespace cms;
 
+use Sofa\Eloquence\Eloquence;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    use Eloquence;
+
    	protected $table = 'posts';
 
     protected $fillable = ['urutan','id_kategori','has_submenu','title_id', 'slug_id', 'content_id',
     						'title_en', 'slug_en', 'content_en', 'post_type', 'post_parent', 'has_child'];
+
+    protected $searchableColumns = ['title_id', 'content_id', 'title_en', 'content_en'];
 
     public function scopePage($query)
     {

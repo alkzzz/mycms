@@ -8,6 +8,7 @@
 @stop
 
 @section('content')
+@include('includes.alert')
 <a href="{{ route('dashboard::addTopMenu') }}"><button type="button" class="btn btn-success">Tambah <i class="fa fa-plus-square fa-fw"></i></button></a>
 <hr>
 @if(!count($topmenu))
@@ -19,14 +20,19 @@
     @foreach($topmenu as $top)
         <li style="margin-bottom:15px" id="topmenu_{{ $top->id }}">
           <div class="topmenu-list" style="width:30%" >
-              {{ $top->nama }}
+              {{ $top->nama_topmenu }}
           </div>
           <div class="topmenu-list">
-              {{ $top->link }}
+              <a href="{{ $top->link_topmenu }}" style="color:#333" target="_blank">{{ $top->link_topmenu }}</a>
           </div>
-              <a style="margin-left:20px" href="#" class="btn btn-danger pull-right">Delete <i class="fa fa-trash fa-fw"></i></a>
-              <a style="margin-left:20px" href="#" class="btn btn-warning pull-right">Edit <i class="fa fa-edit fa-fw"></i></a>
-              <a style="margin-left:20px" href="#" class="btn btn-info pull-right">Show <i class="fa fa-eye fa-fw"></i></a>
+          <div style="display:inline-block;margin-left:2em" class="pull-right">
+            <form id="formDelete" action="{{ route('dashboard::deleteTopMenu', $top->id) }}" method="POST">
+              {{ csrf_field() }}
+              <input type="hidden" name="_method" value="DELETE">
+              <input id="delete" class="btn btn-danger" type="submit" value="Delete">
+            </form>
+          </div>
+           <a style="margin-left:2em" href="{{ route('dashboard::editTopMenu', $top->id) }}" class="btn btn-warning pull-right">Edit <i class="fa fa-edit fa-fw"></i></a>
         </li>
     @endforeach
   </ul>
@@ -39,6 +45,24 @@
 @parent
 <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.min.js') }}"> </script>
+<script type="text/javascript">
+$('input#delete').on('click', function(e){
+  e.preventDefault();
+  swal({
+    title: "Are you sure?",
+    text: "Anda yakin akan menghapus top menu ini",
+    type: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#DD6B55",
+    confirmButtonText: "Delete",
+    closeOnConfirm: false
+  },
+    function(){
+    $("#formDelete").submit();
+    swal('Delete','Top menu telah didelete','success');
+  });
+})
+</script>
 <script type="text/javascript">
 $(document).ready(function() {
   $('#urut').click(function() {

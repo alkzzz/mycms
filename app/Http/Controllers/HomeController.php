@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use cms\Http\Requests;
 use cms\Http\Controllers\Controller;
 use Carbon\Carbon;
+use cms\Post;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,14 @@ class HomeController extends Controller
     public function chart()
     {
       return view('chart');
+    }
+
+    public function search(Request $request)
+    {
+      $query = $request->get('q');
+      $title = 'Search Results';
+      $results = Post::search($query)->get();
+      return view('search', compact('title', 'query', 'results'));
     }
 
     public function getChartData()
