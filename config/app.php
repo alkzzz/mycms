@@ -148,6 +148,8 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         #Flash
         Laracasts\Flash\FlashServiceProvider::class,
+        #Eloquence
+        Sofa\Eloquence\ServiceProvider::class,
 
         /*
          * Application Service Providers...

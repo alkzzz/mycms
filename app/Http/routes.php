@@ -21,6 +21,8 @@ Route::group(['as' => 'dashboard::', 'middleware' => ['role:administrator']], fu
 		Route::delete('dashboard/topmenu/{id}', ['as'=>'deleteTopMenu', 'uses'=>'TopMenuController@deleteTopMenu']);
 });
 
+
+
 Route::get('get/chart', ['as'=>'getChartData', 'uses'=>'HomeController@getChartData']);
 Route::get('chart', 'HomeController@chart');
 #Auth
@@ -35,6 +37,7 @@ Route::get('dashboard/user', ['as'=>'daftar.user' ,'uses'=>'DashboardController@
 Route::group(['prefix' => Localization::setLocale(), 'middleware' => ['localize'] ], function()
 {
     Route::get('/', ['as'=>'homepage', 'uses'=>'HomeController@index']);
+		Route::get('search', 'HomeController@search');
     Route::get('{menu}', ['as'=>'show.page', 'uses'=>'PageController@showPage']);
 		Route::get('{kategori}/{post}', ['as'=>'show.post', 'uses'=>'PostController@showPost']);
 });

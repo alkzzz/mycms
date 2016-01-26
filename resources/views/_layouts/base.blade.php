@@ -38,9 +38,9 @@
     @endif
     @show
   </ul>
-  <form class="navbar-form navbar-right" role="search">
+  <form class="navbar-form navbar-right" role="search" action="{{ url('search') }}">
   <div class="form-group">
-      <input type="text" class="form-control" placeholder="Search">
+      <input type="text" name="q" class="form-control" placeholder="Search">
   </div>
       <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
   </form>
