@@ -32,7 +32,13 @@ class HomeController extends Controller
     {
       $query = $request->get('q');
       $title = 'Search Results';
-      $results = Post::search($query)->get();
+      if (\Localization::getCurrentLocale()=='id')
+      {
+      $results = Post::search($query, ['title_id' => 10, 'content_id' => 5])->get();
+      }
+      else {
+      $results = Post::search($query, ['title_en' => 10, 'content_en' => 5])->get();
+      }
       return view('search', compact('title', 'query', 'results'));
     }
 
