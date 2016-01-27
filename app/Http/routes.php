@@ -37,7 +37,7 @@ Route::get('dashboard/user', ['as'=>'daftar.user' ,'uses'=>'DashboardController@
 Route::group(['prefix' => Localization::setLocale(), 'middleware' => ['localize'] ], function()
 {
     Route::get('/', ['as'=>'homepage', 'uses'=>'HomeController@index']);
-		Route::get('search', 'HomeController@search');
+		Route::get('search', ['as'=>'search','uses'=>'HomeController@search']);
     Route::get('{menu}', ['as'=>'show.page', 'uses'=>'PageController@showPage']);
 		Route::get('{kategori}/{post}', ['as'=>'show.post', 'uses'=>'PostController@showPost']);
 });
