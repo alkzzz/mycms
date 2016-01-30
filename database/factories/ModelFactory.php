@@ -68,6 +68,13 @@ $factory->define(cms\Category::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(cms\Slider::class, function (Faker\Generator $faker) {
+    return [
+    	'urutan' => $faker->unique()->numberBetween($min = 1, $max = 99),
+      'gambar' => $faker->imageUrl($width = 1200, $height = 500),
+    ];
+});
+
 $factory->defineAs(cms\Post::class, 'article', function (Faker\Generator $faker) {
     return [
         'id_kategori' => $faker->numberBetween($min = 1, $max = 5),
@@ -77,6 +84,7 @@ $factory->defineAs(cms\Post::class, 'article', function (Faker\Generator $faker)
         'title_en' => $faker->ColorName,
         'slug_en' => lcfirst($faker->unique()->domainWord),
         'content_en' => $faker->paragraph,
+        'id_gambar' => factory(cms\Slider::class)->create()->id,
         'post_type' => 'article',
         'has_child'=> false,
         'post_parent' => 0,
@@ -131,12 +139,5 @@ $factory->define(cms\TopMenu::class, function (Faker\Generator $faker) {
     	'urutan' => $faker->unique()->numberBetween($min = 1, $max = 20),
       'nama_topmenu' => $faker->country,
       'link_topmenu' => $faker->randomElement($array = array ('http://www.google.com','http://www.facebook.com','http://www.twitter.com','http://www.youtube.com')),
-    ];
-});
-
-$factory->define(cms\Slider::class, function (Faker\Generator $faker) {
-    return [
-    	'urutan' => $faker->unique()->numberBetween($min = 1, $max = 30),
-      'gambar' => $faker->imageUrl($width = 1200, $height = 500),
     ];
 });

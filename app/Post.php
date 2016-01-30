@@ -16,7 +16,7 @@ class Post extends Model
 
     public function slider()
     {
-      return $this->hasOne('cms\Slider', 'id_gambar');
+      return $this->hasOne('cms\Slider', 'id', 'id_gambar');
     }
 
     public function scopePage($query)
