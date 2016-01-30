@@ -22,7 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('title_en');
             $table->string('slug_en')->unique();
             $table->text('content_en');
-            $table->string('gambar');
+            $table->integer('id_gambar')->unsigned();
             $table->string('file');
             $table->string('link');
             $table->string('post_type');
@@ -32,6 +32,10 @@ class CreatePostsTable extends Migration
 
             $table->foreign('id_kategori')
                   ->references('id')->on('categories')
+                  ->onDelete('cascade');
+
+            $table->foreign('id_gambar')
+                  ->references('id')->on('sliders')
                   ->onDelete('cascade');
         });
     }

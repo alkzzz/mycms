@@ -131,6 +131,12 @@ $factory->define(cms\TopMenu::class, function (Faker\Generator $faker) {
     	'urutan' => $faker->unique()->numberBetween($min = 1, $max = 20),
       'nama_topmenu' => $faker->country,
       'link_topmenu' => $faker->randomElement($array = array ('http://www.google.com','http://www.facebook.com','http://www.twitter.com','http://www.youtube.com')),
+    ];
+});
 
+$factory->define(cms\Slider::class, function (Faker\Generator $faker) {
+    return [
+    	'urutan' => $faker->unique()->numberBetween($min = 1, $max = 30),
+      'gambar' => $faker->imageUrl($width = 1200, $height = 500),
     ];
 });
