@@ -19,7 +19,8 @@ Route::group(['as' => 'dashboard::', 'middleware' => ['role:administrator']], fu
 		Route::get('dashboard/topmenu/{id}/edit', ['as'=>'editTopMenu', 'uses'=>'TopMenuController@editTopMenu']);
 		Route::patch('dashboard/topmenu/{id}', ['as'=>'updateTopMenu', 'uses'=>'TopMenuController@updateTopMenu']);
 		Route::delete('dashboard/topmenu/{id}', ['as'=>'deleteTopMenu', 'uses'=>'TopMenuController@deleteTopMenu']);
-		Route::get('dashboard/slider', ['as'=>'slider', 'uses'=>'SlideController@daftarslider']);
+		Route::get('dashboard/slider', ['as'=>'slider', 'uses'=>'SliderController@daftarslider']);
+		Route::post('dashboard/slider/urut',['as'=>'urutSlider', 'uses'=>'SliderController@urutSlider']);
 });
 
 Route::get('get/chart', ['as'=>'getChartData', 'uses'=>'HomeController@getChartData']);

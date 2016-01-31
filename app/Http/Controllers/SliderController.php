@@ -13,7 +13,10 @@ class SliderController extends Controller
     public function daftarslider()
     {
       $title = 'Daftar Slider';
-      $sliders = Post::featured()->with('slider')->get();
-      return view('homepage', compact('title', 'sliders'));
+      $sliders = Post::featured()->with('slider')
+                ->join('sliders', 'posts.id_gambar', '=', 'sliders.id')
+                ->orderBy('sliders.urutan_slider', 'asc')
+                ->get();
+      return view('slider.index', compact('title', 'sliders'));
     }
 }

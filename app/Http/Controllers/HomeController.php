@@ -24,7 +24,6 @@ class HomeController extends Controller
                   ->join('sliders', 'posts.id_gambar', '=', 'sliders.id')
                   ->orderBy('sliders.urutan_slider', 'asc')
                   ->get();
-        dd($sliders);
         return view('homepage', compact('title', 'sliders'));
     }
 
