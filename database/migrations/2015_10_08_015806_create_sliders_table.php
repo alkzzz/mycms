@@ -14,7 +14,7 @@ class CreateSlidersTable extends Migration
     {
         Schema::create('sliders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('urutan');
+            $table->integer('urutan_slider');
             $table->string('gambar');
         });
     }

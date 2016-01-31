@@ -20,7 +20,11 @@ class HomeController extends Controller
     public function index()
     {
         $title = 'Home';
-        $sliders = Post::featured()->with('slider')->get();
+        $sliders = Post::featured()->with('slider')
+                  ->join('sliders', 'posts.id_gambar', '=', 'sliders.id')
+                  ->orderBy('sliders.urutan_slider', 'asc')
+                  ->get();
+        dd($sliders);
         return view('homepage', compact('title', 'sliders'));
     }
 

@@ -100,7 +100,7 @@
     @else
     <div class="item">
     @endif
-    <img src="{{ $feature->slider->gambar }}">
+    <img src="{{ $feature->slider->gambar }}" @if(Localization::getCurrentLocale() == 'id') alt="{{ $feature->title_id }}" @else alt="{{ $feature->title_en }}" @endif>
     <div class="carousel-caption">
       @if(Localization::getCurrentLocale() == 'id')
       <h3>{{ $feature->title_id }}</h3>
