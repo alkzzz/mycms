@@ -20,7 +20,8 @@ class HomeController extends Controller
     public function index()
     {
         $title = 'Home';
-        return view('homepage', compact('title'));
+        $sliders = Post::featured()->with('slider')->get();
+        return view('homepage', compact('title', 'sliders'));
     }
 
     public function chart()

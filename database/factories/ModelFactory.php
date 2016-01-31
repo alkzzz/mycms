@@ -79,6 +79,7 @@ $factory->defineAs(cms\Post::class, 'article', function (Faker\Generator $faker)
     return [
         'id_kategori' => $faker->numberBetween($min = 1, $max = 5),
         'title_id' => $faker->ColorName,
+        'featured' => $faker->randomElement(array(true, false)),
         'slug_id' => lcfirst($faker->unique()->domainWord),
         'content_id' => $faker->paragraph,
         'title_en' => $faker->ColorName,

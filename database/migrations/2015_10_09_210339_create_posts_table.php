@@ -16,6 +16,7 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->integer('id_kategori')->unsigned();
             $table->integer('urutan')->unsigned();
+            $table->boolean('featured')->default(false);
             $table->string('title_id');
             $table->string('slug_id')->unique();
             $table->text('content_id');

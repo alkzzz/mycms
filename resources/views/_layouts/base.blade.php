@@ -87,45 +87,31 @@
 <div id="imageSlider" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
-    <li data-target="#imageSlider" data-slide-to="0" class="active"></li>
-    <li data-target="#imageSlider" data-slide-to="1"></li>
-    <li data-target="#imageSlider" data-slide-to="2"></li>
-    <li data-target="#imageSlider" data-slide-to="3"></li>
+    @foreach($sliders as $key => $value)
+    <li data-target="#imageSlider" data-slide-to="{{ $key }}" @if($key == 0) class="active"> @endif </li>
+    @endforeach
   </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
+    @foreach($sliders as $key => $feature)
+    @if($key == 0)
     <div class="item active">
-      <img src="http://lorempixel.com/1200/500" alt="Chania">
-      <div class="carousel-caption">
-        <h3>Chania</h3>
-        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
-      </div>
-    </div>
-
+    @else
     <div class="item">
-      <img src="http://lorempixel.com/1200/500" alt="Chania">
-      <div class="carousel-caption">
-        <h3>Chania</h3>
-        <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
-      </div>
+    @endif
+    <img src="{{ $feature->slider->gambar }}">
+    <div class="carousel-caption">
+      @if(Localization::getCurrentLocale() == 'id')
+      <h3>{{ $feature->title_id }}</h3>
+      <p>{{ $feature->content_id }}</p>
+      @else
+      <h3>{{ $feature->title_en }}</h3>
+      <p>{{ $feature->content_en }}</p>
+      @endif
     </div>
-
-    <div class="item">
-      <img src="http://lorempixel.com/1200/500" alt="Flower">
-      <div class="carousel-caption">
-        <h3>Flowers</h3>
-        <p>Beatiful flowers in Kolymbari, Crete.</p>
-      </div>
     </div>
-
-    <div class="item">
-      <img src="http://lorempixel.com/1200/500" alt="Flower">
-      <div class="carousel-caption">
-        <h3>Flowers</h3>
-        <p>Beatiful flowers in Kolymbari, Crete.</p>
-      </div>
-    </div>
+    @endforeach
   </div>
 
   <!-- Left and right controls -->
