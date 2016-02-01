@@ -5,6 +5,7 @@
 @section('css')
 @parent
 <link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert2.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/lightbox/css/lightbox.min.css') }}">
 @stop
 
 @section('content')
@@ -14,25 +15,25 @@
 @if(!count($sliders))
 <h3>Website belum memiliki slider. Silahkan tambahkan slider dengan mengklik tombol <b>Tambah</b>.</h3>
 @else
-  <h3 class="topmenu-title" style="width:30%">Nama Menu</h3>
-  <h3 class="topmenu-title">Link Menu</h3>
+  <h3 class="topmenu-title" style="width:25%">Gambar Slideshow</h3>
+  <h3 class="topmenu-title">Judul Artikel</h3>
   <ul id="sortable" class="parent-menu default">
     @foreach($sliders as $slider)
         <li style="margin-bottom:15px" id="topmenu_{{ $slider->id }}">
-          <div class="topmenu-list" style="width:30%" >
-              {{ $slider->urutan_slider }}
+          <div class="topmenu-list" style="width:25%">
+              <a href="{{ $slider->gambar }}" data-lightbox="image-{{ $slider->id }}" data-title="{{ $slider->title_id }}"><img src="{{ $slider->thumbnail }}" /></a>
           </div>
           <div class="topmenu-list">
-              <img src ="{{ $slider->gambar }}" style="color:#333" target="_blank">{{ $slider->gambar }}</a>
+              <h4> {{ $slider->title_id }} </h4>
           </div>
           <div style="display:inline-block;margin-left:2em" class="pull-right">
             <form id="formDelete" action="{{ route('dashboard::deleteTopMenu', $slider->id) }}" method="POST">
               {{ csrf_field() }}
               <input type="hidden" name="_method" value="DELETE">
-              <input id="delete" class="btn btn-danger" type="submit" value="Delete">
+              <input id="delete" style="margin-top: 3em" class="btn btn-danger" type="submit" value="Delete">
             </form>
           </div>
-           <a style="margin-left:2em" href="{{ route('dashboard::editTopMenu', $slider->id) }}" class="btn btn-warning pull-right">Edit <i class="fa fa-edit fa-fw"></i></a>
+           <a style="margin-left:2em;margin-top: 3em" href="{{ route('dashboard::editTopMenu', $slider->id) }}" class="btn btn-warning pull-right">Edit <i class="fa fa-edit fa-fw"></i></a>
         </li>
     @endforeach
   </ul>
@@ -44,6 +45,7 @@
 @section('js')
 @parent
 <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('css/lightbox/js/lightbox.min.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.min.js') }}"> </script>
 <script type="text/javascript">
 $('input#delete').on('click', function(e){
@@ -102,4 +104,5 @@ $(document).ready(function() {
   });
 });
 </script>
+
 @endsection

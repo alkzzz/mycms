@@ -16,6 +16,7 @@ class CreateSlidersTable extends Migration
             $table->increments('id');
             $table->integer('urutan_slider');
             $table->string('gambar');
+            $table->string('thumbnail');
         });
     }
 

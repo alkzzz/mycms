@@ -70,8 +70,9 @@ $factory->define(cms\Category::class, function (Faker\Generator $faker) {
 
 $factory->define(cms\Slider::class, function (Faker\Generator $faker) {
     return [
-    	'urutan_slider' => $faker->unique()->numberBetween($min = 1, $max = 50),
+    	'urutan_slider' => $faker->unique()->numberBetween($min = 1, $max = 99),
       'gambar' => $faker->imageUrl($width = 1200, $height = 500),
+      'thumbnail' => $faker->imageUrl($width = 200, $height= 100),
     ];
 });
 
