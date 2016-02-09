@@ -4,23 +4,24 @@ Route::group(['as' => 'dashboard::', 'middleware' => ['role:administrator']], fu
 		Route::get('dashboard',['as'=>'home', 'uses'=>'DashboardController@index']);
 		Route::get('dashboard/menu',['as'=>'menu', 'uses'=>'PageController@daftarmenu']);
 		Route::post('dashboard/menu/urut',['as'=>'urutMenu', 'uses'=>'PageController@urutMenu']);
-		Route::get('dashboard/menu/tambah',['as'=>'addPage', 'uses'=>'PageController@addPage']);
+		Route::get('dashboard/menu/add',['as'=>'addPage', 'uses'=>'PageController@addPage']);
 		Route::post('dashboard/menu',['as'=>'storePage', 'uses'=>'PageController@storePage']);
 		Route::get('dashboard/menu/{slug}/edit',['as'=>'editPage', 'uses'=>'PageController@editPage']);
-		Route::get('dashboard/submenu/{slug}/tambah',['as'=>'addSubmenu', 'uses'=>'PageController@addSubmenu']);
+		Route::get('dashboard/submenu/{slug}/add',['as'=>'addSubmenu', 'uses'=>'PageController@addSubmenu']);
 		Route::post('dashboard/submenu/{slug}',['as'=>'storeSubmenu', 'uses'=>'PageController@storeSubmenu']);
 		Route::patch('dashboard/menu/{slug}',['as'=>'updatePage', 'uses'=>'PageController@updatePage']);
 		Route::get('dashboard/menu/{slug}/delete',['as'=>'showDeletePage', 'uses'=>'PageController@showDeletePage']);
 		Route::delete('dashboard/menu/{slug}',['as'=>'deletePage', 'uses'=>'PageController@deletePage']);
 		Route::get('dashboard/topmenu',['as'=>'topmenu', 'uses'=>'TopMenuController@daftartopmenu']);
 		Route::post('dashboard/topmenu/urut',['as'=>'urutTopMenu', 'uses'=>'TopMenuController@urutTopMenu']);
-		Route::get('dashboard/topmenu/tambah', ['as'=>'addTopMenu', 'uses'=>'TopMenuController@addTopMenu']);
+		Route::get('dashboard/topmenu/add', ['as'=>'addTopMenu', 'uses'=>'TopMenuController@addTopMenu']);
 		Route::post('dashboard/topmenu', ['as'=>'storeTopMenu', 'uses'=>'TopMenuController@storeTopMenu']);
 		Route::get('dashboard/topmenu/{id}/edit', ['as'=>'editTopMenu', 'uses'=>'TopMenuController@editTopMenu']);
 		Route::patch('dashboard/topmenu/{id}', ['as'=>'updateTopMenu', 'uses'=>'TopMenuController@updateTopMenu']);
 		Route::delete('dashboard/topmenu/{id}', ['as'=>'deleteTopMenu', 'uses'=>'TopMenuController@deleteTopMenu']);
 		Route::get('dashboard/slider', ['as'=>'slider', 'uses'=>'SliderController@daftarslider']);
 		Route::post('dashboard/slider/urut',['as'=>'urutSlider', 'uses'=>'SliderController@urutSlider']);
+		Route::get('dashboard/slider/add', ['as'=>'addSlider', 'uses'=>'SliderController@addSlider']);
 });
 
 Route::get('get/chart', ['as'=>'getChartData', 'uses'=>'HomeController@getChartData']);

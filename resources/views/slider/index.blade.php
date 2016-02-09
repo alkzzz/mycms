@@ -10,7 +10,7 @@
 
 @section('content')
 @include('includes.alert')
-<a href="{{ route('dashboard::addTopMenu') }}"><button type="button" class="btn btn-success">Tambah <i class="fa fa-plus-square fa-fw"></i></button></a>
+<a href="{{ route('dashboard::addSlider') }}"><button type="button" class="btn btn-success">Tambah <i class="fa fa-plus-square fa-fw"></i></button></a>
 <hr>
 @if(!count($sliders))
 <h3>Website belum memiliki slider. Silahkan tambahkan slider dengan mengklik tombol <b>Tambah</b>.</h3>
@@ -95,7 +95,7 @@ $(document).ready(function() {
     else {
        $('#sortable').sortable({
               disabled : false,
-              placeholder: "highlight",
+              placeholder: "slide-highlight",
               opacity: 0.8,
           });
        $('#sortable').disableSelection();
