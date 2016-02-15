@@ -15,12 +15,12 @@
 @if(!count($sliders))
 <h3>Website belum memiliki slider. Silahkan tambahkan slider dengan mengklik tombol <b>Tambah</b>.</h3>
 @else
-  <h3 class="topmenu-title" style="width:25%">Gambar Slideshow</h3>
+  <h3 class="topmenu-title" style="width:40%">Gambar Slideshow</h3>
   <h3 class="topmenu-title">Judul Artikel</h3>
   <ul id="sortable" class="parent-menu default">
     @foreach($sliders as $slider)
-        <li style="margin-bottom:15px" id="topmenu_{{ $slider->id }}">
-          <div class="topmenu-list" style="width:25%">
+        <li style="margin-bottom:15px" id="slider_{{ $slider->id }}">
+          <div class="topmenu-list" style="width:40%">
               <a href="{{ $slider->gambar }}" data-lightbox="image-{{ $slider->id }}" data-title="{{ $slider->title_id }}"><img src="{{ $slider->thumbnail }}" /></a>
           </div>
           <div class="topmenu-list">
@@ -38,7 +38,7 @@
     @endforeach
   </ul>
 </div>
-<button id="urut" type="button" class="btn btn-primary" style="margin-top:2%">Urutkan Menu</button>
+<button id="urut" type="button" class="btn btn-primary" style="margin-top:2%">Urutkan Slider</button>
 @endif
 @stop
 
