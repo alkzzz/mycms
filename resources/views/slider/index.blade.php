@@ -52,7 +52,7 @@ $('input#delete').on('click', function(e){
   e.preventDefault();
   swal({
     title: "Are you sure?",
-    text: "Anda yakin akan menghapus top menu ini",
+    text: "Anda yakin akan menghapus slider ini",
     type: "warning",
     showCancelButton: true,
     confirmButtonColor: "#DD6B55",
@@ -61,7 +61,7 @@ $('input#delete').on('click', function(e){
   },
     function(){
     $("#formDelete").submit();
-    swal('Delete','Top menu telah didelete','success');
+    swal('Delete','Slider telah dihapus','success');
   });
 })
 </script>

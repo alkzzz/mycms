@@ -59,7 +59,7 @@ $('input#delete').on('click', function(e){
   },
     function(){
     $("#formDelete").submit();
-    swal('Delete','Top menu telah didelete','success');
+    swal('Delete','Top menu telah dihapus','success');
   });
 })
 </script>
