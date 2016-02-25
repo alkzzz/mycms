@@ -15,25 +15,27 @@
 @if(!count($sliders))
 <h3>Website belum memiliki slider. Silahkan tambahkan slider dengan mengklik tombol <b>Tambah</b>.</h3>
 @else
-  <h3 class="topmenu-title" style="width:40%">Gambar Slideshow</h3>
-  <h3 class="topmenu-title">Judul Artikel</h3>
+  <h3 class="col-lg-4 topmenu-title">Gambar Slideshow</h3>
+  <h3 class="col-lg-5 topmenu-title">Judul Artikel</h3>
   <ul id="sortable" class="parent-menu default">
     @foreach($sliders as $slider)
-        <li style="margin-bottom:15px" id="slider_{{ $slider->id }}">
-          <div class="topmenu-list" style="width:40%">
+        <li id="slider_{{ $slider->id }}">
+          <div class="row">
+          <div class="col-lg-4 topmenu-list">
               <a href="{{ $slider->gambar }}" data-lightbox="image-{{ $slider->id }}" data-title="{{ $slider->title_id }}"><img src="{{ $slider->thumbnail }}" /></a>
           </div>
-          <div class="topmenu-list">
+          <div style="margin-top:2em" class="col-lg-5 topmenu-list">
               <h4> {{ $slider->title_id }} </h4>
           </div>
-          <div style="display:inline-block;margin-left:2em" class="pull-right">
-            <form id="formDelete" action="{{ route('dashboard::deleteTopMenu', $slider->id) }}" method="POST">
+          <div style="margin-top:2em" class="col-lg-2">
+            <form style="margin:0;padding:0" id="formDelete" action="{{ route('dashboard::deleteTopMenu', $slider->id) }}" method="POST">
               {{ csrf_field() }}
               <input type="hidden" name="_method" value="DELETE">
-              <input id="delete" style="margin-top: 3em" class="btn btn-danger" type="submit" value="Delete">
+              <input id="delete" class="btn btn-danger" type="submit" value="Delete">
+              <a style="margin-left:1em" href="#" class="btn btn-warning">Edit <i class="fa fa-edit fa-fw"></i></a>
             </form>
-          </div>
-           <a style="margin-left:2em;margin-top: 3em" href="{{ route('dashboard::editTopMenu', $slider->id) }}" class="btn btn-warning pull-right">Edit <i class="fa fa-edit fa-fw"></i></a>
+           </div>
+           </div>
         </li>
     @endforeach
   </ul>
@@ -52,7 +54,7 @@ $('input#delete').on('click', function(e){
   e.preventDefault();
   swal({
     title: "Are you sure?",
-    text: "Anda yakin akan menghapus slider ini",
+    text: "Anda yakin akan menghapus artikel ini dari slideshow?",
     type: "warning",
     showCancelButton: true,
     confirmButtonColor: "#DD6B55",
@@ -61,7 +63,7 @@ $('input#delete').on('click', function(e){
   },
     function(){
     $("#formDelete").submit();
-    swal('Delete','Slider telah dihapus','success');
+    swal('Delete','Artikel tidak ditampilkan lagi di slideshow.','success');
   });
 })
 </script>
