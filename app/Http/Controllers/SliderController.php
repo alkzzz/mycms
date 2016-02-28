@@ -34,4 +34,9 @@ class SliderController extends Controller
           }
       }
     }
+
+    public function removeSlider(Request $request)
+    {
+
+    }
 }

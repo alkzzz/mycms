@@ -20,7 +20,6 @@ class AppServiceProvider extends ServiceProvider
             $top_menu = TopMenu::all()->sortBy('urutan');
             view()->share('top_menu', $top_menu);
         }
-
     }
 
     /**

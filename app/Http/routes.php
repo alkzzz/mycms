@@ -22,6 +22,7 @@ Route::group(['as' => 'dashboard::', 'middleware' => ['role:administrator']], fu
 		Route::get('dashboard/slider', ['as'=>'slider', 'uses'=>'SliderController@daftarslider']);
 		Route::post('dashboard/slider/urut',['as'=>'urutSlider', 'uses'=>'SliderController@urutSlider']);
 		Route::get('dashboard/slider/add', ['as'=>'addSlider', 'uses'=>'SliderController@addSlider']);
+		Route::post('dashboard/slider/remove',['as'=>'removeSlider', 'uses'=>'SliderController@removeSlider');
 });
 
 Route::get('get/chart', ['as'=>'getChartData', 'uses'=>'HomeController@getChartData']);

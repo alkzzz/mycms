@@ -19,14 +19,31 @@
       <label for="title_id" style="display: block">Judul menu utama :</label>
       <input id="title_id" class="form-control input-judul" type="text" name="title_id" value="{{ $page->title_id }}">
     </div>
+    @if(count($submenu))
+    @foreach($submenu as $submenu_id)
+    <div class="form-group">
+      <label for="title_id" style="display: block">Judul submenu :</label>
+      <input disabled id="title_id" class="form-control input-judul" type="text" name="title_id[]" value="{{ $submenu_id->title_id }}">
+    </div>
+    @endforeach
+    @endif
+    <a href="{{ route('dashboard::addSubmenu', $page->slug_id) }}" class="btn btn-primary">Tambah Submenu</a>
   </div>
   <div id="en1" class="tab-pane fade in">
     <div class="form-group">
       <label for="title_en"  style="display: block">Judul menu utama :</label>
       <input id="title_en" class="form-control input-judul" type="text" name="title_en" value="{{ $page->title_en }}">
     </div>
+    @if(count($submenu))
+    @foreach($submenu as $submenu_en)
+    <div class="form-group">
+      <label for="title_en"  style="display: block">Judul submenu :</label>
+      <input disabled id="title_en" class="form-control input-judul" type="text" name="title_en[]" value="{{ $submenu_en->title_en }}">
+    </div>
+    @endforeach
+    @endif
+    <a href="{{ route('dashboard::addSubmenu', $page->slug_id) }}" class="btn btn-primary">Tambah Submenu</a>
   </div>
-  <a href="{{ route('dashboard::addSubmenu', $page->slug_id) }}" class="btn btn-info">Tambah Submenu</a>
   <hr>
   <div class="form-group">
       <input class="btn btn-lg btn-success" type="submit" value="Save">
