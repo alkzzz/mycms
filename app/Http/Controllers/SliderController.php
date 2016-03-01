@@ -9,6 +9,7 @@ use cms\Http\Controllers\Controller;
 use cms\Post;
 use cms\Slider;
 use Flash;
+use Datatables;
 
 class SliderController extends Controller
 {
@@ -18,7 +19,7 @@ class SliderController extends Controller
       $sliders = Post::featured()->join('sliders', 'posts.id_gambar', '=', 'sliders.id')
                 ->orderBy('sliders.urutan_slider', 'asc')
                 ->get();
-      return view('slider.index', compact('title', 'sliders'));
+      return view('slider.listSlider', compact('title', 'sliders'));
     }
 
     public function urutSlider(Request $request)
@@ -33,6 +34,12 @@ class SliderController extends Controller
               $slider->save();
           }
       }
+    }
+
+    public function addSlider()
+    {
+      $title = "Tambah Slider";
+      return view('slider.addSlider', compact('title'));
     }
 
     public function showRemoveSlider($id)

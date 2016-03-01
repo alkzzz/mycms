@@ -15,7 +15,8 @@
 <h3>Website belum memiliki slider. Silahkan tambahkan slider dengan mengklik tombol <b>Tambah</b>.</h3>
 @else
   <h3 class="col-lg-4 topmenu-title">Gambar Slideshow</h3>
-  <h3 class="col-lg-5 topmenu-title">Judul Artikel</h3>
+  <h3 class="col-lg-2 topmenu-title">Judul Indonesia</h3>
+  <h3 class="col-lg-2 topmenu-title">Judul English</h3>
   <ul id="sortable" class="parent-menu default">
     @foreach($sliders as $slider)
         <li id="slider_{{ $slider->id }}">
@@ -23,10 +24,13 @@
           <div class="col-lg-4 topmenu-list">
               <a href="{{ $slider->gambar }}" data-lightbox="image-{{ $slider->id }}" data-title="{{ $slider->title_id }}"><img src="{{ $slider->thumbnail }}" /></a>
           </div>
-          <div style="margin-top:2em" class="col-lg-5 topmenu-list">
-              <h4> {{ $slider->title_id }} </h4>
+          <div class="col-lg-2 topmenu-list">
+              <h4> {{ $slider->content_id }} </h4>
           </div>
-          <div style="margin-top:2em" class="col-lg-2">
+          <div class="col-lg-2 topmenu-list">
+              <h4> {{ $slider->content_en }} </h4>
+          </div>
+          <div style="padding-top:1em" class="col-lg-2">
               <a href="#" class="btn btn-warning">Edit <i class="fa fa-edit fa-fw"></i></a>
               <a style="margin-left:1em" href="{{ route('dashboard::showRemoveSlider', $slider->id) }}" class="btn btn-danger">Delete <i class="fa fa-trash fa-fw"></i></a>
            </div>

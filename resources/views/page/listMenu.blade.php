@@ -4,7 +4,6 @@
 
 @section('css')
 @parent
-<link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert2.css') }}">
 @stop
 
 @section('content')
@@ -44,7 +43,6 @@
 	@parent
 	<script src="{{ asset('js/jquery-ui.min.js') }}"></script>
 	<script src="{{ asset('js/nestedSortable.js') }}"></script>
-	<script src="{{ asset('js/sweetalert2.min.js') }}"> </script>
 	<script>
 	$( ".fa-caret-down" ).click(function() {
 	  $( this ).toggleClass( "fa-caret-up" );

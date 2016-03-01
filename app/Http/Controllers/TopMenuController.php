@@ -15,7 +15,7 @@ class TopMenuController extends Controller
     {
       $title = 'Daftar Top Menu';
       $topmenu = TopMenu::all()->sortBy('urutan');
-      return view('topmenu.index', compact('title', 'topmenu'));
+      return view('topmenu.listTopMenu', compact('title', 'topmenu'));
     }
 
     public function urutTopMenu(Request $request)
@@ -35,7 +35,7 @@ class TopMenuController extends Controller
     public function addTopMenu()
     {
       $title = 'Tambah Top Menu';
-      return view('topmenu.tambah', compact('title'));
+      return view('topmenu.addTopMenu', compact('title'));
     }
 
     public function storeTopMenu(Request $request)
@@ -64,7 +64,7 @@ class TopMenuController extends Controller
     {
       $title = 'Edit Top Menu';
       $top = TopMenu::find($id);
-      return view('topmenu.edit', compact('title','top'));
+      return view('topmenu.editTopMenu', compact('title','top'));
     }
 
     public function updateTopMenu(Request $request, $id)
@@ -94,7 +94,7 @@ class TopMenuController extends Controller
     {
       $title = 'Delete Top Menu';
       $top = TopMenu::find($id);
-      return view('topmenu.showDelete', compact('title', 'top'));
+      return view('topmenu.showDeleteTopMenu', compact('title', 'top'));
     }
 
     public function deleteTopMenu($id)

@@ -2,6 +2,7 @@
 #BackEnd
 Route::group(['as' => 'dashboard::', 'middleware' => ['role:administrator']], function () {
 		Route::get('dashboard',['as'=>'home', 'uses'=>'DashboardController@index']);
+		Route::get('dashboard/posts', ['as'=>'getAllPosts', 'uses'=>'DashboardController@getAllPosts']);
 		Route::get('dashboard/menu',['as'=>'menu', 'uses'=>'PageController@daftarmenu']);
 		Route::post('dashboard/menu/urut',['as'=>'urutMenu', 'uses'=>'PageController@urutMenu']);
 		Route::get('dashboard/menu/add',['as'=>'addPage', 'uses'=>'PageController@addPage']);

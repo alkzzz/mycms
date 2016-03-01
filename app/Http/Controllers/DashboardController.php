@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use cms\Http\Requests;
 use cms\Http\Controllers\Controller;
-use cms\User;
+use cms\Post;
 use Datatables;
 
 class DashboardController extends Controller
@@ -17,12 +17,13 @@ class DashboardController extends Controller
   		return view('dashboard.index', compact('title'));
   	}
 
-  	public function postDataUser()
+  	public function getAllPosts()
   	{
-      $user = User::all();
-  		return Datatables::of($user)
-            ->addColumn('show', function ($user) {
-                return '<a href="test/'.$user->id.'" class="btn btn-success"><i class="fa fa-eye fa-fw"></i> Show</a>';
+      $post = Post::latest()->get();
+
+  		return Datatables::of($post)
+            ->addColumn('show', function ($post) {
+                return '<a href="test/'.$post->id.'" class="btn btn-success"><i class="fa fa-eye fa-fw"></i> Show</a>';
               })
               ->addColumn('edit', function () {
                 return '<a href="" class="btn btn-info"><i class="fa fa-edit fa-fw"></i> Edit</a>';
