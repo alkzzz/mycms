@@ -4,7 +4,6 @@
 
 @section('css')
 @parent
-<link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert2.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/lightbox/css/lightbox.min.css') }}">
 @stop
 
@@ -28,12 +27,8 @@
               <h4> {{ $slider->title_id }} </h4>
           </div>
           <div style="margin-top:2em" class="col-lg-2">
-            <form style="margin:0;padding:0" id="formDelete" action="{{ route('dashboard::deleteTopMenu', $slider->id) }}" method="POST">
-              {{ csrf_field() }}
-              <input type="hidden" name="_method" value="DELETE">
-              <input id="delete" class="btn btn-danger" type="submit" value="Delete">
-              <a style="margin-left:1em" href="#" class="btn btn-warning">Edit <i class="fa fa-edit fa-fw"></i></a>
-            </form>
+              <a href="#" class="btn btn-warning">Edit <i class="fa fa-edit fa-fw"></i></a>
+              <a style="margin-left:1em" href="{{ route('dashboard::showRemoveSlider', $slider->id) }}" class="btn btn-danger">Delete <i class="fa fa-trash fa-fw"></i></a>
            </div>
            </div>
         </li>
@@ -48,25 +43,6 @@
 @parent
 <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('css/lightbox/js/lightbox.min.js') }}"></script>
-<script src="{{ asset('js/sweetalert2.min.js') }}"> </script>
-<script type="text/javascript">
-$('input#delete').on('click', function(e){
-  e.preventDefault();
-  swal({
-    title: "Are you sure?",
-    text: "Anda yakin akan menghapus artikel ini dari slideshow?",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#DD6B55",
-    confirmButtonText: "Delete",
-    closeOnConfirm: false
-  },
-    function(){
-    $("#formDelete").submit();
-    swal('Delete','Artikel tidak ditampilkan lagi di slideshow.','success');
-  });
-})
-</script>
 <script type="text/javascript">
 $(document).ready(function() {
   $('#urut').click(function() {

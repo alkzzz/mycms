@@ -10,7 +10,7 @@
   <li class="active"><a data-toggle="tab" href="#id1">Indonesia</a></li>
   <li><a data-toggle="tab" href="#en1">English</a></li>
 </ul>
-<form role="form" action="{{ route('dashboard::updatePage', $page->slug_id) }}" method="POST">
+<form role="form" action="{{ route('dashboard::updatePage', $page->id) }}" method="POST">
   {{ csrf_field() }}
   <input type="hidden" name="_method" value="PATCH">
 <div class="tab-content">
@@ -27,7 +27,7 @@
     </div>
     @endforeach
     @endif
-    <a href="{{ route('dashboard::addSubmenu', $page->slug_id) }}" class="btn btn-primary">Tambah Submenu</a>
+    <a href="{{ route('dashboard::addSubmenu', $page->id) }}" class="btn btn-primary">Tambah Submenu</a>
   </div>
   <div id="en1" class="tab-pane fade in">
     <div class="form-group">
@@ -42,7 +42,7 @@
     </div>
     @endforeach
     @endif
-    <a href="{{ route('dashboard::addSubmenu', $page->slug_id) }}" class="btn btn-primary">Tambah Submenu</a>
+    <a href="{{ route('dashboard::addSubmenu', $page->id) }}" class="btn btn-primary">Tambah Submenu</a>
   </div>
   <hr>
   <div class="form-group">
@@ -54,7 +54,7 @@
   <li class="active"><a data-toggle="tab" href="#id2">Indonesia</a></li>
   <li><a data-toggle="tab" href="#en2">English</a></li>
 </ul>
-<form role="form" action="{{ route('dashboard::updatePage', $page->slug_id) }}" method="POST">
+<form role="form" action="{{ route('dashboard::updatePage', $page->id) }}" method="POST">
   {{ csrf_field() }}
   <input type="hidden" name="_method" value="PATCH">
 <div class="tab-content">

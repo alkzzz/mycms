@@ -90,11 +90,18 @@ class TopMenuController extends Controller
       return redirect()->route('dashboard::topmenu');
     }
 
+    public function showDeleteTopMenu($id)
+    {
+      $title = 'Delete Top Menu';
+      $top = TopMenu::find($id);
+      return view('topmenu.showDelete', compact('title', 'top'));
+    }
+
     public function deleteTopMenu($id)
     {
       $top = TopMenu::find($id);
       $top->delete();
-      Flash::success('Top menu telah berhasil didelete.');
+      Flash::success('Top menu telah berhasil dihapus.');
       return redirect()->route('dashboard::topmenu');
     }
 }

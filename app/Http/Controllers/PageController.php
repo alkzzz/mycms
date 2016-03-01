@@ -154,25 +154,25 @@ class PageController extends Controller
         }
     }
 
-    public function editPage($slug)
+    public function editPage($id)
     {
       $title = "Edit Menu";
-      $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $page = Post::page()->where('id', '=', $id)->firstOrFail();
       $submenu = Post::page()->where('post_parent', '=', $page->id)->get();
       return view('page.editPage', compact('title', 'page', 'submenu'));
     }
 
-    public function addSubmenu($slug)
+    public function addSubmenu($id)
     {
       $title = "Tambah Sub Menu";
-      $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $page = Post::page()->where('id', '=', $id)->firstOrFail();
       $submenu = Post::page()->where('post_parent', '=', $page->id)->get();
       return view('page.addSubmenu', compact('title', 'page', 'submenu'));
     }
 
-    public function storeSubmenu(MenuRequest $request, $slug)
+    public function storeSubmenu(MenuRequest $request, $id)
     {
-      $parent = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $parent = Post::page()->where('id', '=', $id)->firstOrFail();
       $input = $request->all();
       $input['urutan'] = 99;
       $input['post_type'] = 'page';
@@ -209,9 +209,9 @@ class PageController extends Controller
       return redirect()->route('dashboard::menu');
     }
 
-    public function updatePage(MenuRequest $request, $slug)
+    public function updatePage(MenuRequest $request, $id)
     {
-      $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $page = Post::page()->where('id', '=', $id)->firstOrFail();
       $input = $request->all();
       $input['slug_id'] = str_slug($input['title_id']);
       $input['slug_en'] = str_slug($input['title_en']);
@@ -229,17 +229,17 @@ class PageController extends Controller
       return redirect()->route('dashboard::menu');
     }
 
-    public function showDeletePage($slug)
+    public function showDeletePage($id)
     {
       $title = "Delete Menu";
-      $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $page = Post::page()->where('id', '=', $id)->firstOrFail();
       $submenu = Post::page()->where('post_parent', '=', $page->id)->get();
       return view('page.showDeletePage', compact('title', 'page', 'submenu'));
     }
 
-    public function deletePage($slug)
+    public function deletePage($id)
     {
-      $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $page = Post::page()->where('id', '=', $id)->firstOrFail();
       $submenu = Post::page()->where('post_parent', '=', $page->id)->get();
       $page->delete();
       if (count($submenu))
