@@ -2,7 +2,6 @@
 #BackEnd
 Route::group(['as' => 'dashboard::', 'middleware' => ['role:administrator']], function () {
 		Route::get('dashboard',['as'=>'home', 'uses'=>'DashboardController@index']);
-		Route::get('dashboard/posts', ['as'=>'getAllPosts', 'uses'=>'DashboardController@getAllPosts']);
 		Route::get('dashboard/menu',['as'=>'menu', 'uses'=>'PageController@daftarmenu']);
 		Route::post('dashboard/menu/urut',['as'=>'urutMenu', 'uses'=>'PageController@urutMenu']);
 		Route::get('dashboard/menu/add',['as'=>'addPage', 'uses'=>'PageController@addPage']);
@@ -13,6 +12,7 @@ Route::group(['as' => 'dashboard::', 'middleware' => ['role:administrator']], fu
 		Route::patch('dashboard/menu/{id}',['as'=>'updatePage', 'uses'=>'PageController@updatePage']);
 		Route::get('dashboard/menu/{id}/delete',['as'=>'showDeletePage', 'uses'=>'PageController@showDeletePage']);
 		Route::delete('dashboard/menu/{id}',['as'=>'deletePage', 'uses'=>'PageController@deletePage']);
+		Route::get('dashboard/post/{id}/edit',['as'=>'editPost', 'uses'=>'PostController@editPost']);
 		Route::get('dashboard/topmenu',['as'=>'topmenu', 'uses'=>'TopMenuController@daftartopmenu']);
 		Route::post('dashboard/topmenu/urut',['as'=>'urutTopMenu', 'uses'=>'TopMenuController@urutTopMenu']);
 		Route::get('dashboard/topmenu/add', ['as'=>'addTopMenu', 'uses'=>'TopMenuController@addTopMenu']);
@@ -23,7 +23,10 @@ Route::group(['as' => 'dashboard::', 'middleware' => ['role:administrator']], fu
 		Route::delete('dashboard/topmenu/{id}', ['as'=>'deleteTopMenu', 'uses'=>'TopMenuController@deleteTopMenu']);
 		Route::get('dashboard/slider', ['as'=>'slider', 'uses'=>'SliderController@daftarslider']);
 		Route::post('dashboard/slider/urut',['as'=>'urutSlider', 'uses'=>'SliderController@urutSlider']);
+		Route::get('dashboard/dataTableSlider', ['as'=>'dataTableSlider', 'uses'=>'SliderController@dataTableSlider']);
 		Route::get('dashboard/slider/add', ['as'=>'addSlider', 'uses'=>'SliderController@addSlider']);
+		Route::patch('dashboard/slider/{id}/add', ['as'=>'addToSlider', 'uses'=>'SliderController@addToSlider']);
+		Route::get('dashboard/slider/{id}/upload', ['as'=>'addImageSlider', 'uses'=>'SliderController@addImageSlider']);
 		Route::get('dashboard/slider/{id}/remove',['as'=>'showRemoveSlider', 'uses'=>'SliderController@showRemoveSlider']);
 		Route::patch('dashboard/slider/{id}/remove',['as'=>'removeSlider', 'uses'=>'SliderController@removeSlider']);
 });

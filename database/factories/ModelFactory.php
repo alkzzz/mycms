@@ -72,7 +72,7 @@ $factory->defineAs(cms\Slider::class, 'no_pic', function (Faker\Generator $faker
     return [
     	'urutan_slider' => $faker->unique()->numberBetween($min = 1, $max = 99),
       'gambar' => '',
-      'thumbnail' => '',
+      'thumbnail' => asset('cms/public/img/no_pic.png'),
     ];
 });
 
@@ -110,6 +110,7 @@ $factory->defineAs(cms\Post::class, 'singlemenu', function (Faker\Generator $fak
         'title_en' => $faker->country,
         'slug_en' => lcfirst($faker->unique()->domainWord),
         'content_en' => $faker->paragraph,
+        'id_gambar' => 1,
         'post_type' => 'page',
         'has_child'=> false,
         'post_parent' => 0,
@@ -123,6 +124,7 @@ $factory->defineAs(cms\Post::class, 'menu', function (Faker\Generator $faker) {
         'slug_id' => lcfirst($faker->unique()->domainWord),
         'title_en' => $faker->country,
         'slug_en' => lcfirst($faker->unique()->domainWord),
+        'id_gambar' => 1,
         'post_type' => 'page',
         'has_child'=> true,
         'post_parent' => 0,
@@ -138,6 +140,7 @@ $factory->defineAs(cms\Post::class, 'submenu', function (Faker\Generator $faker)
         'title_en' => $faker->country,
         'slug_en' => lcfirst($faker->unique()->domainWord),
         'content_en' => $faker->paragraph,
+        'id_gambar' => 1,
         'post_type' => 'page',
         'has_child' => false,
         'post_parent' => $faker->numberBetween(2, 5),

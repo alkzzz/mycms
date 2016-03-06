@@ -4,20 +4,25 @@
 
 @section('css')
 @parent
+<style media="screen">
+.table tbody tr td {
+  vertical-align: middle;
+}
+#uploadGambar {
+  display: none;
+}
+</style>
 @stop
 
 @section('content')
 @include('includes.alert')
-<table class="table table-bordered" id="allposts">
+<table class="table table-striped table-hover table-responsive text-center" id="allposts">
     <thead>
         <tr>
-            <th>Judul Indonesia</th>
-            <th>Isi Indonesia</th>
-            <th>Judul English</th>
-            <th>Isi English</th>
-            <th>Action</th>
-            <th>Action</th>
-            <th>Action</th>
+            <th class="text-center">Gambar</th>
+            <th class="text-center">Judul Indonesia</th>
+            <th class="text-center">Judul English</th>
+            <th class="text-center">Action</th>
         </tr>
     </thead>
 </table>
@@ -35,15 +40,14 @@ $(function() {
       serverSide: true,
       autoWidth: false,
       order : [[ 1, "asc" ]],
-      ajax: "{!! route('dashboard::getAllPosts') !!}",
+      ajax: "{!! route('dashboard::dataTableSlider') !!}",
       columns: [
+          { data: 'slider.thumbnail',
+            render: function(data, type, row) {
+            return '<img src="'+data+'" />';}, name:'slider.thumbnail' },
           { data: 'title_id', name: 'title_id' },
-          { data: 'content_id', name: 'content_id' },
           { data: 'title_en', name: 'title_en' },
-          { data: 'content_en', name: 'content_en' },
-          { data: 'show', name: 'show', orderable: false, searchable: false},
           { data: 'edit', name: 'edit', orderable: false, searchable: false},
-          { data: 'delete', name: 'delete', orderable: false, searchable: false}
       ]
   });
 });

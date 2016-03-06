@@ -36,10 +36,45 @@ class SliderController extends Controller
       }
     }
 
+    public function dataTableSlider()
+    {
+      $posts = Post::article()->orWhere('post_parent','<>',0)->latest()->with('slider')->get();
+
+      return Datatables::of($posts)
+              ->addColumn('edit', function ($post) {
+                if ($post->slider->gambar == '') {
+                  if ($post->post_type == 'page') {
+                    return '<a href="'.route('dashboard::editPage', $post->id).'" class="btn btn-info"><i class="fa fa-camera fa-fw"></i> Tambahkan gambar</a>';
+                  }
+                  else {
+                    return '<a href="'.route('dashboard::editPost', $post->id).'" class="btn btn-info"><i class="fa fa-camera fa-fw"></i> Tambahkan gambar</a>';
+                  }
+                }
+                else {
+                  return '<form action="'.route('dashboard::addToSlider', $post->id).'" method="post">
+                          <input type="hidden" name="_token" value="'.csrf_token().'">
+                          <input type="hidden" name="_method" value="PATCH">
+                          <button type="submit" class="btn btn-success">
+                          <i class="fa fa-plus-square fa-fw"></i> Tambahkan ke slider
+                          </button>
+                          </form>';
+                }
+            })->make(true);
+    }
+
     public function addSlider()
     {
       $title = "Tambah Slider";
       return view('slider.addSlider', compact('title'));
+    }
+
+    public function addToSlider($id)
+    {
+      $post = Post::find($id);
+      $post->featured = true;
+      $post->save();
+      Flash::success('Artikel telah berhasil ditambahkan ke slideshow halaman utama.');
+      return redirect()->route('dashboard::slider');
     }
 
     public function showRemoveSlider($id)

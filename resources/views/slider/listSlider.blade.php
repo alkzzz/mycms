@@ -5,6 +5,7 @@
 @section('css')
 @parent
 <link rel="stylesheet" type="text/css" href="{{ asset('css/lightbox/css/lightbox.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert2.css') }}">
 @stop
 
 @section('content')
@@ -14,9 +15,11 @@
 @if(!count($sliders))
 <h3>Website belum memiliki slider. Silahkan tambahkan slider dengan mengklik tombol <b>Tambah</b>.</h3>
 @else
-  <h3 class="col-lg-4 topmenu-title">Gambar Slideshow</h3>
-  <h3 class="col-lg-2 topmenu-title">Judul Indonesia</h3>
-  <h3 class="col-lg-2 topmenu-title">Judul English</h3>
+  <div class="row">
+  <h3 class="col-lg-4 col-xs-10 topmenu-title">Gambar Slideshow</h3>
+  <h3 class="col-lg-2 col-xs-10 topmenu-title">Judul Indonesia</h3>
+  <h3 class="col-lg-2 col-xs-10 topmenu-title">Judul English</h3>
+  </div>
   <ul id="sortable" class="parent-menu default">
     @foreach($sliders as $slider)
         <li id="slider_{{ $slider->id }}">
@@ -24,15 +27,15 @@
           <div class="col-lg-4 topmenu-list">
               <a href="{{ $slider->gambar }}" data-lightbox="image-{{ $slider->id }}" data-title="{{ $slider->title_id }}"><img src="{{ $slider->thumbnail }}" /></a>
           </div>
-          <div class="col-lg-2 topmenu-list">
-              <h4> {{ $slider->content_id }} </h4>
+          <div style="padding-top:2em" class="col-lg-2 topmenu-list">
+              <h5> {{ $slider->title_id }} </h5>
           </div>
-          <div class="col-lg-2 topmenu-list">
-              <h4> {{ $slider->content_en }} </h4>
+          <div style="padding-top:2em" class="col-lg-2 topmenu-list">
+              <h5> {{ $slider->title_en }} </h5>
           </div>
-          <div style="padding-top:1em" class="col-lg-2">
+          <div style="padding-top:2em;padding-bottom:2em" class="col-lg-2">
               <a href="#" class="btn btn-warning">Edit <i class="fa fa-edit fa-fw"></i></a>
-              <a style="margin-left:1em" href="{{ route('dashboard::showRemoveSlider', $slider->id) }}" class="btn btn-danger">Delete <i class="fa fa-trash fa-fw"></i></a>
+              <a href="{{ route('dashboard::showRemoveSlider', $slider->id) }}" class="btn btn-danger">Delete <i class="fa fa-trash fa-fw"></i></a>
            </div>
            </div>
         </li>
@@ -47,6 +50,7 @@
 @parent
 <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('css/lightbox/js/lightbox.min.js') }}"></script>
+<script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 <script type="text/javascript">
 $(document).ready(function() {
   $('#urut').click(function() {
@@ -65,10 +69,10 @@ $(document).ready(function() {
         data: { urutan: urutan },
       })
       .done(function() {
-        swal({title:'Sukses',text: 'Slider Berhasil Diurutkan', type: 'success',   confirmButtonText: 'OK' });
+        swal({title:'Sukses',text: 'Slideshow Berhasil Diurutkan', type: 'success',   confirmButtonText: 'OK' });
       })
       .fail(function() {
-        swal({title:'Gagal',text: 'Slider Gagal Diurutkan', type: 'error',   confirmButtonText: 'OK' });
+        swal({title:'Gagal',text: 'Slideshow Gagal Diurutkan', type: 'error',   confirmButtonText: 'OK' });
       });
 
       $('#urut').text("Urutkan");

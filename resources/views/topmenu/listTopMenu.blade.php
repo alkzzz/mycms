@@ -4,6 +4,7 @@
 
 @section('css')
 @parent
+<link rel="stylesheet" type="text/css" href="{{ asset('css/sweetalert2.css') }}">
 @stop
 
 @section('content')
@@ -38,6 +39,7 @@
 @section('js')
 @parent
 <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 <script type="text/javascript">
 $(document).ready(function() {
   $('#urut').click(function() {

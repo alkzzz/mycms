@@ -21,8 +21,7 @@ class Post extends Model
 
     public function scopeFeatured($query)
     {
-        return $query->where('post_type','=', 'article')
-                     ->where('featured','=', true);
+        return $query->where('featured','=', true);
     }
 
     public function scopePage($query)
@@ -43,11 +42,6 @@ class Post extends Model
     public function scopeArticle($query)
     {
       return $query->where('post_type', '=', 'article');
-    }
-
-    public function scopeLink($query)
-    {
-      return $query->where('post_type', '=', 'link');
     }
 
 }
