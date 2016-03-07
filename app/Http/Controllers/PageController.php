@@ -10,7 +10,6 @@ use cms\Post;
 use cms\Category;
 use cms\Http\Requests\MenuRequest;
 use Flash;
-use Log;
 
 class PageController extends Controller
 {
@@ -48,7 +47,7 @@ class PageController extends Controller
       $title = 'Daftar Menu';
     	$daftarmenu = Post::page()->menu()->get()->sortBy('urutan');
       $daftarsubmenu = Post::page()->submenu()->get()->sortBy('urutan');
-    	return view('dashboard.daftarmenu', compact('title','daftarmenu','daftarsubmenu'));
+    	return view('page.listMenu', compact('title','daftarmenu','daftarsubmenu'));
     }
 
     public function showPage($menu)
@@ -87,6 +86,7 @@ class PageController extends Controller
           $input['title_en'] = $inputjudul_en;
           $input['slug_id'] = str_slug($input['title_id']);
           $input['slug_en'] = str_slug($input['title_en']);
+          $input['id_gambar'] = 1;
           try {
           Post::create($input);
           } catch (\Illuminate\Database\QueryException $e) {
@@ -117,6 +117,7 @@ class PageController extends Controller
                 $input['title_en'] = $judul_en;
                 $input['slug_id'] = str_slug($input['title_id']);
                 $input['slug_en'] = str_slug($input['title_en']);
+                $input['id_gambar'] = 1;
                 try {
                 Post::create($input);
                 } catch (\Illuminate\Database\QueryException $e) {
@@ -135,6 +136,7 @@ class PageController extends Controller
                 $input['slug_en'] = str_slug($input['title_en']);
                 $input['has_child'] = 0;
                 $input['post_parent'] = $parent_id; // masukkan id parent ke child
+                $input['id_gambar'] = 1;
                 try {
                 Post::create($input);
                 } catch (\Illuminate\Database\QueryException $e) {
@@ -152,24 +154,25 @@ class PageController extends Controller
         }
     }
 
-    public function editPage($slug)
+    public function editPage($id)
     {
       $title = "Edit Menu";
-      $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $page = Post::page()->where('id', '=', $id)->firstOrFail();
+      $submenu = Post::page()->where('post_parent', '=', $page->id)->get();
       return view('page.editPage', compact('title', 'page', 'submenu'));
     }
 
-    public function addSubmenu($slug)
+    public function addSubmenu($id)
     {
       $title = "Tambah Sub Menu";
-      $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $page = Post::page()->where('id', '=', $id)->firstOrFail();
       $submenu = Post::page()->where('post_parent', '=', $page->id)->get();
       return view('page.addSubmenu', compact('title', 'page', 'submenu'));
     }
 
-    public function storeSubmenu(MenuRequest $request, $slug)
+    public function storeSubmenu(MenuRequest $request, $id)
     {
-      $parent = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $parent = Post::page()->where('id', '=', $id)->firstOrFail();
       $input = $request->all();
       $input['urutan'] = 99;
       $input['post_type'] = 'page';
@@ -191,6 +194,7 @@ class PageController extends Controller
         $input['slug_en'] = str_slug($input['title_en']);
         $input['has_child'] = 0;
         $input['post_parent'] = $parent->id; // masukkan id parent ke child
+        $input['id_gambar'] = 1;
         try {
         Post::create($input);
         } catch (\Illuminate\Database\QueryException $e) {
@@ -203,12 +207,11 @@ class PageController extends Controller
       }
       Flash::success('Sub Menu telah berhasil ditambahkan.');
       return redirect()->route('dashboard::menu');
-
     }
 
-    public function updatePage(MenuRequest $request, $slug)
+    public function updatePage(MenuRequest $request, $id)
     {
-      $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $page = Post::page()->where('id', '=', $id)->firstOrFail();
       $input = $request->all();
       $input['slug_id'] = str_slug($input['title_id']);
       $input['slug_en'] = str_slug($input['title_en']);
@@ -226,17 +229,17 @@ class PageController extends Controller
       return redirect()->route('dashboard::menu');
     }
 
-    public function showDeletePage($slug)
+    public function showDeletePage($id)
     {
       $title = "Delete Menu";
-      $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $page = Post::page()->where('id', '=', $id)->firstOrFail();
       $submenu = Post::page()->where('post_parent', '=', $page->id)->get();
       return view('page.showDeletePage', compact('title', 'page', 'submenu'));
     }
 
-    public function deletePage($slug)
+    public function deletePage($id)
     {
-      $page = Post::page()->where('slug_id', '=', $slug)->firstOrFail();
+      $page = Post::page()->where('id', '=', $id)->firstOrFail();
       $submenu = Post::page()->where('post_parent', '=', $page->id)->get();
       $page->delete();
       if (count($submenu))

@@ -84,7 +84,7 @@
                             <a href="{{ route('dashboard::menu') }}"><i class="fa fa-th-list fa-fw"></i> Menu</a>
                         </li>
                         <li>
-                            <a href=""><i class="fa fa-picture-o fa-fw"></i> Slider</a>
+                            <a href="{{ route('dashboard::slider') }}"><i class="fa fa-picture-o fa-fw"></i> Slider</a>
                         </li>
                         <li>
                             <a href="http://www.arsipsurat.pe.hu" target="_blank"><i class="fa fa-envelope-o fa-fw"></i> Aplikasi Surat</a>

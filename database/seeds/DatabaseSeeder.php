@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         DB::table('categories')->truncate();
         DB::table('posts')->truncate();
         DB::table('top_menu')->truncate();
+        DB::table('sliders')->truncate();
 
         $this->call(UserTableSeeder::class);
         $this->call(CategoryTableSeeder::class);

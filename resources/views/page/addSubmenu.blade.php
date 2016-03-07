@@ -9,7 +9,7 @@
   <li class="active"><a data-toggle="tab" href="#id1">Indonesia</a></li>
   <li><a data-toggle="tab" href="#en1">English</a></li>
 </ul>
-<form role="form" action="{{ route('dashboard::storeSubmenu', $page->slug_id) }}" method="POST">
+<form role="form" action="{{ route('dashboard::storeSubmenu', $page->id) }}" method="POST">
   {{ csrf_field() }}
   <input type="hidden" name="has_child" value="1">
 <div class="tab-content">
