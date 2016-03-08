@@ -34,8 +34,12 @@
               <h5> {{ $slider->title_en }} </h5>
           </div>
           <div style="padding-top:2em;padding-bottom:2em" class="col-lg-2">
-              <a href="#" class="btn btn-warning">Edit <i class="fa fa-edit fa-fw"></i></a>
-              <a href="{{ route('dashboard::showRemoveSlider', $slider->id) }}" class="btn btn-danger">Delete <i class="fa fa-trash fa-fw"></i></a>
+              @if ($slider->post_type == 'page')
+              <a href="{{ route('dashboard::editPage', $slider->pid) }}" class="btn btn-warning">Edit <i class="fa fa-edit fa-fw"></i></a>
+              @else
+              <a href="{{ route('dashboard::editPost', $slider->pid) }}" class="btn btn-warning">Edit <i class="fa fa-edit fa-fw"></i></a>
+              @endif
+              <a href="{{ route('dashboard::showRemoveSlider', $slider->pid) }}" class="btn btn-danger">Delete <i class="fa fa-trash fa-fw"></i></a>
            </div>
            </div>
         </li>

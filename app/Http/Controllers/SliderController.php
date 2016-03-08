@@ -10,15 +10,19 @@ use cms\Post;
 use cms\Slider;
 use Flash;
 use Datatables;
+use DB;
 
 class SliderController extends Controller
 {
     public function daftarslider()
     {
       $title = 'Daftar Slider';
-      $sliders = Post::featured()->join('sliders', 'posts.id_gambar', '=', 'sliders.id')
-                ->orderBy('sliders.urutan_slider', 'asc')
-                ->get();
+      $sliders = DB::table('posts')->select('posts.id AS pid', 'title_id', 'title_en', 'post_type', 'id_gambar', 'sliders.id AS id', 'sliders.gambar', 'sliders.thumbnail', 'sliders.urutan_slider')
+                                   ->where('featured', '=', true)
+                                   ->join('sliders', 'posts.id_gambar', '=', 'sliders.id')
+                                   ->orderBy('sliders.urutan_slider', 'asc')
+                                   ->get();
+
       return view('slider.listSlider', compact('title', 'sliders'));
     }
 
@@ -38,7 +42,9 @@ class SliderController extends Controller
 
     public function dataTableSlider()
     {
-      $posts = Post::article()->orWhere('post_parent','<>',0)->latest()->with('slider')->get();
+      $posts = Post::article()->orWhere('post_parent','<>',0)
+                              ->where('featured', '=', false)
+                              ->latest()->with('slider')->get();
 
       return Datatables::of($posts)
               ->addColumn('edit', function ($post) {
@@ -80,13 +86,13 @@ class SliderController extends Controller
     public function showRemoveSlider($id)
     {
       $title = "Delete Slider";
-      $post = Post::featured()->with('slider')->where('id_gambar', '=', $id)->firstOrFail();
+      $post = Post::find($id);
       return view('slider.showRemoveSlider', compact('title', 'post'));
     }
 
     public function removeSlider($id)
     {
-      $post = Post::featured()->with('slider')->where('id_gambar', '=', $id)->firstOrFail();
+      $post = Post::find($id);
       $post->featured = false;
       $post->save();
       Flash::success('Artikel telah berhasil dihapus dari slideshow halaman utama.');
