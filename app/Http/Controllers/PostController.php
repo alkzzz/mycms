@@ -28,4 +28,11 @@ class PostController extends Controller
                           ->firstOrFail();
         return view('article.showPost', compact('kat', 'article'));
     }
+
+    public function editPost($id)
+    {
+      $title = "Edit Artikel";
+      $post = Post::article()->where('id', '=', $id)->firstOrFail();
+      return view('post.editPost', compact('title', 'post'));
+    }
 }

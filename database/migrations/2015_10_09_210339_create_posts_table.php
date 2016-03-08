@@ -16,13 +16,14 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->integer('id_kategori')->unsigned();
             $table->integer('urutan')->unsigned();
+            $table->boolean('featured')->default(false);
             $table->string('title_id');
             $table->string('slug_id')->unique();
             $table->text('content_id');
             $table->string('title_en');
             $table->string('slug_en')->unique();
             $table->text('content_en');
-            $table->string('gambar');
+            $table->integer('id_gambar')->unsigned();
             $table->string('file');
             $table->string('link');
             $table->string('post_type');
@@ -32,6 +33,10 @@ class CreatePostsTable extends Migration
 
             $table->foreign('id_kategori')
                   ->references('id')->on('categories')
+                  ->onDelete('cascade');
+
+            $table->foreign('id_gambar')
+                  ->references('id')->on('sliders')
                   ->onDelete('cascade');
         });
     }

@@ -38,7 +38,7 @@
     @endif
     @show
   </ul>
-  <form class="navbar-form navbar-right" role="search" action="{{ url('search') }}">
+  <form class="navbar-form navbar-right" role="search" action="{{ url(Localization::getCurrentLocale().'/search') }}">
   <div class="form-group">
       <input type="text" name="q" class="form-control" placeholder="Search">
   </div>
@@ -83,16 +83,23 @@
         </form>
     </div><!-- /.navbar-collapse -->
 </nav>
-</div>
 
-<div class="container">
+@yield('slider')
+
+<div class="container" style="height:240px">
     @yield('content')
     <!-- Content -->
 </div>
 
-    @section('js')
-          <script src="{{ asset('js/frontend.js') }}"></script>
-    @show
+<div class="container">
+<footer class="footer" style="background-color:grey;height:200px">
+      <p>Place sticky footer content here.</p>
+</footer>
+</div>
+
+@section('js')
+      <script src="{{ asset('js/frontend.js') }}"></script>
+@show
 
   </body>
 </html>

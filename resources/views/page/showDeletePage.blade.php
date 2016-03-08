@@ -15,7 +15,7 @@
       @endforeach
       @endif
       <hr>
-      <form style="display:inline-block" action="{{ route('dashboard::deletePage', $page->slug_id) }}" method="POST">
+      <form style="display:inline-block" action="{{ route('dashboard::deletePage', $page->id) }}" method="POST">
         {{ csrf_field() }}
         <input type="hidden" name="_method" value="DELETE">
         <input class="btn btn-danger" type="submit" value="Delete">
