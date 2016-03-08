@@ -20,7 +20,11 @@ class HomeController extends Controller
     public function index()
     {
         $title = 'Home';
-        return view('homepage', compact('title'));
+        $sliders = Post::featured()->with('slider')
+                  ->join('sliders', 'posts.id_gambar', '=', 'sliders.id')
+                  ->orderBy('sliders.urutan_slider', 'asc')
+                  ->get();
+        return view('homepage', compact('title', 'sliders'));
     }
 
     public function chart()
@@ -32,7 +36,13 @@ class HomeController extends Controller
     {
       $query = $request->get('q');
       $title = 'Search Results';
-      $results = Post::search($query)->get();
+      if (\Localization::getCurrentLocale()=='id')
+      {
+      $results = Post::search($query, ['title_id' => 10, 'content_id' => 5])->get();
+      }
+      else {
+      $results = Post::search($query, ['title_en' => 10, 'content_en' => 5])->get();
+      }
       return view('search', compact('title', 'query', 'results'));
     }
 

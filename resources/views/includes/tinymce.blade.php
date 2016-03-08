@@ -11,7 +11,7 @@
             plugins: [
                 "autoresize image table link insertdatetime preview media print hr jbimages"
             ],
-         	toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | jbimages | media"
+         	toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | image | jbimages | media"
          	});
 </script>
 <script type="text/javascript">

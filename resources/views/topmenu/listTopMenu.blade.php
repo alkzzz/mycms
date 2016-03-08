@@ -26,12 +26,7 @@
               <a href="{{ $top->link_topmenu }}" style="color:#333" target="_blank">{{ $top->link_topmenu }}</a>
           </div>
           <div style="display:inline-block;margin-left:2em" class="pull-right">
-            <form id="formDelete" action="{{ route('dashboard::deleteTopMenu', $top->id) }}" method="POST">
-              {{ csrf_field() }}
-              <input type="hidden" name="_method" value="DELETE">
-              <input id="delete" class="btn btn-danger" type="submit" value="Delete">
-            </form>
-          </div>
+           <a style="margin-left:2em" href="{{ route('dashboard::showDeleteTopMenu', $top->id) }}" class="btn btn-danger pull-right">Delete <i class="fa fa-trash fa-fw"></i></a>
            <a style="margin-left:2em" href="{{ route('dashboard::editTopMenu', $top->id) }}" class="btn btn-warning pull-right">Edit <i class="fa fa-edit fa-fw"></i></a>
         </li>
     @endforeach
@@ -44,25 +39,7 @@
 @section('js')
 @parent
 <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
-<script src="{{ asset('js/sweetalert2.min.js') }}"> </script>
-<script type="text/javascript">
-$('input#delete').on('click', function(e){
-  e.preventDefault();
-  swal({
-    title: "Are you sure?",
-    text: "Anda yakin akan menghapus top menu ini",
-    type: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#DD6B55",
-    confirmButtonText: "Delete",
-    closeOnConfirm: false
-  },
-    function(){
-    $("#formDelete").submit();
-    swal('Delete','Top menu telah didelete','success');
-  });
-})
-</script>
+<script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 <script type="text/javascript">
 $(document).ready(function() {
   $('#urut').click(function() {
