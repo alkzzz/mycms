@@ -10,7 +10,7 @@
       <hr>
       <img src="{{ $post->slider->thumbnail }}" />
       <hr>
-      <form style="display:inline-block" action="{{ route('dashboard::removeSlider', $post->id_gambar) }}" method="POST">
+      <form style="display:inline-block" action="{{ route('dashboard::removeSlider', $post->id) }}" method="POST">
         {{ csrf_field() }}
         <input type="hidden" name="_method" value="PATCH">
         <input class="btn btn-danger" type="submit" value="Delete">

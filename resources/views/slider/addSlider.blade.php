@@ -38,7 +38,7 @@ $(function() {
   $('#allposts').DataTable({
       processing: false,
       serverSide: true,
-      autoWidth: false,
+      autoWidth: true,
       order : [[ 1, "asc" ]],
       ajax: "{!! route('dashboard::dataTableSlider') !!}",
       columns: [

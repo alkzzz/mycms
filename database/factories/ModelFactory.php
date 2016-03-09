@@ -72,7 +72,7 @@ $factory->defineAs(cms\Slider::class, 'no_pic', function (Faker\Generator $faker
     return [
     	'urutan_slider' => $faker->unique()->numberBetween($min = 1, $max = 99),
       'gambar' => '',
-      'thumbnail' => asset('cms/public/img/no_pic.png'),
+      'thumbnail' => asset('img/no_pic.png'),
     ];
 });
 
