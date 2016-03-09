@@ -136,8 +136,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        #DebugBar
-        Barryvdh\Debugbar\ServiceProvider::class,
         #DataTable
         yajra\Datatables\DatatablesServiceProvider::class,
         #Localization
