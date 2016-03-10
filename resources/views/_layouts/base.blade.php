@@ -25,9 +25,7 @@
   <div class="container">
   <div id="top-menu" class="hidden-xs">
   <ul class="list-inline navbar-left">
-    @foreach($top_menu as $top_menu)
-      <li><a href="{{ $top_menu->link_topmenu }}" target="_blank">{{ $top_menu->nama_topmenu }}</a></li>
-    @endforeach
+    @include('_layouts.topmenu')
   </ul>
   <ul class="list-inline navbar-right">
     @section('lang')
@@ -64,7 +62,17 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="mobile-menu">
-        <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right hidden-xs">
+          @section('lang-mobile')
+          @if (Localization::getCurrentLocale() == 'id')
+          <li class="visible-xs"><a href="{{Localization::getLocalizedURL('en') }}"><img src="{{ asset('img/english.png') }}" alt="EN"></a></li>
+          @else
+          <li class="visible-xs"><a href="{{Localization::getLocalizedURL('id') }}"><img src="{{ asset('img/indonesia.png') }}" alt="ID"></a></li>
+          @endif
+          @show
+          @include('_layouts.dropdown', ['items'=> $menu_mainmenu->roots()])
+      </ul>
+        <ul class="nav navbar-nav navbar-right visible-xs">
             @section('lang-mobile')
             @if (Localization::getCurrentLocale() == 'id')
             <li class="visible-xs"><a href="{{Localization::getLocalizedURL('en') }}"><img src="{{ asset('img/english.png') }}" alt="EN"></a></li>
@@ -72,8 +80,9 @@
             <li class="visible-xs"><a href="{{Localization::getLocalizedURL('id') }}"><img src="{{ asset('img/indonesia.png') }}" alt="ID"></a></li>
             @endif
             @show
-
             @include('_layouts.dropdown', ['items'=> $menu_mainmenu->roots()])
+            <hr>
+            @include('_layouts.topmenu')
         </ul>
         <form class="navbar-form navbar-right visible-xs" role="search">
         <div class="form-group">

@@ -69,7 +69,6 @@ $dropdown-link-hover-bg: $primary-color;
 		font-size: 17px;
 		font-weight: bold;
 		border-radius: 10px;
-		padding: 22px;
 	};
 }
 
@@ -78,7 +77,6 @@ $dropdown-link-hover-bg: $primary-color;
     &:hover {
     color: $primary-text-color;
     font-size: 17px;
-    padding: 22px;
     }
 }
 
@@ -100,4 +98,8 @@ $dropdown-link-hover-bg: $primary-color;
         font-weight: bold;
         font-size : 16px;
     }
+}
+
+.divider {
+  color: black;
 }

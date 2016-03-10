@@ -6,6 +6,7 @@ use Closure;
 use Localization;
 use MainMenu;
 use cms\Post;
+use cms\TopMenu;
 
 class GenerateMenu
 {
@@ -49,7 +50,6 @@ class GenerateMenu
         }
 
     });
-
         return $next($request);
     }
 }
