@@ -95,7 +95,13 @@
 </nav>
   </div>
 </div>
-@yield('slider')
+
+<div class="container">
+  <div class="row">
+    @yield('slider')
+  </div>
+</div>
+
 
 <div class="container">
     <div class="row">
