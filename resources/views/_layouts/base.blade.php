@@ -47,6 +47,7 @@
   </div>
 
 <div class="container">
+  <div class="row">
       <!-- Main Menu -->
       <nav class="navbar navbar-default">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -92,18 +93,23 @@
         </form>
     </div><!-- /.navbar-collapse -->
 </nav>
-
+  </div>
+</div>
 @yield('slider')
 
-<div class="container" style="height:240px">
+<div class="container">
+    <div class="row">
+      <!-- Content -->
     @yield('content')
-    <!-- Content -->
+    </div>
 </div>
 
 <div class="container">
+  <div class="row">
 <footer class="footer" style="background-color:grey;height:200px">
       <p>Place sticky footer content here.</p>
 </footer>
+  </div>
 </div>
 
 @section('js')
