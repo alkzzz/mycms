@@ -50,19 +50,19 @@ class MenuRequest extends Request
       foreach($this->request->get('title_id') as $key => $val)
       {
         if ($key == 0) {
-        $messages['title_id.'.$key.'.required'] = 'Judul menu utama bahasa Indonesia harus diisi.';
+        $messages['title_id.'.$key.'.required'] = 'Judul menu bahasa Indonesia harus diisi.';
         }
         else {
-        $messages['title_id.'.$key.'.required'] = 'Judul menu utama bahasa Indonesia ke-'.$key.' harus diisi.';
+        $messages['title_id.'.$key.'.required'] = 'Judul menu bahasa Indonesia ke-'.$key.' harus diisi.';
         }
       }
       foreach($this->request->get('title_en') as $key => $val)
       {
         if ($key == 0) {
-        $messages['title_en.'.$key.'.required'] = 'Judul menu utama bahasa Inggris harus diisi.';
+        $messages['title_en.'.$key.'.required'] = 'Judul menu bahasa Inggris harus diisi.';
         }
         else {
-        $messages['title_en.'.$key.'.required'] = 'Judul menu utama bahasa Inggris ke-'.$key.' harus diisi.';
+        $messages['title_en.'.$key.'.required'] = 'Judul menu bahasa Inggris ke-'.$key.' harus diisi.';
         }
       }
     }

@@ -148,6 +148,8 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         #Eloquence
         Sofa\Eloquence\ServiceProvider::class,
+        #Elfinder
+        Barryvdh\Elfinder\ElfinderServiceProvider::class,
 
         /*
          * Application Service Providers...

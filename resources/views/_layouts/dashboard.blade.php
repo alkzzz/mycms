@@ -87,7 +87,7 @@
                             <a href="{{ route('dashboard::slider') }}"><i class="fa fa-picture-o fa-fw"></i> Slider</a>
                         </li>
                         <li>
-                            <a href="http://www.arsipsurat.pe.hu" target="_blank"><i class="fa fa-envelope-o fa-fw"></i> Aplikasi Surat</a>
+                            <a href="{{ url('elfinder') }}"><i class="fa fa-folder-open-o fa-fw"></i> Media</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Dropdown<span class="fa arrow"></span></a>

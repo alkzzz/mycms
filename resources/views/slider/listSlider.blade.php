@@ -46,7 +46,7 @@
     @endforeach
   </ul>
 </div>
-<button id="urut" type="button" class="btn btn-primary" style="margin-top:2%">Urutkan Slider</button>
+<button id="urut" type="button" class="btn btn-primary" style="margin-top:2%;margin-bottom:10%">Urutkan Slider</button>
 @endif
 @stop
 
