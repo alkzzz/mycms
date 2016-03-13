@@ -100,6 +100,20 @@ $dropdown-link-hover-bg: $primary-color;
     }
 }
 
-.divider {
-  color: black;
+// sticky footer
+html {
+	position: relative;
+	min-height: 100%;
+}
+body {
+	margin-bottom: 10em;
+}
+
+.footer {
+	position: absolute;
+  color: #eee;
+	bottom: 0;
+	height: 10em;
+  width: 100%;
+	background-color: grey;
 }

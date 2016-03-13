@@ -45,11 +45,10 @@
   </div>
   <img class="img-responsive" src="{{ asset('img/logo.jpg') }}">
   </div>
-
-<div class="container">
-  <div class="row">
       <!-- Main Menu -->
-      <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="row">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mobile-menu" aria-expanded="false">
@@ -59,7 +58,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="{{ url('/') }}">Fakultas Teknik</a>
-    </div>
+      </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="mobile-menu">
@@ -76,9 +75,9 @@
         <ul class="nav navbar-nav navbar-right visible-xs">
             @section('lang-mobile')
             @if (Localization::getCurrentLocale() == 'id')
-            <li class="visible-xs"><a href="{{Localization::getLocalizedURL('en') }}"><img src="{{ asset('img/english.png') }}" alt="EN"></a></li>
+            <li><a href="{{Localization::getLocalizedURL('en') }}"><img src="{{ asset('img/english.png') }}" alt="EN"></a></li>
             @else
-            <li class="visible-xs"><a href="{{Localization::getLocalizedURL('id') }}"><img src="{{ asset('img/indonesia.png') }}" alt="ID"></a></li>
+            <li><a href="{{Localization::getLocalizedURL('id') }}"><img src="{{ asset('img/indonesia.png') }}" alt="ID"></a></li>
             @endif
             @show
             @include('_layouts.dropdown', ['items'=> $menu_mainmenu->roots()])
@@ -91,10 +90,10 @@
         </div>
             <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
         </form>
-    </div><!-- /.navbar-collapse -->
-</nav>
+      </div><!-- /.navbar-collapse -->
+    </div>
   </div>
-</div>
+  </nav>
 
 <div class="container">
   <div class="row">
@@ -110,13 +109,21 @@
     </div>
 </div>
 
-<div class="container">
-  <div class="row">
-<footer class="footer" style="background-color:grey;height:200px">
-      <p>Place sticky footer content here.</p>
+<footer class="footer">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-4">
+            <p>footer 1</p>
+          </div>
+          <div class="col-md-4">
+            <p>footer 2</p>
+          </div>
+          <div class="col-md-4">
+            <p>footer 3</p>
+          </div>
+      </div>
+    </div>
 </footer>
-  </div>
-</div>
 
 @section('js')
       <script src="{{ asset('js/frontend.js') }}"></script>
