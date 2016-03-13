@@ -23,6 +23,7 @@
   <body>
 
   <div class="container">
+    <div class="row">
   <div id="top-menu" class="hidden-xs">
   <ul class="list-inline navbar-left">
     @include('_layouts.topmenu')
@@ -42,8 +43,9 @@
   </div>
       <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
   </form>
-  </div>
+      </div>
   <img class="img-responsive" src="{{ asset('img/logo.jpg') }}">
+    </div>
   </div>
       <!-- Main Menu -->
     <nav class="navbar navbar-default">
