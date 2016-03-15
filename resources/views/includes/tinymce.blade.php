@@ -15,7 +15,7 @@
          	toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | image | media"
          	});
           function elFinderBrowser (field_name, url, type, win) {
-          var elfinder_url = '/elfinder/tinymce4';    // use an absolute path!
+          var elfinder_url = "{{ route('elfinder.tinymce4') }}";    // use an absolute path!
           tinyMCE.activeEditor.windowManager.open({
             file: elfinder_url,
             title: 'File Browser',
@@ -48,7 +48,7 @@
          	toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | image | media"
          	});
           function elFinderBrowser (field_name, url, type, win) {
-          var elfinder_url = '/elfinder/tinymce4';    // use an absolute path!
+          var elfinder_url = "{{ route('elfinder.tinymce4') }}";    // use an absolute path!
           tinyMCE.activeEditor.windowManager.open({
             file: elfinder_url,
             title: 'File Browser',
