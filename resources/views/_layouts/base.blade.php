@@ -104,7 +104,7 @@
 </div>
 
 
-<div class="container">
+<div class="container" id=maincontent>
     <div class="row">
       <!-- Content -->
     @yield('content')

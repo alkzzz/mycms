@@ -31,6 +31,10 @@ $dropdown-link-hover-bg: $primary-color;
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "resources/assets/sass/bootswatch";
 
+body {
+  min-height: 768px;
+}
+
 #top-menu {
     height: 5em;
     background-color: white;
