@@ -15,6 +15,6 @@ class PostTableSeeder extends Seeder
         factory('cms\Post', 'singlemenu')->create();
         factory('cms\Post', 'menu', 4)->create();
         factory('cms\Post', 'submenu', 10)->create();
-        factory('cms\Post', 'article', 10)->create();
+        factory('cms\Post', 'article', 100)->create();
     }
 }

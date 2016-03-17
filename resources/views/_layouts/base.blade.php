@@ -23,11 +23,10 @@
   <body>
 
   <div class="container">
+    <div class="row">
   <div id="top-menu" class="hidden-xs">
   <ul class="list-inline navbar-left">
-    @foreach($top_menu as $top_menu)
-      <li><a href="{{ $top_menu->link_topmenu }}" target="_blank">{{ $top_menu->nama_topmenu }}</a></li>
-    @endforeach
+    @include('_layouts.topmenu')
   </ul>
   <ul class="list-inline navbar-right">
     @section('lang')
@@ -44,13 +43,14 @@
   </div>
       <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
   </form>
-  </div>
+      </div>
   <img class="img-responsive" src="{{ asset('img/logo.jpg') }}">
+    </div>
   </div>
-
-<div class="container">
       <!-- Main Menu -->
-      <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="row">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mobile-menu" aria-expanded="false">
@@ -60,20 +60,31 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="{{ url('/') }}">Fakultas Teknik</a>
-    </div>
+      </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="mobile-menu">
-        <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right hidden-xs">
+          @section('lang-mobile')
+          @if (Localization::getCurrentLocale() == 'id')
+          <li class="visible-xs"><a href="{{Localization::getLocalizedURL('en') }}"><img src="{{ asset('img/english.png') }}" alt="EN"></a></li>
+          @else
+          <li class="visible-xs"><a href="{{Localization::getLocalizedURL('id') }}"><img src="{{ asset('img/indonesia.png') }}" alt="ID"></a></li>
+          @endif
+          @show
+          @include('_layouts.dropdown', ['items'=> $menu_mainmenu->roots()])
+      </ul>
+        <ul class="nav navbar-nav navbar-right visible-xs">
             @section('lang-mobile')
             @if (Localization::getCurrentLocale() == 'id')
-            <li class="visible-xs"><a href="{{Localization::getLocalizedURL('en') }}"><img src="{{ asset('img/english.png') }}" alt="EN"></a></li>
+            <li><a href="{{Localization::getLocalizedURL('en') }}"><img src="{{ asset('img/english.png') }}" alt="EN"></a></li>
             @else
-            <li class="visible-xs"><a href="{{Localization::getLocalizedURL('id') }}"><img src="{{ asset('img/indonesia.png') }}" alt="ID"></a></li>
+            <li><a href="{{Localization::getLocalizedURL('id') }}"><img src="{{ asset('img/indonesia.png') }}" alt="ID"></a></li>
             @endif
             @show
-
             @include('_layouts.dropdown', ['items'=> $menu_mainmenu->roots()])
+            <hr>
+            @include('_layouts.topmenu')
         </ul>
         <form class="navbar-form navbar-right visible-xs" role="search">
         <div class="form-group">
@@ -81,21 +92,40 @@
         </div>
             <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
         </form>
-    </div><!-- /.navbar-collapse -->
-</nav>
-
-@yield('slider')
-
-<div class="container" style="height:240px">
-    @yield('content')
-    <!-- Content -->
-</div>
+      </div><!-- /.navbar-collapse -->
+    </div>
+  </div>
+  </nav>
 
 <div class="container">
-<footer class="footer" style="background-color:grey;height:200px">
-      <p>Place sticky footer content here.</p>
-</footer>
+  <div class="row">
+    @yield('slider')
+  </div>
 </div>
+
+
+<div class="container" id=maincontent>
+    <div class="row" style="margin-bottom:5%">
+      <!-- Content -->
+    @yield('content')
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+      <div class="row">
+          <div style="padding-left:0px" class="col-md-4">
+            <p>footer 1</p>
+          </div>
+          <div style="padding-left:0px" class="col-md-4">
+            <p>footer 2</p>
+          </div>
+          <div style="padding-left:0px" class="col-md-4">
+            <p>footer 3</p>
+          </div>
+      </div>
+    </div>
+</footer>
 
 @section('js')
       <script src="{{ asset('js/frontend.js') }}"></script>

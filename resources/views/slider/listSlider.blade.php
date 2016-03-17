@@ -16,37 +16,37 @@
 <h3>Website belum memiliki slider. Silahkan tambahkan slider dengan mengklik tombol <b>Tambah</b>.</h3>
 @else
   <div class="row">
-  <h3 class="col-lg-4 col-xs-10 topmenu-title">Gambar Slideshow</h3>
-  <h3 class="col-lg-2 col-xs-10 topmenu-title">Judul Indonesia</h3>
-  <h3 class="col-lg-2 col-xs-10 topmenu-title">Judul English</h3>
+  <h3 class="col-md-4 col-xs-12 topmenu-title">Gambar Slideshow</h3>
+  <h3 class="col-md-2 col-xs-12 topmenu-title">Judul Indonesia</h3>
+  <h3 class="col-md-2 col-xs-12 topmenu-title">Judul English</h3>
   </div>
   <ul id="sortable" class="parent-menu default">
     @foreach($sliders as $slider)
         <li id="slider_{{ $slider->id }}">
           <div class="row">
-          <div class="col-lg-4 topmenu-list">
+          <div style="margin-bottom:2%" class="col-md-4 col-xs-12 topmenu-list">
               <a href="{{ $slider->gambar }}" data-lightbox="image-{{ $slider->id }}" data-title="{{ $slider->title_id }}"><img src="{{ $slider->thumbnail }}" /></a>
           </div>
-          <div style="padding-top:2em" class="col-lg-2 topmenu-list">
+          <div class="col-md-2 col-xs-12 topmenu-list">
               <h5> {{ $slider->title_id }} </h5>
           </div>
-          <div style="padding-top:2em" class="col-lg-2 topmenu-list">
+          <div class="col-md-2 col-xs-12 topmenu-list">
               <h5> {{ $slider->title_en }} </h5>
           </div>
-          <div style="padding-top:2em;padding-bottom:2em" class="col-lg-2">
+          <div style="padding-top:1em;padding-bottom:2em" class="col-md-2">
               @if ($slider->post_type == 'page')
-              <a href="{{ route('dashboard::editPage', $slider->pid) }}" class="btn btn-warning">Edit <i class="fa fa-edit fa-fw"></i></a>
+              <a style="margin-bottom:0.5em" href="{{ route('dashboard::editPage', $slider->pid) }}" class="btn btn-warning">Edit <i class="fa fa-edit fa-fw"></i></a>
               @else
-              <a href="{{ route('dashboard::editPost', $slider->pid) }}" class="btn btn-warning">Edit <i class="fa fa-edit fa-fw"></i></a>
+              <a style="margin-bottom:0.5em" href="{{ route('dashboard::editPost', $slider->pid) }}" class="btn btn-warning">Edit <i class="fa fa-edit fa-fw"></i></a>
               @endif
-              <a href="{{ route('dashboard::showRemoveSlider', $slider->pid) }}" class="btn btn-danger">Delete <i class="fa fa-trash fa-fw"></i></a>
+              <a style="margin-bottom:0.5em" href="{{ route('dashboard::showRemoveSlider', $slider->pid) }}" class="btn btn-danger">Delete <i class="fa fa-trash fa-fw"></i></a>
            </div>
            </div>
         </li>
     @endforeach
   </ul>
 </div>
-<button id="urut" type="button" class="btn btn-primary" style="margin-top:2%">Urutkan Slider</button>
+<button id="urut" type="button" class="btn btn-primary" style="margin-top:2%;margin-bottom:10%">Urutkan Slider</button>
 @endif
 @stop
 

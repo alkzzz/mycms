@@ -43,5 +43,51 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-  </div>  
+  </div>
+  <hr>
+@endsection
+
+@section('content')
+
+@foreach($kategori as $kategori)
+@if(Localization::getCurrentLocale() == 'id')
+  <div style="padding-left:0px" class="col-md-4">
+  <h4 class="kategori">{{ $kategori->title_id }}</h4>
+    <?php $i = 0; ?>
+    @foreach($kategori->articles as $post)
+      <div class="panel panel-default">
+      <div class="panel-heading">{{ $post->title_id }}</div>
+        <div class="panel-body">{{ $post->content_id }}
+        <br>
+        <a href="{{ route('show.post', [$kategori->slug_id,$post->slug_id]) }}" class="btn btn-sm btn-primary">{{ trans('trans.readmore') }}</a>
+        </div>
+      </div>
+      <?php $i++ ?>
+      @if($i == 3)
+        <?php break; ?>
+      @endif
+    @endforeach
+  </div>
+@else
+<div style="padding-left:0px" class="col-md-4">
+  <h4 class="kategori">{{ $kategori->title_en }}</h4>
+      <?php $i = 0; ?>
+      @foreach($kategori->articles as $post)
+        <div class="panel panel-default">
+        <div class="panel-heading">{{ $post->title_en }}</div>
+          <div class="panel-body">{{ $post->content_en }}
+          <br>
+          <a href="{{ route('show.post', [$kategori->slug_en,$post->slug_en]) }}" class="btn btn-sm btn-primary">{{ trans('trans.readmore') }}</a>
+          </div>
+        </div>
+        <?php $i++ ?>
+        @if($i == 3)
+          <?php break; ?>
+        @endif
+      @endforeach
+  </div>
+@endif
+
+@endforeach
+
 @endsection

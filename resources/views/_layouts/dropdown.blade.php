@@ -15,7 +15,4 @@
             </ul>
         @endif
     </li>
-    @if($item->divider)
-        <li{{\HTML::attributes($item->divider)}}></li>
-    @endif
 @endforeach

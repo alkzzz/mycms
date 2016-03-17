@@ -1,8 +1,8 @@
 $font-size-base: 15px;
 
-$primary-color-dark:   #0097A7;
+$primary-color-dark:   #0DC9E1;
 $primary-color:        #00BCD4;
-$primary-color-light:  #B2EBF2;
+$primary-color-light:  #00AFC7;
 $primary-color-text:   #FFFFFF;
 $accent-color:         #FF5722;
 $primary-text-color:   #212121;
@@ -31,21 +31,28 @@ $dropdown-link-hover-bg: $primary-color;
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "resources/assets/sass/bootswatch";
 
+#maincontent {
+  min-height: 600px;
+}
+
 #top-menu {
-    height: 51px;
+    height: 5em;
     background-color: white;
     .navbar-form {
-        margin-bottom: 5px;
-        margin-top: 5px;
+        margin-bottom: 0.5em;
+        margin-top: 0.5em;
         margin-right: 0px;
     }
     > ul {
     list-style-type: none;
     margin-bottom: 0px;
-    margin-right: 10px;
+    margin-right: 1em;
     > li {
-            margin-top: 15px;
-            margin-left: 10px;
+            margin-top: 1em;
+            margin-left: 0px;
+            > a {
+              font-size: 14px;
+            }
         }
     }
 }
@@ -69,7 +76,6 @@ $dropdown-link-hover-bg: $primary-color;
 		font-size: 17px;
 		font-weight: bold;
 		border-radius: 10px;
-		padding: 22px;
 	};
 }
 
@@ -78,7 +84,6 @@ $dropdown-link-hover-bg: $primary-color;
     &:hover {
     color: $primary-text-color;
     font-size: 17px;
-    padding: 22px;
     }
 }
 
@@ -100,4 +105,33 @@ $dropdown-link-hover-bg: $primary-color;
         font-weight: bold;
         font-size : 16px;
     }
+}
+
+// sticky footer
+html {
+	position: relative;
+	min-height: 100%;
+}
+body {
+	margin-bottom: 10em;
+}
+
+.footer {
+	position: absolute;
+  color: #eee;
+	bottom: 0;
+	height: 10em;
+  width: 100%;
+	background-color: grey;
+}
+
+.kategori {
+  background-color: $primary-color;
+  border-bottom: 2px solid black;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  padding-left: 0.7em;
+  &:hover {
+    background-color: $primary-color-dark;
+  }
 }

@@ -8,6 +8,7 @@ use cms\Http\Requests;
 use cms\Http\Controllers\Controller;
 use Carbon\Carbon;
 use cms\Post;
+use cms\Category;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,9 @@ class HomeController extends Controller
                   ->join('sliders', 'posts.id_gambar', '=', 'sliders.id')
                   ->orderBy('sliders.urutan_slider', 'asc')
                   ->get();
-        return view('homepage', compact('title', 'sliders'));
+
+        $kategori = Category::with('articles')->where('id', '>', 1)->take(3)->get();
+        return view('homepage', compact('title', 'sliders','kategori'));
     }
 
     public function chart()
