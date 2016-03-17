@@ -33,6 +33,6 @@ class PostController extends Controller
     {
       $title = "Edit Artikel";
       $post = Post::article()->where('id', '=', $id)->firstOrFail();
-      return view('post.editPost', compact('title', 'post'));
+      return view('article.editPost', compact('title', 'post'));
     }
 }

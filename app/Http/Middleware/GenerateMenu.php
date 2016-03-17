@@ -24,7 +24,7 @@ class GenerateMenu
         $locale = Localization::getCurrentLocale();
         $daftarmenu = Post::page()->menu()->get()->sortBy('urutan');
         $daftarsubmenu = Post::page()->submenu()->get()->sortBy('urutan');
-        $mainmenu->add(trans('route.home'), route('homepage'));
+        $mainmenu->add(trans('trans.home'), route('homepage'));
         foreach ($daftarmenu as $menu) {
             if ($locale == 'id') {
                 $submenu = $mainmenu->add($menu->title_id, 'id'.'/'.$menu->slug_id);

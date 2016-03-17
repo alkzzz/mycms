@@ -1,8 +1,8 @@
 $font-size-base: 15px;
 
-$primary-color-dark:   #0097A7;
+$primary-color-dark:   #0DC9E1;
 $primary-color:        #00BCD4;
-$primary-color-light:  #B2EBF2;
+$primary-color-light:  #00AFC7;
 $primary-color-text:   #FFFFFF;
 $accent-color:         #FF5722;
 $primary-text-color:   #212121;
@@ -31,8 +31,8 @@ $dropdown-link-hover-bg: $primary-color;
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "resources/assets/sass/bootswatch";
 
-body {
-  min-height: 768px;
+#maincontent {
+  min-height: 600px;
 }
 
 #top-menu {
@@ -50,6 +50,9 @@ body {
     > li {
             margin-top: 1em;
             margin-left: 0px;
+            > a {
+              font-size: 14px;
+            }
         }
     }
 }
@@ -120,4 +123,15 @@ body {
 	height: 10em;
   width: 100%;
 	background-color: grey;
+}
+
+.kategori {
+  background-color: $primary-color;
+  border-bottom: 2px solid black;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  padding-left: 0.7em;
+  &:hover {
+    background-color: $primary-color-dark;
+  }
 }

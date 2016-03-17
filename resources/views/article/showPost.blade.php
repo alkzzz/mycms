@@ -26,9 +26,9 @@
 @section('content')
 	@if (Localization::getCurrentLocale() == 'id')
 	<h3>{{ $article->title_id }}</h3>
-	<p>{{ Str::words($article->content_id, 10) }} <a href="#">Read More</a></p>
+	<p>{{ $article->content_id }}</p>
 	@else
 	<h3>{{ $article->title_en }}</h3>
-	<p>{{ Str::words($article->content_en, 10) }} <a href="#">Read More</a></p>
+	<p>{{ $article->content_en }}</p>
 	@endif
 @stop

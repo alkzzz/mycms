@@ -9160,8 +9160,8 @@ input[type="checkbox"]:disabled:checked:after,
   color: inherit;
 }
 
-body {
-  min-height: 768px;
+#maincontent {
+  min-height: 600px;
 }
 
 #top-menu {
@@ -9184,6 +9184,10 @@ body {
 #top-menu > ul > li {
   margin-top: 1em;
   margin-left: 0px;
+}
+
+#top-menu > ul > li > a {
+  font-size: 14px;
 }
 
 .navbar {
@@ -9253,4 +9257,16 @@ body {
   height: 10em;
   width: 100%;
   background-color: grey;
+}
+
+.kategori {
+  background-color: #00BCD4;
+  border-bottom: 2px solid black;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  padding-left: 0.7em;
+}
+
+.kategori:hover {
+  background-color: #0DC9E1;
 }

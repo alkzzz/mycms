@@ -105,7 +105,7 @@
 
 
 <div class="container" id=maincontent>
-    <div class="row">
+    <div class="row" style="margin-bottom:5%">
       <!-- Content -->
     @yield('content')
     </div>
@@ -114,13 +114,13 @@
 <footer class="footer">
     <div class="container">
       <div class="row">
-          <div class="col-md-4">
+          <div style="padding-left:0px" class="col-md-4">
             <p>footer 1</p>
           </div>
-          <div class="col-md-4">
+          <div style="padding-left:0px" class="col-md-4">
             <p>footer 2</p>
           </div>
-          <div class="col-md-4">
+          <div style="padding-left:0px" class="col-md-4">
             <p>footer 3</p>
           </div>
       </div>
