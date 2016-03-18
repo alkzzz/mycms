@@ -132,9 +132,10 @@ body {
   padding: 0.5em;
   border-radius: 0.5em;
   padding-left: 0.7em;
-  &:hover {
+  &:hover, &:focus {
     background-color: $primary-color-dark;
     color: $text-color;
     font-weight: bold;
+    text-decoration: none;
   }
 }

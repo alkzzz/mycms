@@ -20,20 +20,19 @@
         <!-- elFinder translation (OPTIONAL) -->
         <script src="<?= asset($dir."/js/i18n/elfinder.$locale.js") ?>"></script>
     <?php } ?>
-    
+
     <!-- elFinder initialization (REQUIRED) -->
     <script type="text/javascript">
-        var FileBrowserDialogue = {
-            init: function() {
-                // Here goes your code for setting your custom things onLoad.
-            },
-            mySubmit: function (URL) {
-                // pass selected file path to TinyMCE
-                parent.tinymce.activeEditor.windowManager.getParams().setUrl(URL);
-
-                // close popup window
-                parent.tinymce.activeEditor.windowManager.close();
-            }
+    var FileBrowserDialogue = {
+        init: function() {
+        // Here goes your code for setting your custom things onLoad.
+        },
+        mySubmit: function (file, elf) {
+        // pass selected file data to TinyMCE
+        parent.tinymce.activeEditor.windowManager.getParams().oninsert(file, elf);
+        // close popup window
+        parent.tinymce.activeEditor.windowManager.close();
+          }
         }
 
         $().ready(function() {
@@ -42,13 +41,14 @@
                 <?php if($locale){ ?>
                     lang: '<?= $locale ?>', // locale
                 <?php } ?>
-                customData: { 
+                customData: {
                     _token: '<?= csrf_token() ?>'
                 },
                 url: '<?= route("elfinder.connector") ?>',  // connector URL
                 getFileCallback: function(file) { // editor callback
-                    FileBrowserDialogue.mySubmit(file.url); // pass selected file path to TinyMCE
-                }
+                    // Require `commandsOptions.getfile.onlyURL = false` (default)
+                    FileBrowserDialogue.mySubmit(file, elf); // pass selected file path to TinyMCE
+                  }
             }).elfinder('instance');
         });
     </script>

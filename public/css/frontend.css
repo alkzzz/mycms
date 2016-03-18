@@ -9268,8 +9268,10 @@ body {
   padding-left: 0.7em;
 }
 
-.kategori:hover {
+.kategori:hover,
+.kategori:focus {
   background-color: #0DC9E1;
   color: #212121;
   font-weight: bold;
+  text-decoration: none;
 }
