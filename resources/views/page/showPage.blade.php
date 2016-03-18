@@ -25,10 +25,10 @@
 
 @section('content')
 	@if (Localization::getCurrentLocale() == 'id')
-	<h3>{{ $page->title_id }}</h3>
+	<h4>{{ $page->title_id }}</h4>
 	<article>{!! $page->content_id !!} </article>
 	@else
-	<h3>{{ $page->title_en }}</h3>
+	<h4>{{ $page->title_en }}</h4>
 	<article>{!! $page->content_en !!} </article>
 	@endif
 @stop

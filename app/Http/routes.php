@@ -46,6 +46,6 @@ Route::group(['prefix' => Localization::setLocale(), 'middleware' => ['localize'
 {
     Route::get('/', ['as'=>'homepage', 'uses'=>'HomeController@index']);
 		Route::get('search', ['as'=>'search','uses'=>'HomeController@search']);
-    Route::get('{menu}', ['as'=>'show.page', 'uses'=>'PageController@showPage']);
-		Route::get('{kategori}/{post}', ['as'=>'show.post', 'uses'=>'PostController@showPost']);
+    Route::get('{slug}', ['as'=>'show.page', 'uses'=>'PageController@showPage']);
+		Route::get('{kategori}/{slug}', ['as'=>'show.post', 'uses'=>'PostController@showPost']);
 });

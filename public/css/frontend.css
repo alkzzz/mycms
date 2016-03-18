@@ -9261,6 +9261,7 @@ body {
 
 .kategori {
   background-color: #00BCD4;
+  color: #212121;
   border-bottom: 2px solid black;
   padding: 0.5em;
   border-radius: 0.5em;
@@ -9269,4 +9270,6 @@ body {
 
 .kategori:hover {
   background-color: #0DC9E1;
+  color: #212121;
+  font-weight: bold;
 }

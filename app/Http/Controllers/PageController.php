@@ -50,17 +50,17 @@ class PageController extends Controller
     	return view('page.listMenu', compact('title','daftarmenu','daftarsubmenu'));
     }
 
-    public function showPage($menu)
+    public function showPage($slug)
     {
 
         $locale = Localization::getCurrentLocale();
-        if ($page = Post::page()->where('slug_'.$locale, '=', $menu)->first())
+        if ($page = Post::page()->where('slug_'.$locale, '=', $slug)->first()) // menu page
         {
           return view('page.showPage', compact('page'));
         }
         else {
-          $page = Category::where('id','!=',1)
-                          ->where('slug_'.$locale, '=', $menu)->firstOrFail();
+          $page = Category::where('id','!=',1) // kategori page
+                          ->where('slug_'.$locale, '=', $slug)->firstOrFail();
           $daftar_artikel = Post::article()->where('id_kategori', '=', $page->id)->get();
           return view('kategori.index', compact('page', 'daftar_artikel'));
         }

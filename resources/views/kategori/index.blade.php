@@ -29,14 +29,16 @@
 			@foreach($daftar_artikel as $artikel)
 				<a href="{{ route('show.post', [$page->slug_id, $artikel->slug_id]) }}"><h4>{{ $artikel->title_id }}</h4></a>
 				<p>{{ $artikel->content_id }}</p>
+				<hr>
 			@endforeach
 			@endif
     	@else
-    	<h1>{{ $page->title_en }}</h1>
+    	<h2>{{ $page->title_en }}</h2>
 			@if($daftar_artikel)
 				@foreach($daftar_artikel as $artikel)
 				<a href="{{ route('show.post', [$page->slug_en, $artikel->slug_en]) }}"><h4>{{ $artikel->title_en }}</h4></a>
 				<p>{{ $artikel->content_en }}</p>
+				<hr>
 				@endforeach
 			@endif
     @endif

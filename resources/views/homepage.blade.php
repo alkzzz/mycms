@@ -52,7 +52,7 @@
 @foreach($kategori as $kategori)
 @if(Localization::getCurrentLocale() == 'id')
   <div style="padding-left:0px" class="col-md-4">
-  <h4 class="kategori">{{ $kategori->title_id }}</h4>
+  <h4> <a href="{{ route('show.page', $kategori->slug_id) }}" class="kategori">{{ $kategori->title_id }}</a></h4>
     <?php $i = 0; ?>
     @foreach($kategori->articles as $post)
       <div class="panel panel-default">
@@ -70,7 +70,7 @@
   </div>
 @else
 <div style="padding-left:0px" class="col-md-4">
-  <h4 class="kategori">{{ $kategori->title_en }}</h4>
+  <h4> <a href="{{ route('show.page', $kategori->slug_en) }}" class="kategori">{{ $kategori->title_en }}</a></h4>
       <?php $i = 0; ?>
       @foreach($kategori->articles as $post)
         <div class="panel panel-default">
