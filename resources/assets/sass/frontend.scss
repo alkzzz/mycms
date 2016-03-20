@@ -139,3 +139,14 @@ body {
     text-decoration: none;
   }
 }
+
+.carousel-caption {
+   background: rgba(0, 0, 0, 0.35);
+   border-radius: 3em;
+   a {
+     color: $primary-color-text;
+     &:hover, &:focus {
+       text-decoration: none;
+     }
+   }
+}

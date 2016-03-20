@@ -19,14 +19,19 @@
       @else
       <div class="item">
       @endif
-      <img src="{{ $feature->slider->gambar }}" @if(Localization::getCurrentLocale() == 'id') alt="{{ $feature->title_id }}" @else alt="{{ $feature->title_en }}" @endif>
+      <img class="img-responsive" src="{{ $feature->slider->gambar }}" @if(Localization::getCurrentLocale() == 'id') alt="{{ $feature->title_id }}" @else alt="{{ $feature->title_en }}" @endif>
       <div class="carousel-caption">
         @if(Localization::getCurrentLocale() == 'id')
-        <h3>{{ $feature->title_id }}</h3>
-        <p>{{ $feature->content_id }}</p>
+        <h3>
+          @if ($feature->post_type == 'page')
+          <a href="{{ route('show.page', $feature->slug_id) }}"
+          @else
+          <a href="{{ route('show.post', [$feature->category->slug_id,$feature->slug_id]) }}"
+          @endif>{{ $feature->title_id }}</a></h3>
+        <p class="hidden-xs">{{ $feature->content_id }}</p>
         @else
         <h3>{{ $feature->title_en }}</h3>
-        <p>{{ $feature->content_en }}</p>
+        <p class="hidden-xs">{{ $feature->content_en }}</p>
         @endif
       </div>
       </div>
@@ -51,7 +56,7 @@
 
 @foreach($kategori as $kategori)
 @if(Localization::getCurrentLocale() == 'id')
-  <div style="padding-left:0px" class="col-md-4">
+  <div class="col-md-4">
   <h4> <a href="{{ route('show.page', $kategori->slug_id) }}" class="kategori">{{ $kategori->title_id }}</a></h4>
     <?php $i = 0; ?>
     @foreach($kategori->articles as $post)
@@ -69,7 +74,7 @@
     @endforeach
   </div>
 @else
-<div style="padding-left:0px" class="col-md-4">
+<div class="col-md-4">
   <h4> <a href="{{ route('show.page', $kategori->slug_en) }}" class="kategori">{{ $kategori->title_en }}</a></h4>
       <?php $i = 0; ?>
       @foreach($kategori->articles as $post)

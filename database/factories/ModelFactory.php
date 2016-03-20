@@ -86,7 +86,7 @@ $factory->define(cms\Slider::class, function (Faker\Generator $faker) {
 
 $factory->defineAs(cms\Post::class, 'article', function (Faker\Generator $faker) {
     return [
-        'id_kategori' => $faker->numberBetween($min = 1, $max = 5),
+        'id_kategori' => $faker->numberBetween($min = 2, $max = 5),
         'title_id' => $faker->ColorName,
         'featured' => $faker->randomElement(array(true, false)),
         'slug_id' => lcfirst($faker->unique()->domainWord),

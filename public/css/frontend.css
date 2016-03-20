@@ -9275,3 +9275,17 @@ body {
   font-weight: bold;
   text-decoration: none;
 }
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 3em;
+}
+
+.carousel-caption a {
+  color: #FFFFFF;
+}
+
+.carousel-caption a:hover,
+.carousel-caption a:focus {
+  text-decoration: none;
+}
