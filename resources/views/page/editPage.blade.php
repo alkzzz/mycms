@@ -64,6 +64,15 @@
       <input id="title_id" class="form-control input-judul" type="text" name="title_id" value="{{ $page->title_id }}">
     </div>
     <div class="form-group">
+      <div class="checkbox" style="display:inline-block">
+        <label><input id="check_id" type="checkbox" name="check_link">Custom Link</label>
+      </div>
+      <div id="link_id">
+        <label style="display: block">Link :</label>
+        <input class="form-control input-judul link" type="text" name="link">
+      </div>
+    </div>
+    <div id="text_id" class="form-group">
       <label for="edittext_id">Isi Halaman Menu :</label>
       <textarea class="form-control" id="edittext_id" name="content_id">{{ $page->content_id }}</textarea>
     </div>
@@ -74,6 +83,15 @@
       <input id="title_en" class="form-control input-judul" type="text" name="title_en" value="{{ $page->title_en }}">
     </div>
     <div class="form-group">
+      <div class="checkbox" style="display:inline-block">
+        <label><input id="check_en" type="checkbox" name="check_link">Custom Link</label>
+      </div>
+      <div id="link_en">
+        <label style="display: block">Link :</label>
+        <input class="form-control input-judul link" type="text" name="link">
+      </div>
+    </div>
+    <div id="text_en" class="form-group">
       <label for="edittext_en">Isi Halaman Menu :</label>
       <textarea class="form-control" id="edittext_en" name="content_en">{{ $page->content_en }}</textarea>
     </div>
@@ -89,4 +107,45 @@
 @section('js')
 @parent
 @include('includes.tinymce')
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#link_id').hide();
+    $('input:checkbox[id="check_id"]').change(
+        function(){
+            if ($(this).is(':checked')) {
+              $('#link_id').fadeToggle( "slow", "linear" );
+              $('#text_id').fadeToggle( "slow", "linear" );
+            }
+            else {
+              $('#link_id').fadeToggle( "slow", "linear" );
+              $('#text_id').fadeToggle( "slow", "linear" );
+            }
+        });
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#link_en').hide();
+    $('input:checkbox[id="check_en"]').change(
+        function(){
+            if ($(this).is(':checked')) {
+              $('#link_en').fadeToggle( "slow", "linear" );
+              $('#text_en').fadeToggle( "slow", "linear" );
+            }
+            else {
+              $('#link_en').fadeToggle( "slow", "linear" );
+              $('#text_en').fadeToggle( "slow", "linear" );
+            }
+        });
+  });
+</script>
+<script type="text/javascript">
+$(document).ready(function () {
+  $(".link").change(function() {
+      if (this.value.indexOf("http://") !== 0) {
+          this.value = "http://" + this.value;
+      }
+  });
+});
+</script>
 @stop

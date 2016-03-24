@@ -24,6 +24,7 @@
 @stop
 
 @section('content')
+	<div class="col-md-12">
 	@if (Localization::getCurrentLocale() == 'id')
 	<h4>{{ $page->title_id }}</h4>
 	<article>{!! $page->content_id !!} </article>
@@ -31,4 +32,5 @@
 	<h4>{{ $page->title_en }}</h4>
 	<article>{!! $page->content_en !!} </article>
 	@endif
+	</div>
 @stop
