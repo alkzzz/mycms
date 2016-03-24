@@ -83,7 +83,7 @@
       </div>
       <div id="link_id">
         <label style="display: block">Link :</label>
-        <input class="form-control input-judul link" type="text" name="link">
+        <input class="form-control input-judul link" type="text" name="link_id">
       </div>
     </div>
     <div id="text_id" class="form-group">
@@ -102,7 +102,7 @@
       </div>
       <div id="link_en">
         <label style="display: block">Link :</label>
-        <input class="form-control input-judul link" type="text" name="link">
+        <input class="form-control input-judul link" type="text" name="link_en">
       </div>
     </div>
     <div id="text_en" class="form-group">

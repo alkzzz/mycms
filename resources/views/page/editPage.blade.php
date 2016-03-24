@@ -65,11 +65,11 @@
     </div>
     <div class="form-group">
       <div class="checkbox" style="display:inline-block">
-        <label><input id="check_id" type="checkbox" name="check_link">Custom Link</label>
+        <label><input id="check_id" type="checkbox" name="check_link" @if($page->link_id) checked @endif>Custom Link</label>
       </div>
       <div id="link_id">
         <label style="display: block">Link :</label>
-        <input class="form-control input-judul link" type="text" name="link">
+        <input class="form-control input-judul link" type="text" name="link_id" value="{{ $page->link_id }}">
       </div>
     </div>
     <div id="text_id" class="form-group">
@@ -84,11 +84,11 @@
     </div>
     <div class="form-group">
       <div class="checkbox" style="display:inline-block">
-        <label><input id="check_en" type="checkbox" name="check_link">Custom Link</label>
+        <label><input id="check_en" type="checkbox" name="check_link" @if($page->link_en) checked @endif>Custom Link</label>
       </div>
       <div id="link_en">
         <label style="display: block">Link :</label>
-        <input class="form-control input-judul link" type="text" name="link">
+        <input class="form-control input-judul link" type="text" name="link_en" value="{{ $page->link_en }}">
       </div>
     </div>
     <div id="text_en" class="form-group">
@@ -109,7 +109,12 @@
 @include('includes.tinymce')
 <script type="text/javascript">
   $(document).ready(function() {
+    if ($('#check_id').is(':checked')) {
+    $('#text_id').hide();
+    }
+    else {
     $('#link_id').hide();
+    }
     $('input:checkbox[id="check_id"]').change(
         function(){
             if ($(this).is(':checked')) {
@@ -125,7 +130,12 @@
 </script>
 <script type="text/javascript">
   $(document).ready(function() {
+    if ($('#check_en').is(':checked')) {
+    $('#text_en').hide();
+    }
+    else {
     $('#link_en').hide();
+    }
     $('input:checkbox[id="check_en"]').change(
         function(){
             if ($(this).is(':checked')) {

@@ -20,12 +20,12 @@ class CreatePostsTable extends Migration
             $table->string('title_id');
             $table->string('slug_id')->unique();
             $table->text('content_id');
+            $table->string('link_id');
             $table->string('title_en');
             $table->string('slug_en')->unique();
             $table->text('content_en');
+            $table->string('link_en');
             $table->integer('id_gambar')->unsigned();
-            $table->string('file');
-            $table->string('link');
             $table->string('post_type');
             $table->boolean('has_child')->default(false);
             $table->integer('post_parent')->default(0);

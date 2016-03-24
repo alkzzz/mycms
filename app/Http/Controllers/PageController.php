@@ -215,6 +215,10 @@ class PageController extends Controller
       $input = $request->all();
       $input['slug_id'] = str_slug($input['title_id']);
       $input['slug_en'] = str_slug($input['title_en']);
+      if ($input['link_id'] and $input['link_en'] != "") { // jika menggunakan link
+        $input['content_id'] = ""; // kosongkan text id
+        $input['content_en'] = ""; // kosongkan text en
+      }
       try {
       $page->update($input);
       } catch (\Illuminate\Database\QueryException $e) {

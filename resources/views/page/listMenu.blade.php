@@ -20,7 +20,9 @@
 		<li id="menu_{{ $menu->id }}" class="parent-menu default">
 		<div style="margin-bottom:1em;margin-top:1em;font-size:1.1em">{{ $menu->title_id }} / {{ $menu->title_en }} @if ($menu->has_child)
 			<a class="arrow-toggle" href="#menu_{{ $menu->slug_id }}" data-toggle="collapse" aria-expanded="false" aria-controls="{{ $menu->slug_id }}"><span class="fa fa-caret-down fa-fw"></span></a> @endif
-		<span class="pull-right">@if (!$menu->has_child)<a style="margin-right:1.5em" class="btn btn-info" href="{{ route('show.page', $menu->slug_id) }}" target="_blank">Show <i class="fa fa-eye fa-fw"></i></a>
+		<span class="pull-right">@if (!$menu->has_child)<a style="margin-right:1.5em" class="btn btn-info" @if ($menu->link_id) href="{{ $menu->link_id }}"
+	  @else href="{{ route('show.page', $menu->slug_id) }}"
+		@endif target="_blank">Show <i class="fa fa-eye fa-fw"></i></a>
 		@endif<a style="margin-right:1.5em" class="btn btn-warning" href="{{ route('dashboard::editPage', $menu->id) }}">Edit <i class="fa fa-edit fa-fw"></i></a><a class="btn btn-danger" href="{{ route('dashboard::showDeletePage', $menu->id) }}">Delete <i class="fa fa-trash fa-fw"></i></a></span></div>
  	@if(!$menu->has_child) </li>
 	@else
