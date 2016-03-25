@@ -11,8 +11,13 @@ class Post extends Model
 
    	protected $table = 'posts';
 
-    protected $fillable = ['urutan','id_kategori','has_submenu','title_id', 'slug_id', 'content_id',
-    						'title_en', 'slug_en', 'content_en', 'post_type', 'post_parent', 'has_child', 'id_gambar'];
+    protected $fillable = ['urutan','id_kategori','has_submenu','title_id', 'slug_id', 'content_id', 'link_id',
+    						'title_en', 'slug_en', 'content_en', 'link_en','post_type', 'post_parent', 'has_child', 'id_gambar'];
+
+    public function category()
+    {
+      return $this->belongsTo('cms\Category', 'id_kategori');
+    }
 
     public function slider()
     {

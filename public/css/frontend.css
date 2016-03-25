@@ -9261,12 +9261,31 @@ body {
 
 .kategori {
   background-color: #00BCD4;
+  color: #212121;
   border-bottom: 2px solid black;
   padding: 0.5em;
   border-radius: 0.5em;
   padding-left: 0.7em;
 }
 
-.kategori:hover {
+.kategori:hover,
+.kategori:focus {
   background-color: #0DC9E1;
+  color: #212121;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 3em;
+}
+
+.carousel-caption a {
+  color: #FFFFFF;
+}
+
+.carousel-caption a:hover,
+.carousel-caption a:focus {
+  text-decoration: none;
 }

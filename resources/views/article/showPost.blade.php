@@ -24,11 +24,13 @@
 @stop
 
 @section('content')
+	<div class="col-md-12">
 	@if (Localization::getCurrentLocale() == 'id')
-	<h3>{{ $article->title_id }}</h3>
+	<h4>{{ $article->title_id }}</h4>
 	<p>{{ $article->content_id }}</p>
 	@else
-	<h3>{{ $article->title_en }}</h3>
+	<h4>{{ $article->title_en }}</h4>
 	<p>{{ $article->content_en }}</p>
 	@endif
+	</div>
 @stop

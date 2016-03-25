@@ -18,10 +18,10 @@ class PostController extends Controller
         $this->middleware('menu');
     }
 
-    public function showPost($kategori, $post)
+    public function showPost($kategori, $slug)
     {
         $locale = Localization::getCurrentLocale();
-        $article = Post::article()->where('slug_'.$locale, '=', $post)->firstOrFail();
+        $article = Post::article()->where('slug_'.$locale, '=', $slug)->firstOrFail();
         $kat = Category::where('id','!=',1) // bukan kategori 1 yaitu menu
                           ->where('slug_'.$locale, '=', $kategori)
                           ->where('id', '=', $article->id_kategori)

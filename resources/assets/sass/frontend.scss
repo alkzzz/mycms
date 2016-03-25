@@ -127,11 +127,26 @@ body {
 
 .kategori {
   background-color: $primary-color;
+  color: $text-color;
   border-bottom: 2px solid black;
   padding: 0.5em;
   border-radius: 0.5em;
   padding-left: 0.7em;
-  &:hover {
+  &:hover, &:focus {
     background-color: $primary-color-dark;
+    color: $text-color;
+    font-weight: bold;
+    text-decoration: none;
   }
+}
+
+.carousel-caption {
+   background: rgba(0, 0, 0, 0.35);
+   border-radius: 3em;
+   a {
+     color: $primary-color-text;
+     &:hover, &:focus {
+       text-decoration: none;
+     }
+   }
 }
