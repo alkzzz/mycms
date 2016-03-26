@@ -12,7 +12,9 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('frontend.scss', 'public/css/frontend.css');
+    mix.sass(['frontend.scss',
+      			'../../../bower_components/font-awesome/scss/font-awesome.scss'], 
+            'public/css/frontend.css');
 	  mix.scripts(['../../../bower_components/jquery/dist/jquery.min.js',
     			'../../../node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js'],
     			'public/js/frontend.js');
