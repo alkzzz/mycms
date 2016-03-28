@@ -2,13 +2,7 @@
 
 @section('title', $title)
 
-@section('css')
-@parent
-<link rel="stylesheet" href="{{ asset('css/fakeLoader.css') }}">  
-@endsection
-
 @section('slider')
-  <div id="fakeLoader"></div>
   <div id="imageSlider" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -105,11 +99,10 @@
 
 @section('js')
 @parent
-<script src="{{ asset('js/fakeLoader.min.js') }}"></script>
 <script type="text/javascript">
-  $("#fakeLoader").fakeLoader({
-    spinner:"spinner6",
-    bgColor:"#00BCD4",
-  });
+$('#imageSlider').hide();
+$('.img-responsive').load(function() {
+  $('#imageSlider').fadeIn('slow');
+});
 </script>
 @endsection
