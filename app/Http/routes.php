@@ -29,6 +29,7 @@ Route::group(['as' => 'dashboard::', 'middleware' => ['role:administrator']], fu
 		Route::get('dashboard/slider/{id}/upload', ['as'=>'addImageSlider', 'uses'=>'SliderController@addImageSlider']);
 		Route::get('dashboard/slider/{id}/remove',['as'=>'showRemoveSlider', 'uses'=>'SliderController@showRemoveSlider']);
 		Route::patch('dashboard/slider/{id}/remove',['as'=>'removeSlider', 'uses'=>'SliderController@removeSlider']);
+		Route::get('dashboard/dosen',['as'=>'dosen', 'uses'=>'DosenController@daftarDosen']);
 });
 
 Route::get('get/chart', ['as'=>'getChartData', 'uses'=>'HomeController@getChartData']);
@@ -46,6 +47,7 @@ Route::group(['prefix' => Localization::setLocale(), 'middleware' => ['localize'
 {
     Route::get('/', ['as'=>'homepage', 'uses'=>'HomeController@index']);
 		Route::get('search', ['as'=>'search','uses'=>'HomeController@search']);
+		Route::get(Localization::transRoute('trans.dosen'), ['as'=>'dosen.index','uses'=>'DosenController@index']);
     Route::get('{slug}', ['as'=>'show.page', 'uses'=>'PageController@showPage']);
 		Route::get('{kategori}/{slug}', ['as'=>'show.post', 'uses'=>'PostController@showPost']);
 });

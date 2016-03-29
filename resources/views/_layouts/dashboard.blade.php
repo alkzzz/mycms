@@ -36,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ route('dashboard::home') }}">CMS Dashboard</a>
+                <a class="navbar-brand" href="{{ route('homepage') }}">Homepage</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -82,6 +82,9 @@
                         </li>
                         <li>
                             <a href="{{ route('dashboard::menu') }}"><i class="fa fa-th-list fa-fw"></i> Menu</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('dashboard::dosen') }}"><i class="fa fa-users fa-fw"></i> Dosen</a>
                         </li>
                         <li>
                             <a href="{{ route('dashboard::slider') }}"><i class="fa fa-picture-o fa-fw"></i> Slider</a>
