@@ -102,7 +102,7 @@
 <script type="text/javascript">
 $('#imageSlider').hide();
 $('.img-responsive').load(function() {
-  $('#imageSlider').fadeIn('slow');
+  $('#imageSlider').fadeIn(2000);
 });
 </script>
 @endsection
