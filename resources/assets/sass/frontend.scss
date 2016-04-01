@@ -113,15 +113,26 @@ html {
 	min-height: 100%;
 }
 
-
-footer{
-	position: fixed;
+footer {
+	position: static;
 	bottom: 0;
-}
-
-@media (max-height:800px){
-	footer { position: static; }
-	header { padding-top:40px; }
+   .footer-link {
+    height: 10em;
+    background-color: #222;
+    p {
+      color: white;
+      text-align: center;
+    }
+  }
+   .copyright {
+    height: 2.6em;
+    background-color: #333;
+    p {
+      color: white;
+      text-align: center;
+      display: inline-block;
+    }
+  }
 }
 
 .kategori {
@@ -148,148 +159,4 @@ footer{
        text-decoration: none;
      }
    }
-}
-
-.footer-distributed {
-	background-color: #292c2f;
-	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-	//Instead of the line below you could use @include box-sizing($bs)
-	box-sizing: border-box;
-	width: 100%;
-	text-align: left;
-	font: bold 16px sans-serif;
-	padding: 55px 50px;
-	margin-top: 80px;
-	.footer-left {
-		display: inline-block;
-		vertical-align: top;
-		width: 40%;
-	}
-	.footer-center {
-		display: inline-block;
-		vertical-align: top;
-		width: 35%;
-		i {
-			background-color: #33383b;
-			color: #ffffff;
-			font-size: 25px;
-			width: 38px;
-			height: 38px;
-			//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-			border-radius: 50%;
-			text-align: center;
-			line-height: 42px;
-			margin: 10px 15px;
-			vertical-align: middle;
-			&.fa-envelope {
-				font-size: 17px;
-				line-height: 38px;
-			}
-		}
-		p {
-			display: inline-block;
-			color: #ffffff;
-			vertical-align: middle;
-			margin: 0;
-			span {
-				display: block;
-				font-weight: normal;
-				font-size: 14px;
-				line-height: 2;
-			}
-			a {
-				color: #5383d3;
-				text-decoration: none;
-			}
-		}
-	}
-	.footer-right {
-		display: inline-block;
-		vertical-align: top;
-		width: 20%;
-	}
-	h3 {
-		color: #FFFFFF;
-		font: normal 36px Cookie, cursive;
-		margin: 0;
-		span {
-			color: #5383d3;
-		}
-	}
-	.footer-links {
-		color: #ffffff;
-		margin: 20px 0 12px;
-		padding: 0;
-		a {
-			display: inline-block;
-			line-height: 1.8;
-			text-decoration: none;
-			color: inherit;
-		}
-	}
-	.footer-company-name {
-		color: #8f9296;
-		font-size: 14px;
-		font-weight: normal;
-		margin: 0;
-	}
-	.footer-company-about {
-		line-height: 20px;
-		color: #92999f;
-		font-size: 13px;
-		font-weight: normal;
-		margin: 0;
-		span {
-			display: block;
-			color: #FFFFFF;
-			font-size: 14px;
-			font-weight: bold;
-			margin-bottom: 20px;
-		}
-	}
-	.footer-icons {
-		margin-top: 25px;
-		a {
-			display: inline-block;
-			width: 35px;
-			height: 35px;
-			cursor: pointer;
-			background-color: #33383b;
-			//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-			border-radius: 2px;
-			font-size: 20px;
-			color: #FFFFFF;
-			text-align: center;
-			line-height: 35px;
-			margin-right: 3px;
-			margin-bottom: 5px;
-		}
-	}
-}
-@media(max-width: 880px) {
-	.footer-distributed {
-		font: bold 14px sans-serif;
-		.footer-left {
-      display: block;
-      width: 100%;
-      margin-bottom: 40px;
-      text-align: center;
-		}
-		.footer-center {
-      display: block;
-      width: 100%;
-      margin-bottom: 40px;
-      text-align: center;
-			i {
-				margin-left: 0;
-			}
-		}
-		.footer-right {
-      display: block;
-      width: 100%;
-      margin-bottom: 40px;
-      text-align: center;
-		}
-	}
 }
