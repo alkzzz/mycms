@@ -40,7 +40,8 @@
 	@endif
 	@endforeach
 	</ul>
-	<button id="urut" type="button" class="btn btn-primary" style="margin-top:2%;margin-bottom:10%">Urutkan Menu</button>
+	</hr>
+	<button id="urut" type="button" class="btn btn-primary">Urutkan Menu</button>
 
 	@section('js')
 	@parent

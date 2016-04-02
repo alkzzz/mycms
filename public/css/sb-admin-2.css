@@ -393,16 +393,14 @@ table.dataTable thead .sorting:after {
 
 .highlight {
   list-style: none;
-  height: 30px;
-  border: dotted 2px black;
-  background-color: #ddd;
+  height: 2.3em;
+  opacity: 0.4;
 }
 
 .slide-highlight {
   list-style: none;
   height: 100px;
-  border: dotted 2px black;
-  background-color: #ddd;
+  opacity: 0.4;
 }
 
 .lang-help {
@@ -416,11 +414,13 @@ table.dataTable thead .sorting:after {
   color: #5f82d7;
   margin-bottom: 0px;
   margin-top: 0px;
-  margin-left: 3%;
 }
 
 .topmenu-list {
   display: inline-block;
-  padding: 5px;
-  margin-left: 3%;
+}
+
+#urut {
+  margin-top: 2%;
+  margin-bottom: 10%;
 }

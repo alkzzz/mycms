@@ -18,21 +18,21 @@
   <div class="clearfix"></div>
   <div class="row">
   <h3 class="col-lg-3 col-md-4 col-xs-12 topmenu-title">Gambar Slideshow</h3>
-  <h3 class="col-lg-2 col-xs-12 topmenu-title">Judul Indonesia</h3>
-  <h3 class="col-lg-2 col-xs-12 topmenu-title">Judul English</h3>
+  <h3 class="col-lg-2 col-xs-12 topmenu-title">Judul (ID)</h3>
+  <h3 class="col-lg-2 col-xs-12 topmenu-title">Judul (EN)</h3>
   </div>
   <ul id="sortable" class="parent-menu default">
     @foreach($sliders as $slider)
-        <div class="row">
         <li id="slider_{{ $slider->id }}">
+          <div class="row">
           <div style="margin-bottom:2%" class="col-lg-3 col-md-4 col-xs-12 topmenu-list">
               <a href="{{ $slider->gambar }}" data-lightbox="image-{{ $slider->id }}" data-title="{{ $slider->title_id }}"><img src="{{ $slider->thumbnail }}" /></a>
           </div>
           <div class="col-lg-2 col-xs-12 topmenu-list">
-              <h5> {{ $slider->title_id }} </h5>
+              <h5> <strong>{{ $slider->title_id }}</strong> </h5>
           </div>
           <div class="col-lg-2 col-xs-12 topmenu-list">
-              <h5> {{ $slider->title_en }} </h5>
+              <h5> <strong>{{ $slider->title_en }}</strong> </h5>
           </div>
           <div style="padding-top:1em;padding-bottom:2em" class="col-lg-3 col-md-4 col-xs-12">
               @if ($slider->post_type == 'page')
@@ -42,8 +42,8 @@
               @endif
               <a style="margin-bottom:0.5em" href="{{ route('dashboard::showRemoveSlider', $slider->pid) }}" class="btn btn-danger">Delete <i class="fa fa-trash fa-fw"></i></a>
            </div>
+          </div>
         </li>
-      </div>
     @endforeach
   </ul>
 <button id="urut" type="button" class="btn btn-primary" style="margin-top:2%;margin-bottom:10%">Urutkan Slider</button>

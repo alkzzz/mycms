@@ -14,25 +14,31 @@
 @if(!count($topmenu))
 <h3>Website belum memiliki top menu. Silahkan tambahkan top menu dengan mengklik tombol <b>Tambah</b>.</h3>
 @else
-  <h3 class="topmenu-title" style="width:30%">Nama Menu</h3>
-  <h3 class="topmenu-title">Link Menu</h3>
+  <div class="row">
+  <h3 class="topmenu-title col-md-3 col-xs-10">Nama Menu</h3>
+  <h3 class="topmenu-title col-md-3 col-xs-10">Link Menu</h3>
+  </div>
   <ul id="sortable" class="parent-menu default">
     @foreach($topmenu as $top)
-        <li style="margin-bottom:15px" id="topmenu_{{ $top->id }}">
-          <div class="topmenu-list" style="width:30%" >
+        <li id="topmenu_{{ $top->id }}">
+          <div class="row">
+          <div class="topmenu-list col-md-3 col-xs-12">
               {{ $top->nama_topmenu }}
           </div>
-          <div class="topmenu-list">
+          <div class="topmenu-list col-md-4 col-xs-12">
               <a href="{{ $top->link_topmenu }}" style="color:#333" target="_blank">{{ $top->link_topmenu }}</a>
           </div>
-          <div style="display:inline-block;margin-left:2em" class="pull-right">
-           <a style="margin-left:2em" href="{{ route('dashboard::showDeleteTopMenu', $top->id) }}" class="btn btn-danger pull-right">Delete <i class="fa fa-trash fa-fw"></i></a>
-           <a style="margin-left:2em" href="{{ route('dashboard::editTopMenu', $top->id) }}" class="btn btn-warning pull-right">Edit <i class="fa fa-edit fa-fw"></i></a>
+          <div class="col-md-4 col-xs-12" style="margin-bottom:1em">
+            <a href="{{ route('dashboard::editTopMenu', $top->id) }}" class="btn btn-warning">Edit <i class="fa fa-edit fa-fw"></i></a>
+             <a href="{{ route('dashboard::showDeleteTopMenu', $top->id) }}" class="btn btn-danger">Delete <i class="fa fa-trash fa-fw"></i></a>
+          </div>
         </li>
     @endforeach
   </ul>
 </div>
-<button id="urut" type="button" class="btn btn-primary" style="margin-top:2%;margin-bottom:10%">Urutkan Menu</button>
+<hr>
+<button id="urut" type="button" class="btn btn-primary">Urutkan Menu</button>
+
 @endif
 @stop
 
@@ -48,6 +54,7 @@ $(document).ready(function() {
       var urutan = $('#sortable').sortable("serialize");
 
       $('#sortable').sortable({
+        containment: "#contain",
         disabled : true
       });
 
