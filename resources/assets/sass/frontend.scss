@@ -107,15 +107,8 @@ $dropdown-link-hover-bg: $primary-color;
     }
 }
 
-// sticky footer
-html {
-	position: relative;
-	min-height: 100%;
-}
 
 footer {
-	position: static;
-	bottom: 0;
    .footer-link {
     height: 10em;
     background-color: #222;
@@ -125,12 +118,11 @@ footer {
     }
   }
    .copyright {
-    height: 2.6em;
+    height: 1%;
     background-color: #333;
     p {
       color: white;
       text-align: center;
-      display: inline-block;
     }
   }
 }

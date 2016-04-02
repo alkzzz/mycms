@@ -131,11 +131,12 @@
       </div>
     </div>
     <div class="row copyright">
-      <div class="col-md-12">
-        <p>
-          Copyright<i class="fa fa-copyright"></i> Fakultas Teknik 2016
-        </p>
-          <button class="btn btn-primary pull-right" type="button" id="btnTop"><i class="fa fa-arrow-up fa-lg fa-fw"></i></button>
+      <div class="col-md-12 clearfix">
+          <p>
+            <span><button class="btn btn-primary pull-right" type="button" id="btnTop"><i class="fa fa-arrow-up fa-fw"></i></button>
+            </span>
+            Copyright<i class="fa fa-copyright"></i> Fakultas Teknik 2016
+          </p>
       </div>
     </div>
   </div>

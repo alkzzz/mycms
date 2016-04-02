@@ -9241,16 +9241,6 @@ input[type="checkbox"]:disabled:checked:after,
   font-size: 16px;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-footer {
-  position: static;
-  bottom: 0;
-}
-
 footer .footer-link {
   height: 10em;
   background-color: #222;
@@ -9262,14 +9252,13 @@ footer .footer-link p {
 }
 
 footer .copyright {
-  height: 2.6em;
+  height: 1%;
   background-color: #333;
 }
 
 footer .copyright p {
   color: white;
   text-align: center;
-  display: inline-block;
 }
 
 .kategori {
