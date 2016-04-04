@@ -16,7 +16,7 @@
 <h3>Website belum memiliki slider. Silahkan tambahkan slider dengan mengklik tombol <b>Tambah</b>.</h3>
 @else
   <div class="row">
-  <h3 class="col-lg-3 col-md-4 col-xs-12 topmenu-title">Gambar Slideshow</h3>
+  <h3 class="col-md-3 col-xs-12 topmenu-title">Gambar</h3>
   <h3 class="col-md-3 col-xs-12 topmenu-title">Judul (ID)</h3>
   <h3 class="col-md-3 col-xs-12 topmenu-title">Judul (EN)</h3>
   </div>
@@ -24,16 +24,16 @@
     @foreach($sliders as $slider)
         <li id="slider_{{ $slider->id }}">
           <div class="row">
-          <div style="margin-bottom:2%" class="col-lg-3 col-md-4 col-xs-12 topmenu-list">
+          <div style="margin-bottom:2%" class="col-md-3 col-xs-12 topmenu-list">
               <a href="{{ $slider->gambar }}" data-lightbox="image-{{ $slider->id }}" data-title="{{ $slider->title_id }}"><img src="{{ $slider->thumbnail }}" /></a>
           </div>
-          <div class="col-md-3 col-xs-12 topmenu-list" style="margin-top:0.5em">
+          <div class="col-md-3 col-xs-12 slider-list" style="margin-top:0.5em">
               {{ $slider->title_id }}
           </div>
           <div class="col-md-3 col-xs-12 slider-list" style="margin-top:0.5em">
               {{ $slider->title_en }}
           </div>
-          <div style="padding-top:1em;padding-bottom:2em" class="col-md-2 col-xs-12">
+          <div style="padding-top:1em;padding-bottom:2em" class="col-md-3 col-xs-12">
               @if ($slider->post_type == 'page')
               <a style="margin-bottom:0.5em" href="{{ route('dashboard::editPage', $slider->pid) }}" class="btn btn-warning">Edit <i class="fa fa-edit fa-fw"></i></a>
               @else

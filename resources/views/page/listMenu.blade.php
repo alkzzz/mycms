@@ -11,15 +11,15 @@
 @include('includes.alert')
 	<a href="{{ route('dashboard::addPage') }}"><button type="button" class="btn btn-success">Tambah <i class="fa fa-plus-square fa-fw"></i></button></a>
 	<hr>
-	<h3 class="lang-help"><em>Indonesia</em> / <em>English</em></h3>
-	<ul>
+	<h3 style="margin-left:0px" class="lang-help">Indonesia / English</h3>
+	<ul style="padding-left:0px">
 		<div class="row">
 			<div class="col-md-6 col-xs-12">
 				<li class="parent-menu default">Beranda / Home</li>
 			</div>
 		</div>
 	</ul>
-	<ul id="sortable">
+	<ul id="sortable" style="padding-left:0px">
 	@foreach ($daftarmenu as $menu)
 		<li id="menu_{{ $menu->id }}" class="parent-menu default">
 		<div class="row">

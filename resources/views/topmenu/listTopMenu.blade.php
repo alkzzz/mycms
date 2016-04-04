@@ -15,14 +15,14 @@
 <h3>Website belum memiliki top menu. Silahkan tambahkan top menu dengan mengklik tombol <b>Tambah</b>.</h3>
 @else
   <div class="row">
-  <h3 class="topmenu-title col-md-3 col-xs-10">Nama Menu</h3>
-  <h3 class="topmenu-title col-md-3 col-xs-10">Link Menu</h3>
+  <h3 class="topmenu-title col-md-4 col-xs-12">Nama Menu</h3>
+  <h3 class="topmenu-title col-md-4 col-xs-12">Link Menu</h3>
   </div>
-  <ul id="sortable" class="parent-menu default">
+  <ul id="sortable" class="parent-menu default" style="padding-left:0px">
     @foreach($topmenu as $top)
         <li id="topmenu_{{ $top->id }}">
           <div class="row">
-          <div class="topmenu-list col-md-3 col-xs-12">
+          <div class="topmenu-list col-md-4 col-xs-12">
               {{ $top->nama_topmenu }}
           </div>
           <div class="topmenu-list col-md-4 col-xs-12">

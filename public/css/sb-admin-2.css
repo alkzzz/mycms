@@ -372,14 +372,14 @@ table.dataTable thead .sorting:after {
 
 .parent-menu {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
   padding-top: 1em;
 }
 
 .child-menu {
   font-weight: bold;
   padding-top: 0.75em;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .default {
@@ -405,10 +405,7 @@ table.dataTable thead .sorting:after {
 
 .topmenu-title {
   display: inline-block;
-  padding: 10px;
   color: #5f82d7;
-  margin-bottom: 0px;
-  margin-top: 0px;
 }
 
 .topmenu-list {
@@ -416,7 +413,7 @@ table.dataTable thead .sorting:after {
 }
 
 .slider-list {
-  font-size: 16px;
+  font-size: 15px;
 }
 
 #urut {
