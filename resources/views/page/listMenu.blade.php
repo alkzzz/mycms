@@ -13,26 +13,43 @@
 	<hr>
 	<h3 class="lang-help"><em>Indonesia</em> / <em>English</em></h3>
 	<ul>
-	<li style="margin-bottom:1em;margin-top:1em" class="parent-menu default">Beranda / Home</li>
+		<div class="row">
+			<div class="col-md-6 col-xs-12">
+				<li class="parent-menu default">Beranda / Home</li>
+			</div>
+		</div>
 	</ul>
 	<ul id="sortable">
 	@foreach ($daftarmenu as $menu)
 		<li id="menu_{{ $menu->id }}" class="parent-menu default">
-		<div style="margin-bottom:1em;margin-top:1em;font-size:1.1em">{{ $menu->title_id }} / {{ $menu->title_en }} @if ($menu->has_child)
+		<div class="row">
+		<div class="col-md-6 col-xs-12">{{ $menu->title_id }} / {{ $menu->title_en }} @if ($menu->has_child)
 			<a class="arrow-toggle" href="#menu_{{ $menu->slug_id }}" data-toggle="collapse" aria-expanded="false" aria-controls="{{ $menu->slug_id }}"><span class="fa fa-caret-down fa-fw"></span></a> @endif
-		<span class="pull-right">@if (!$menu->has_child)<a style="margin-right:1.5em" class="btn btn-info" @if ($menu->link_id) href="{{ $menu->link_id }}"
+		</div> <!-- div col-md-6 > -->
+		<div class="col-md-6 col-xs-12">@if (!$menu->has_child)
+			<a class="btn btn-info" @if ($menu->link_id) href="{{ $menu->link_id }}"
 	  @else href="{{ route('show.page', $menu->slug_id) }}"
 		@endif target="_blank">Show <i class="fa fa-eye fa-fw"></i></a>
-		@endif<a style="margin-right:1.5em" class="btn btn-warning" href="{{ route('dashboard::editPage', $menu->id) }}">Edit <i class="fa fa-edit fa-fw"></i></a><a class="btn btn-danger" href="{{ route('dashboard::showDeletePage', $menu->id) }}">Delete <i class="fa fa-trash fa-fw"></i></a></span></div>
+	@endif
+	<a class="btn btn-warning" href="{{ route('dashboard::editPage', $menu->id) }}">Edit <i class="fa fa-edit fa-fw"></i></a>
+	<a class="btn btn-danger" href="{{ route('dashboard::showDeletePage', $menu->id) }}">Delete <i class="fa fa-trash fa-fw"></i></a>
+	</div> <!-- div col-md-6 > -->
+	</div> <!-- div row > -->
  	@if(!$menu->has_child) </li>
 	@else
-			<ul id= "menu_{{ $menu->slug_id }}" class="collapse child-menu default">
+			<ul id= "menu_{{ $menu->slug_id }}" class="collapse">
 			@foreach($daftarsubmenu as $submenu)
 			@if($submenu->post_parent == $menu->id)
-				<li id="submenu_{{ $submenu->id }}">
-				<div style="margin-bottom:1em;margin-top:1em">{{ $submenu->title_id }} / {{ $submenu->title_en }}
-				<span class="pull-right"><a style="margin-right:25px" class="btn btn-info" href="{{ route('show.page', $submenu->slug_id) }}" target="_blank">Show <i class="fa fa-eye fa-fw"></i></a><a style="margin-right:1.5em" class="btn btn-warning" href="{{ route('dashboard::editPage', $submenu->id) }}">Edit <i class="fa fa-edit fa-fw"></i></a><a style="margin-right:-5px" class="btn btn-danger" href="{{ route('dashboard::showDeletePage', $submenu->id) }}">Delete <i class="fa fa-trash fa-fw"></i></a>
-				</div></li>
+				<li id="submenu_{{ $submenu->id }}" class="child-menu default"\>
+				<div class="row">
+				<div class="col-md-6 col-xs-12"  style="margin-right:60px">{{ $submenu->title_id }} / {{ $submenu->title_en }}</div>
+				<div class="col-md-5 col-xs-12">
+					<a class="btn btn-info" href="{{ route('show.page', $submenu->slug_id) }}" target="_blank">Show <i class="fa fa-eye fa-fw"></i></a>
+					<a class="btn btn-warning" href="{{ route('dashboard::editPage', $submenu->id) }}">Edit <i class="fa fa-edit fa-fw"></i></a>
+					<a class="btn btn-danger" href="{{ route('dashboard::showDeletePage', $submenu->id) }}">Delete <i class="fa fa-trash fa-fw"></i></a>
+				</div>
+				</div>
+				</li>
 		</li>
 			@endif
 			@endforeach

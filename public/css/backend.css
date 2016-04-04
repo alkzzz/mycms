@@ -10935,20 +10935,15 @@ table.dataTable thead .sorting:after {
 }
 
 .parent-menu {
-  font-size: 18px;
   font-weight: bold;
-  margin-bottom: 0px;
-  margin-top: 0px;
-  padding: 5px;
+  padding: 1em;
+  font-size: 20px;
 }
 
 .child-menu {
-  font-size: 18px;
-  margin-left: 30px;
   font-weight: bold;
-  margin-bottom: 0px;
-  margin-top: 0px;
-  padding: 5px;
+  padding-top: 0.75em;
+  font-size: 18px;
 }
 
 .default {
