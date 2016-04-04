@@ -30,7 +30,12 @@
           @endif>{{ $feature->title_id }}</a></h3>
         <p class="hidden-xs">{{ $feature->content_id }}</p>
         @else
-        <h3>{{ $feature->title_en }}</h3>
+          <h3>
+            @if ($feature->post_type == 'page')
+            <a href="{{ route('show.page', $feature->slug_en) }}"
+            @else
+            <a href="{{ route('show.post', [$feature->category->slug_en,$feature->slug_en]) }}"
+            @endif>{{ $feature->title_en }}</a></h3>
         <p class="hidden-xs">{{ $feature->content_en }}</p>
         @endif
       </div>
