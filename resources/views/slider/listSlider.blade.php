@@ -25,7 +25,7 @@
         <li id="slider_{{ $slider->id }}">
           <div class="row">
           <div style="margin-bottom:2%" class="col-md-3 col-xs-12 topmenu-list">
-              <a href="{{ $slider->gambar }}" data-lightbox="image-{{ $slider->id }}" data-title="{{ $slider->title_id }}"><img src="{{ $slider->thumbnail }}" /></a>
+              <a href="{{ $slider->gambar }}" data-lightbox="image-{{ $slider->id }}" data-title="{{ $slider->title_id }}"><img style="width:200px;height:100px" src="{{ $slider->gambar }}" /></a>
           </div>
           <div class="col-md-3 col-xs-12 slider-list" style="margin-top:0.5em">
               {{ $slider->title_id }}

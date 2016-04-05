@@ -42,9 +42,9 @@ $(function() {
       order : [[ 1, "asc" ]],
       ajax: "{!! route('dashboard::dataTableSlider') !!}",
       columns: [
-          { data: 'slider.thumbnail',
+          { data: 'slider.gambar',
             render: function(data, type, row) {
-            return '<img src="'+data+'" />';}, name:'slider.thumbnail' },
+            return '<img style="width:200px;height:100px" src="'+data+'" />';}, name:'slider.gambar' },
           { data: 'title_id', name: 'title_id' },
           { data: 'title_en', name: 'title_en' },
           { data: 'edit', name: 'edit', orderable: false, searchable: false},

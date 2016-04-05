@@ -17,7 +17,7 @@ class SliderController extends Controller
     public function daftarslider()
     {
       $title = 'Daftar Slider';
-      $sliders = DB::table('posts')->select('posts.id AS pid', 'title_id', 'title_en', 'post_type', 'id_gambar', 'sliders.id AS id', 'sliders.gambar', 'sliders.thumbnail', 'sliders.urutan_slider')
+      $sliders = DB::table('posts')->select('posts.id AS pid', 'title_id', 'title_en', 'post_type', 'id_gambar', 'sliders.id AS id', 'sliders.gambar', 'sliders.urutan_slider')
                                    ->where('featured', '=', true)
                                    ->join('sliders', 'posts.id_gambar', '=', 'sliders.id')
                                    ->orderBy('sliders.urutan_slider', 'asc')
@@ -42,13 +42,13 @@ class SliderController extends Controller
 
     public function dataTableSlider()
     {
-      $posts = Post::article()->orWhere('post_parent','<>',0)
-                              ->where('featured', '=', false)
-                              ->latest()->with('slider')->get();
+      $posts = Post::with('slider')
+                    ->where('featured', '=', false)
+                    ->latest()->get();
 
       return Datatables::of($posts)
               ->addColumn('edit', function ($post) {
-                if ($post->slider->gambar == '') {
+                if ($post->id_gambar == 1) {
                   if ($post->post_type == 'page') {
                     return '<a href="'.route('dashboard::editPage', $post->id).'" class="btn btn-info"><i class="fa fa-camera fa-fw"></i> Tambahkan gambar</a>';
                   }
