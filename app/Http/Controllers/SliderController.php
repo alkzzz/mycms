@@ -11,7 +11,6 @@ use cms\Slider;
 use Flash;
 use Datatables;
 use DB;
-use Log;
 
 class SliderController extends Controller
 {
@@ -32,7 +31,6 @@ class SliderController extends Controller
       $data = $request->all();
       parse_str($data['urutan'], $urutan);
       $daftarslider = Slider::all();
-      Log::info($data);
       foreach ($urutan['slider'] as $key => $value) {
           foreach ($daftarslider as $slider) {
               $i = array_search($slider->id, $urutan['slider']);
