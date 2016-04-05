@@ -75,6 +75,18 @@
     <div id="text_id" class="form-group">
       <label for="edittext_id">Isi Halaman Menu :</label>
       <textarea class="form-control" id="edittext_id" name="content_id">{{ $page->content_id }}</textarea>
+      <br>
+      <div class="form-group">
+      <label><input class="tampilkan" name="featured" type="checkbox" value="1"> Tampilkan di slideshow?</label>
+      <br>
+      <div class="form-group pilihgambar" style="display:none">
+      <input class="preview" name="gambar" type="file">
+      <img style="width:200px;height:100px" class="img" src="" alt="Tidak ada gambar"/>
+      <p>Preview</p>
+      <button class="btn btn-sm btn-danger cleargambar">Clear</button>
+      <p>*Gambar yang diupload akan diresize sesuai ukuran slider</strong></p>
+      </div>
+      </div>
     </div>
   </div>
   <div id="en2" class="tab-pane fade in">
@@ -94,6 +106,18 @@
     <div id="text_en" class="form-group">
       <label for="edittext_en">Isi Halaman Menu :</label>
       <textarea class="form-control" id="edittext_en" name="content_en">{{ $page->content_en }}</textarea>
+      <br>
+      <div class="form-group">
+      <label><input class="tampilkan" name="featured" type="checkbox" value="1"> Tampilkan di slideshow?</label>
+      <br>
+      <div class="form-group pilihgambar" style="display:none">
+      <input class="preview" name="gambar" type="file">
+      <img style="width:200px;height:100px" class="img" src="" alt="Tidak ada gambar"/>
+      <p>Preview</p>
+      <button class="btn btn-sm btn-danger cleargambar">Clear</button>
+      <p>*Gambar yang diupload akan diresize sesuai ukuran slider</strong></p>
+      </div>
+      </div>
     </div>
   </div>
   <div class="form-group">
@@ -155,6 +179,49 @@ $(document).ready(function () {
       if (this.value.indexOf("http://") !== 0) {
           this.value = "http://" + this.value;
       }
+  });
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('input[class="tampilkan"]').click(function(){
+      if ($(this).is(":checked"))
+      {
+        $(".pilihgambar").show();
+        $(".tampilkan").prop('checked', true);
+      }
+      else
+      {
+        $(".pilihgambar").hide();
+        $(".tampilkan").prop('checked', false);
+      }
+});
+});
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('.cleargambar').on('click', function(e) {
+      e.preventDefault();
+      $('.img').attr('src', '');
+      $('.preview').val('');
+    });
+    });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('.img').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+  $(".preview").change(function(){
+    readURL(this);
   });
 });
 </script>

@@ -91,14 +91,14 @@
       <textarea class="form-control" id="edittext_id" name="content_id"></textarea>
     <br>
     <div class="form-group">
-    <label><input id="tampilkan_id" name="featured" type="checkbox" value="1"> Tampilkan di slideshow?</label>
+    <label><input class="tampilkan" name="featured" type="checkbox" value="1"> Tampilkan di slideshow?</label>
     <br>
-    <div id="pilihgambar_id" class="form-group" style="display:none">
-    <input id="preview_id" name="gambar" type="file">
-    <img style="width:200px;height:100px" id="img_id" src="" alt="Tidak ada gambar"/>
+    <div class="form-group pilihgambar" style="display:none">
+    <input class="preview" name="gambar" type="file">
+    <img style="width:200px;height:100px" class="img" src="" alt="Tidak ada gambar"/>
     <p>Preview</p>
-    <label class="btn btn-sm btn-danger" id="clear_id">Clear</label>
-    <p>Ket: Gambar yang diupload otomatis di resize sesuai ukuran slider</p>
+    <button class="btn btn-sm btn-danger cleargambar">Clear</button>
+    <p>*Gambar yang diupload akan diresize sesuai ukuran slider</strong></p>
     </div>
     </div>
   </div>
@@ -122,14 +122,14 @@
       <textarea class="form-control" id="edittext_en" name="content_en"></textarea>
     <br>
     <div class="form-group">
-    <label><input id="tampilkan_en" name="featured" type="checkbox" value="1"> Tampilkan di slideshow?</label>
+    <label><input class="tampilkan" name="featured" type="checkbox" value="1"> Tampilkan di slideshow?</label>
     <br>
-    <div id="pilihgambar_en" class="form-group" style="display:none">
-    <input id="preview_en" name="gambar" type="file">
-    <img style="width:200px;height:100px" id="img_en" src="" alt="Tidak ada gambar"/>
+    <div class="form-group pilihgambar" style="display:none">
+    <input class="preview" name="gambar" type="file">
+    <img style="width:200px;height:100px" class="img" src="" alt="Tidak ada gambar"/>
     <p>Preview</p>
-    <label class="btn btn-sm btn-danger" id="clear_en">Clear</label>
-    <p>Ket: Gambar yang diupload otomatis di resize sesuai ukuran slider</p>
+    <button class="btn btn-sm btn-danger cleargambar">Clear</button>
+    <p>*Gambar yang diupload akan diresize sesuai ukuran slider</strong></p>
     </div>
     </div>
   </div>
@@ -239,19 +239,26 @@ $(document).ready(function () {
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
-    $('input[id="tampilkan_id"]').click(function(){
-        if($(this).attr("value")=="1"){
-            $("#pilihgambar_id").toggle();
-        }
+    $('input[class="tampilkan"]').click(function(){
+      if ($(this).is(":checked"))
+      {
+        $(".pilihgambar").show();
+        $(".tampilkan").prop('checked', true);
+      }
+      else
+      {
+        $(".pilihgambar").hide();
+        $(".tampilkan").prop('checked', false);
+      }
 });
-})
+});
 </script>
-
 <script type="text/javascript">
     $(document).ready(function() {
-      document.getElementById('clear_id').addEventListener('click', function () {
-      document.getElementById('img_id').src = ''
-      document.getElementById('preview_id').value = ''
+      $('.cleargambar').on('click', function(e) {
+      e.preventDefault();
+      $('.img').attr('src', '');
+      $('.preview').val('');
     });
     });
 </script>
@@ -263,50 +270,12 @@ $(document).ready(function() {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $('#img_id').attr('src', e.target.result);
+            $('.img').attr('src', e.target.result);
         }
-
         reader.readAsDataURL(input.files[0]);
     }
 }
-  $("#preview_id").change(function(){
-    readURL(this);
-  });
-});
-</script>
-<script type="text/javascript">
-$(document).ready(function(){
-    $('input[id="tampilkan_en"]').click(function(){
-        if($(this).attr("value")=="1"){
-            $("#pilihgambar_en").toggle();
-        }
-});
-})
-</script>
-
-<script type="text/javascript">
-$(document).ready(function() {
-  document.getElementById('clear_en').addEventListener('click', function () {
-  document.getElementById('img_en').src = ''
-  document.getElementById('preview_en').value = ''
-  });
-});
-</script>
-
-<script type="text/javascript">
-$(document).ready(function() {
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#img_en').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-  $("#preview_en").change(function(){
+  $(".preview").change(function(){
     readURL(this);
   });
 });
