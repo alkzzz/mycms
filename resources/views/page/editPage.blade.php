@@ -194,6 +194,8 @@ $(document).ready(function(){
       {
         $(".pilihgambar").hide();
         $(".tampilkan").prop('checked', false);
+        $('.img').attr('src', '');
+        $('.preview').val('');
       }
 });
 });
