@@ -3,15 +3,13 @@
 @section('title', $title)
 
 @section('content')
-  <label>Link ID</label>
-  <br>
+  <h4>Link (ID)</h4>
   <input disabled type="text" class="form-control" style="width:30%;display:inline-block;font-weight:bold" id="link_ID" value="{{ Localization::getURLFromRouteNameTranslated('id', 'trans.dosen') }}">
-  <button class="btn btn-info" id="copyLinkID"> Copy Link</button>
+  <button class="btn btn-outline btn-primary" id="copyLinkID"> Copy Link</button>
   <br>
-  <label>Link EN</label>
-  <br>
+  <h4>Link (EN)</h4>
   <input disabled type="text" class="form-control" style="width:30%;display:inline-block;font-weight:bold" id="link_EN" value="{{ Localization::getURLFromRouteNameTranslated('en', 'trans.dosen') }}">
-  <button class="btn btn-info" id="copyLinkEN"> Copy Link</button>
+  <button class="btn btn-outline btn-primary" id="copyLinkEN"> Copy Link</button>
 @stop
 @section('js')
 @parent

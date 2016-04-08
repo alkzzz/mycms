@@ -75,7 +75,6 @@ class PageController extends Controller
     public function storePage(MenuRequest $request)
     {
         $input = $request->all();
-        dd($input);
         $input['urutan'] = 99;
         $input['post_type'] = 'page';
         $input['id_kategori'] = 1;
