@@ -35,9 +35,9 @@ Route::group(['as' => 'dashboard::', 'middleware' => ['role:administrator']], fu
 Route::get('get/chart', ['as'=>'getChartData', 'uses'=>'HomeController@getChartData']);
 Route::get('chart', 'HomeController@chart');
 #Auth
-Route::get('login', 'Auth\AuthController@getLogin');
-Route::post('login', ['as'=>'login','uses'=>'Auth\AuthController@postLogin']);
-Route::get('logout', 'Auth\AuthController@getLogout');
+Route::get('login', ['as'=>'getLogin','uses'=>'Auth\AuthController@getLogin']);
+Route::post('login', ['as'=>'postLogin','uses'=>'Auth\AuthController@postLogin']);
+Route::get('logout', ['as'=>'getLogout','uses'=>'Auth\AuthController@getLogout']);
 
 Route::get('dashboard/data.user', ['as'=>'datatables.user', 'uses'=>'DashboardController@postDataUser']);
 Route::get('dashboard/user', ['as'=>'daftar.user' ,'uses'=>'DashboardController@daftarUser']);

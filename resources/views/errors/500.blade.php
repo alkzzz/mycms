@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Page Not Found</title>
+    <title>Internal Server Error</title>
     <link rel="stylesheet" href="{{ asset('css/frontend.css') }}">
 
   </head>
@@ -10,9 +10,9 @@
     <div class="container jumbotron">
       <div class="col-lg-8 col-lg-offset-2 text-center">
         <div class="logo">
-          <h1>404 Page Not Found</h1>
+          <h1>500 Internal Server Error</h1>
         </div>
-        <p class="lead">Halaman tidak ditemukan</p>
+        <p class="lead">Maaf, Server website sedang mengalami error</p>
         <div class="clearfix"></div>
         <div class="col-lg-6 col-lg-offset-3">
           <form role="search" action="{{ url(Localization::getCurrentLocale().'/search') }}">

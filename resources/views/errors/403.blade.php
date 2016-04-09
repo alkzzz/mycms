@@ -1,47 +1,37 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Forbidden</title>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Forbidden</title>
 
-        <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #B0BEC5;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 72px;
-                margin-bottom: 40px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Forbidden</div>
-            </div>
+    <link rel="stylesheet" href="{{ asset('css/frontend.css') }}">
+  </head>
+  <body class="error">
+    <div class="container jumbotron">
+      <div class="col-lg-8 col-lg-offset-2 text-center">
+        <div class="logo">
+          <h1>403 Forbidden</h1>
         </div>
-    </body>
+        <p class="lead">Anda tidak memiliki hak akses untuk halaman ini</p>
+        <div class="clearfix"></div>
+        <div class="col-lg-6 col-lg-offset-3">
+          <form role="search" action="{{ url(Localization::getCurrentLocale().'/search') }}">
+            <div class="input-group">
+              <input type="text" name="q" placeholder="Search ..." class="form-control">
+              <span class="input-group-btn">
+              <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+            </span>
+            </div>
+          </form>
+        </div>
+        <div class="clearfix"></div>
+        <br>
+        <div class="col-lg-6 col-lg-offset-3">
+          <div class="btn-group btn-group-justified">
+            <a href="{{ route('homepage') }}" class="btn btn-success">Back to Homepage</a>
+          </div>
+        </div>
+      </div><!-- /.col-lg-8 col-offset-2 -->
+    </div>
+  </body>
 </html>
