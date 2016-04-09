@@ -68,7 +68,7 @@
   <li class="active"><a data-toggle="tab" href="#id2">Indonesia</a></li>
   <li><a data-toggle="tab" href="#en2">English</a></li>
 </ul>
-<form role="form" action="{{ route('dashboard::storePage') }}" method="POST">
+<form role="form" action="{{ route('dashboard::storePage') }}" method="POST" enctype="multipart/form-data">
   {{ csrf_field() }}
   <input type="hidden" name="has_child" value="0">
 <div class="tab-content">
@@ -78,30 +78,18 @@
       <input id="title_id" class="form-control input-judul" type="text" name="title_id">
     </div>
     <div class="form-group">
-      <div class="checkbox">
-        <label><input id="check_id" type="checkbox" name="check_link">Custom Link</label>
+      <div class="checkbox" style="display:inline-block">
+        <label><input class="check-link" type="checkbox" name="check_link">Custom Link</label>
       </div>
-      <div id="link_id">
+      <div class="div-link">
         <label style="display: block">Link :</label>
         <input class="form-control input-judul link" type="text" name="link_id">
       </div>
     </div>
-    <div id="text_id" class="form-group">
+    <div class="form-group text">
       <label for="edittext_id">Isi Halaman Menu :</label>
       <textarea class="form-control" id="edittext_id" name="content_id"></textarea>
-    <br>
-    <div class="form-group">
-    <label><input class="tampilkan" name="featured" type="checkbox" value="1"> Tampilkan di slideshow?</label>
-    <br>
-    <div class="form-group pilihgambar" style="display:none">
-    <input class="preview" name="gambar" type="file">
-    <img style="width:200px;height:100px" class="img" src="" alt="Tidak ada gambar"/>
-    <p>Preview</p>
-    <button class="btn btn-sm btn-danger cleargambar">Clear</button>
-    <p>*Gambar yang diupload akan diresize sesuai ukuran slider</strong></p>
     </div>
-    </div>
-  </div>
   </div>
   <div id="en2" class="tab-pane fade">
     <div class="form-group">
@@ -109,32 +97,32 @@
       <input id="title_en" class="form-control input-judul" type="text" name="title_en">
     </div>
     <div class="form-group">
-      <div class="checkbox">
-        <label><input id="check_en" type="checkbox" name="check_link">Custom Link</label>
+      <div class="checkbox" style="display:inline-block">
+        <label><input class="check-link" type="checkbox" name="check_link">Custom Link</label>
       </div>
-      <div id="link_en">
+      <div class="div-link">
         <label style="display: block">Link :</label>
         <input class="form-control input-judul link" type="text" name="link_en">
       </div>
     </div>
-    <div id="text_en" class="form-group">
+    <div class="form-group text">
       <label for="edittext_en">Isi Halaman Menu :</label>
       <textarea class="form-control" id="edittext_en" name="content_en"></textarea>
-    <br>
-    <div class="form-group">
-    <label><input class="tampilkan" name="featured" type="checkbox" value="1"> Tampilkan di slideshow?</label>
-    <br>
-    <div class="form-group pilihgambar" style="display:none">
-    <input class="preview" name="gambar" type="file">
-    <img style="width:200px;height:100px" class="img" src="" alt="Tidak ada gambar"/>
-    <p>Preview</p>
-    <button class="btn btn-sm btn-danger cleargambar">Clear</button>
-    <p>*Gambar yang diupload akan diresize sesuai ukuran slider</strong></p>
     </div>
-    </div>
-  </div>
   </div>
 </div>
+  <br>
+  <div id="feature" class="form-group">
+  <label><input id="tampilkan" name="featured" type="checkbox" value="1"> Tampilkan di slideshow?</label>
+  <br>
+  <div class="form-group" id="pilihgambar" style="display:none">
+  <input id="preview" name="gambar" type="file">
+  <img style="width:200px;height:100px" id="img" src="" alt="Tidak ada gambar"/>
+  <p>Preview</p>
+  <button id="clear" class="btn btn-sm btn-danger">Clear</button>
+  <p>*Gambar yang diupload akan diresize sesuai ukuran slider</strong></p>
+  </div>
+  </div>
   <div class="form-group">
     <input class="btn btn-lg btn-success" type="submit" value="Save">
   </div>
@@ -198,32 +186,26 @@ $(document).ready(function() {
 </script>
 <script type="text/javascript">
   $(document).ready(function() {
-    $('#link_id').hide();
-    $('input:checkbox[id="check_id"]').change(
+    if ($('.check-link').is(':checked')) {
+    $('.text').hide();
+    $('#feature').hide();
+    }
+    else {
+    $('.div-link').hide();
+    }
+    $('input:checkbox[class="check-link"]').change(
         function(){
             if ($(this).is(':checked')) {
-              $('#link_id').fadeToggle( "slow", "linear" );
-              $('#text_id').fadeToggle( "slow", "linear" );
+              $('.div-link').fadeToggle( "slow", "linear" );
+              $('.text').fadeToggle( "slow", "linear" );
+              $('#feature').fadeToggle( "slow", "linear" );
+              $('.check-link').prop('checked', true);
             }
             else {
-              $('#link_id').fadeToggle( "slow", "linear" );
-              $('#text_id').fadeToggle( "slow", "linear" );
-            }
-        });
-  });
-</script>
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('#link_en').hide();
-    $('input:checkbox[id="check_en"]').change(
-        function(){
-            if ($(this).is(':checked')) {
-              $('#link_en').fadeToggle( "slow", "linear" );
-              $('#text_en').fadeToggle( "slow", "linear" );
-            }
-            else {
-              $('#link_en').fadeToggle( "slow", "linear" );
-              $('#text_en').fadeToggle( "slow", "linear" );
+              $('.div-link').fadeToggle( "slow", "linear" );
+              $('.text').fadeToggle( "slow", "linear" );
+              $('#feature').fadeToggle( "slow", "linear" );
+              $('.check-link').prop('checked', false);
             }
         });
   });
@@ -238,30 +220,26 @@ $(document).ready(function () {
 });
 </script>
 <script type="text/javascript">
-$(document).ready(function(){
-    $('input[class="tampilkan"]').click(function(){
+    $('input[id="tampilkan"]').click(function(){
       if ($(this).is(":checked"))
       {
-        $(".pilihgambar").show();
-        $(".tampilkan").prop('checked', true);
+        $("#pilihgambar").show();
+        $("#tampilkan").prop('checked', true);
       }
       else
       {
-        $(".pilihgambar").hide();
-        $(".tampilkan").prop('checked', false);
-        $('.img').attr('src', '');
-        $('.preview').val('');
+        $("#pilihgambar").hide();
+        $("#tampilkan").prop('checked', false);
+        $('#img').attr('src', '');
+        $('#preview').val('');
       }
-});
 });
 </script>
 <script type="text/javascript">
-    $(document).ready(function() {
-      $('.cleargambar').on('click', function(e) {
+      $('#clear').on('click', function(e) {
       e.preventDefault();
-      $('.img').attr('src', '');
-      $('.preview').val('');
-    });
+      $('#img').attr('src', '');
+      $('#preview').val('');
     });
 </script>
 
@@ -272,12 +250,12 @@ $(document).ready(function() {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $('.img').attr('src', e.target.result);
+            $('#img').attr('src', e.target.result);
         }
         reader.readAsDataURL(input.files[0]);
     }
 }
-  $(".preview").change(function(){
+  $("#preview").change(function(){
     readURL(this);
   });
 });

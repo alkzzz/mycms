@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ba7d8ec6905d0ca0eb7f6107f65c652a",
+    "hash": "e0f538871370c732377c7408063fe8b6",
     "content-hash": "904c81a43f70ec367363982823878ac9",
     "packages": [
         {
@@ -1486,7 +1486,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jarektkaczyk/eloquence/zipball/ca93d4676e7222c476e3ac4731d0e079bbbbd472",
+                "url": "https://api.github.com/repos/jarektkaczyk/eloquence/zipball/c7eca64c99c347060b920592c186273305c66170",
                 "reference": "ca93d4676e7222c476e3ac4731d0e079bbbbd472",
                 "shasum": ""
             },
@@ -2624,7 +2624,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/1fa77fadfbc8840ee1e9a6ce483b39ba985f81d2",
+                "url": "https://api.github.com/repos/Zizaco/entrust/zipball/6a0fd8c3b73037b4855c6c4eaf1060788c0df1e9",
                 "reference": "1da20fb3836036c3277090f4388e25dcc8968abc",
                 "shasum": ""
             },

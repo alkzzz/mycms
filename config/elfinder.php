@@ -64,7 +64,15 @@ return array(
     |
     */
 
-    'roots' => null,
+    'roots' => [
+      0 => [
+        'driver' => 'LocalFileSystem',
+        'path' => 'C:\xampp\htdocs\cms\public\media',
+        'URL' => 'http://localhost/cms/public/media',
+        'accessControl' => 'Barryvdh\Elfinder\Elfinder::checkAccess',
+        'autoload' => true
+          ]
+        ],
 
     /*
     |--------------------------------------------------------------------------

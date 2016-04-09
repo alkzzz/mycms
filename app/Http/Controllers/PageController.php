@@ -8,8 +8,10 @@ use cms\Http\Controllers\Controller;
 use Localization;
 use cms\Post;
 use cms\Category;
+use cms\Slider;
 use cms\Http\Requests\MenuRequest;
 use Flash;
+use Image;
 
 class PageController extends Controller
 {
@@ -86,7 +88,26 @@ class PageController extends Controller
           $input['title_en'] = $inputjudul_en;
           $input['slug_id'] = str_slug($input['title_id']);
           $input['slug_en'] = str_slug($input['title_en']);
-          $input['id_gambar'] = 1;
+          if ($request->hasFile('gambar'))
+          {
+            $gambar         = $input['gambar'];
+            $filename       = $gambar->getClientOriginalName();
+            $save_path      = 'media/image/';
+            $resize         = Image::make($gambar->getRealPath())
+                                    ->resize('1200','500')
+                                    ->save($save_path . $filename);
+            $slider = new Slider;
+            $slider->urutan_slider = 1;
+            $slider->gambar = asset($save_path.$filename);
+            $slider->save();
+            $input['id_gambar'] = $slider->id;
+            $input['featured'] = true;
+          }
+          else
+          {
+            $input['id_gambar'] = 1;
+            $input['featured'] = false;
+          }
           try {
           Post::create($input);
           } catch (\Illuminate\Database\QueryException $e) {
@@ -157,7 +178,7 @@ class PageController extends Controller
     public function editPage($id)
     {
       $title = "Edit Menu";
-      $page = Post::page()->where('id', '=', $id)->firstOrFail();
+      $page = Post::with('slider')->page()->where('id', '=', $id)->firstOrFail();
       $submenu = Post::page()->where('post_parent', '=', $page->id)->get();
       return view('page.editPage', compact('title', 'page', 'submenu'));
     }

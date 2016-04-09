@@ -71,7 +71,7 @@ $factory->define(cms\Category::class, function (Faker\Generator $faker) {
 $factory->defineAs(cms\Slider::class, 'no_pic', function (Faker\Generator $faker) {
     return [
     	'urutan_slider' => $faker->unique()->numberBetween($min = 1, $max = 99),
-      'gambar' => asset('img/no_pic.png'),
+      'gambar' => '',
     ];
 });
 

@@ -44,7 +44,11 @@ $(function() {
       columns: [
           { data: 'slider.gambar',
             render: function(data, type, row) {
-            return '<img style="width:200px;height:100px" src="'+data+'" />';}, name:'slider.gambar' },
+              if (data)
+                return '<img style="width:200px;height:100px" src="'+data+'" />';
+              else
+                return '<img style="width:200px;height:100px" alt="Tidak ada gambar" />';
+          }, name:'slider.gambar' },
           { data: 'title_id', name: 'title_id' },
           { data: 'title_en', name: 'title_en' },
           { data: 'edit', name: 'edit', orderable: false, searchable: false},

@@ -150,6 +150,8 @@ return [
         Sofa\Eloquence\ServiceProvider::class,
         #Elfinder
         Barryvdh\Elfinder\ElfinderServiceProvider::class,
+        #Intervention
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -213,6 +215,7 @@ return [
         'MainMenu' => Caffeinated\Menus\Facades\Menu::class,
         'Entrust' => Zizaco\Entrust\EntrustFacade::class,
         'Flash' => Laracasts\Flash\Flash::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];

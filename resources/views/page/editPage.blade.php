@@ -65,28 +65,16 @@
     </div>
     <div class="form-group">
       <div class="checkbox" style="display:inline-block">
-        <label><input id="check_id" type="checkbox" name="check_link" @if($page->link_id) checked @endif>Custom Link</label>
+        <label><input class="check-link" type="checkbox" name="check_link" @if($page->link_id) checked @endif>Custom Link</label>
       </div>
-      <div id="link_id">
+      <div class="div-link">
         <label style="display: block">Link :</label>
         <input class="form-control input-judul link" type="text" name="link_id" value="{{ $page->link_id }}">
       </div>
     </div>
-    <div id="text_id" class="form-group">
+    <div class="form-group text">
       <label for="edittext_id">Isi Halaman Menu :</label>
       <textarea class="form-control" id="edittext_id" name="content_id">{{ $page->content_id }}</textarea>
-      <br>
-      <div class="form-group">
-      <label><input class="tampilkan" name="featured" type="checkbox" value="1"> Tampilkan di slideshow?</label>
-      <br>
-      <div class="form-group pilihgambar" style="display:none">
-      <input class="preview" name="gambar" type="file">
-      <img style="width:200px;height:100px" class="img" src="" alt="Tidak ada gambar"/>
-      <p>Preview</p>
-      <button class="btn btn-sm btn-danger cleargambar">Clear</button>
-      <p>*Gambar yang diupload akan diresize sesuai ukuran slider</strong></p>
-      </div>
-      </div>
     </div>
   </div>
   <div id="en2" class="tab-pane fade in">
@@ -96,29 +84,30 @@
     </div>
     <div class="form-group">
       <div class="checkbox" style="display:inline-block">
-        <label><input id="check_en" type="checkbox" name="check_link" @if($page->link_en) checked @endif>Custom Link</label>
+        <label><input class="check-link" type="checkbox" name="check_link" @if($page->link_en) checked @endif>Custom Link</label>
       </div>
-      <div id="link_en">
+      <div class="div-link">
         <label style="display: block">Link :</label>
         <input class="form-control input-judul link" type="text" name="link_en" value="{{ $page->link_en }}">
       </div>
     </div>
-    <div id="text_en" class="form-group">
+    <div class="form-group text">
       <label for="edittext_en">Isi Halaman Menu :</label>
       <textarea class="form-control" id="edittext_en" name="content_en">{{ $page->content_en }}</textarea>
-      <br>
-      <div class="form-group">
-      <label><input class="tampilkan" name="featured" type="checkbox" value="1"> Tampilkan di slideshow?</label>
-      <br>
-      <div class="form-group pilihgambar" style="display:none">
-      <input class="preview" name="gambar" type="file">
-      <img style="width:200px;height:100px" class="img" src="" alt="Tidak ada gambar"/>
-      <p>Preview</p>
-      <button class="btn btn-sm btn-danger cleargambar">Clear</button>
-      <p>*Gambar yang diupload akan diresize sesuai ukuran slider</strong></p>
-      </div>
-      </div>
     </div>
+  </div>
+</div>
+  <br>
+  <div id="feature" class="form-group">
+  <label><input id="tampilkan" name="featured" type="checkbox" @if($page->slider->gambar) checked @endif> Tampilkan di slideshow?</label>
+  <br>
+  <div id="pilihgambar" class="form-group" @if(!$page->slider->gambar) style="display:none" @endif>
+  <input id="preview" name="gambar" type="file">
+  <img style="width:200px;height:100px" id="img" src="{{ $page->slider->gambar }}" alt="Tidak ada gambar"/>
+  <p>Preview</p>
+  <button id="clear" class="btn btn-sm btn-danger">Clear</button>
+  <p>*Gambar yang diupload akan diresize sesuai ukuran slider</strong></p>
+  </div>
   </div>
   <div class="form-group">
       <input class="btn btn-lg btn-success" type="submit" value="Save">
@@ -133,42 +122,26 @@
 @include('includes.tinymce')
 <script type="text/javascript">
   $(document).ready(function() {
-    if ($('#check_id').is(':checked')) {
-    $('#text_id').hide();
+    if ($('.check-link').is(':checked')) {
+    $('.text').hide();
+    $('#feature').hide();
     }
     else {
-    $('#link_id').hide();
+    $('.div-link').hide();
     }
-    $('input:checkbox[id="check_id"]').change(
+    $('input:checkbox[class="check-link"]').change(
         function(){
             if ($(this).is(':checked')) {
-              $('#link_id').fadeToggle( "slow", "linear" );
-              $('#text_id').fadeToggle( "slow", "linear" );
+              $('.div-link').fadeToggle( "slow", "linear" );
+              $('.text').fadeToggle( "slow", "linear" );
+              $('#feature').fadeToggle( "slow", "linear" );
+              $('.check-link').prop('checked', true);
             }
             else {
-              $('#link_id').fadeToggle( "slow", "linear" );
-              $('#text_id').fadeToggle( "slow", "linear" );
-            }
-        });
-  });
-</script>
-<script type="text/javascript">
-  $(document).ready(function() {
-    if ($('#check_en').is(':checked')) {
-    $('#text_en').hide();
-    }
-    else {
-    $('#link_en').hide();
-    }
-    $('input:checkbox[id="check_en"]').change(
-        function(){
-            if ($(this).is(':checked')) {
-              $('#link_en').fadeToggle( "slow", "linear" );
-              $('#text_en').fadeToggle( "slow", "linear" );
-            }
-            else {
-              $('#link_en').fadeToggle( "slow", "linear" );
-              $('#text_en').fadeToggle( "slow", "linear" );
+              $('.div-link').fadeToggle( "slow", "linear" );
+              $('.text').fadeToggle( "slow", "linear" );
+              $('#feature').fadeToggle( "slow", "linear" );
+              $('.check-link').prop('checked', false);
             }
         });
   });
@@ -183,30 +156,26 @@ $(document).ready(function () {
 });
 </script>
 <script type="text/javascript">
-$(document).ready(function(){
-    $('input[class="tampilkan"]').click(function(){
+    $('input[id="tampilkan"]').click(function(){
       if ($(this).is(":checked"))
       {
-        $(".pilihgambar").show();
-        $(".tampilkan").prop('checked', true);
+        $("#pilihgambar").show();
+        $("#tampilkan").prop('checked', true);
       }
       else
       {
-        $(".pilihgambar").hide();
-        $(".tampilkan").prop('checked', false);
-        $('.img').attr('src', '');
-        $('.preview').val('');
+        $("#pilihgambar").hide();
+        $("#tampilkan").prop('checked', false);
+        $('#img').attr('src', '');
+        $('#preview').val('');
       }
-});
 });
 </script>
 <script type="text/javascript">
-    $(document).ready(function() {
-      $('.cleargambar').on('click', function(e) {
+      $('#clear').on('click', function(e) {
       e.preventDefault();
-      $('.img').attr('src', '');
-      $('.preview').val('');
-    });
+      $('#img').attr('src', '');
+      $('#preview').val('');
     });
 </script>
 
@@ -217,12 +186,12 @@ $(document).ready(function() {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $('.img').attr('src', e.target.result);
+            $('#img').attr('src', e.target.result);
         }
         reader.readAsDataURL(input.files[0]);
     }
 }
-  $(".preview").change(function(){
+  $("#preview").change(function(){
     readURL(this);
   });
 });

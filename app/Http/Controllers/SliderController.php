@@ -44,6 +44,7 @@ class SliderController extends Controller
     {
       $posts = Post::with('slider')
                     ->where('featured', '=', false)
+                    ->where('has_child', '=', 0)
                     ->latest()->get();
 
       return Datatables::of($posts)
