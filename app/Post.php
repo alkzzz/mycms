@@ -11,7 +11,7 @@ class Post extends Model
 
    	protected $table = 'posts';
 
-    protected $fillable = ['urutan','id_kategori','has_submenu','title_id', 'slug_id', 'content_id', 'link_id',
+    protected $fillable = ['urutan','id_kategori','has_submenu', 'featured','title_id', 'slug_id', 'content_id', 'link_id',
     						'title_en', 'slug_en', 'content_en', 'link_en','post_type', 'post_parent', 'has_child', 'id_gambar'];
 
     public function category()

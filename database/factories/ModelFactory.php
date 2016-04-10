@@ -85,11 +85,11 @@ $factory->define(cms\Slider::class, function (Faker\Generator $faker) {
 $factory->defineAs(cms\Post::class, 'article', function (Faker\Generator $faker) {
     return [
         'id_kategori' => $faker->numberBetween($min = 2, $max = 5),
-        'title_id' => $faker->ColorName,
+        'title_id' => $faker->sentence,
         'featured' => $faker->randomElement(array(true, false)),
         'slug_id' => lcfirst($faker->unique()->domainWord),
         'content_id' => $faker->paragraph,
-        'title_en' => $faker->ColorName,
+        'title_en' => $faker->sentence,
         'slug_en' => lcfirst($faker->unique()->domainWord),
         'content_en' => $faker->paragraph,
         'id_gambar' => factory(cms\Slider::class)->create()->id,

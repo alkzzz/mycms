@@ -20,18 +20,18 @@
   <h3 class="col-md-3 col-xs-12 topmenu-title">Judul (ID)</h3>
   <h3 class="col-md-3 col-xs-12 topmenu-title">Judul (EN)</h3>
   </div>
-  <ul id="sortable" class="parent-menu default" style="padding-left:0px">
+  <ul id="sortable" class="default" style="padding-left:0px">
     @foreach($sliders as $slider)
         <li id="slider_{{ $slider->id }}">
           <div class="row">
           <div style="margin-bottom:2%" class="col-md-3 col-xs-12 topmenu-list">
               <a href="{{ $slider->gambar }}" data-lightbox="image-{{ $slider->id }}" data-title="{{ $slider->title_id }}"><img style="width:200px;height:100px" src="{{ $slider->gambar }}" /></a>
           </div>
-          <div class="col-md-3 col-xs-12 slider-list" style="margin-top:0.5em">
-              {{ $slider->title_id }}
+          <div class="col-md-3 col-xs-12" style="margin-top:0.5em">
+              <p>{{ $slider->title_id }}</p>
           </div>
-          <div class="col-md-3 col-xs-12 slider-list" style="margin-top:0.5em">
-              {{ $slider->title_en }}
+          <div class="col-md-3 col-xs-12" style="margin-top:0.5em">
+              <p>{{ $slider->title_en }}</p>
           </div>
           <div style="padding-top:1em;padding-bottom:2em" class="col-md-3 col-xs-12">
               @if ($slider->post_type == 'page')

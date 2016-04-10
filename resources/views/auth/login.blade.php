@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap Login Form Template</title>
+        <title>CMS Login</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -48,9 +48,6 @@
                         		<div class="form-top-left">
                         			<h3>Silahkan login</h3>
                             		<p>Masukkan username dan password anda:</p>
-                        		</div>
-                        		<div class="form-top-right">
-                        			<i class="fa fa-lock"></i>
                         		</div>
                             </div>
                             <div class="form-bottom">
