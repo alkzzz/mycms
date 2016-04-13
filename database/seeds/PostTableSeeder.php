@@ -11,10 +11,12 @@ class PostTableSeeder extends Seeder
      */
     public function run()
     {
-        factory('cms\Slider', 'no_pic', 1)->create();
         factory('cms\Post', 'singlemenu')->create();
         factory('cms\Post', 'menu', 4)->create();
         factory('cms\Post', 'submenu', 10)->create();
-        factory('cms\Post', 'article', 10)->create();
+        factory('cms\Post', 'article', 10)->create()
+        ->each(function($post) {
+            factory('cms\Slider')->create(['post_id' => $post->id]);
+          });
     }
 }

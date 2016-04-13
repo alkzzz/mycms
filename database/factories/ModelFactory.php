@@ -62,23 +62,9 @@ $factory->defineAs(cms\Category::class, 'menu', function (Faker\Generator $faker
 $factory->define(cms\Category::class, function (Faker\Generator $faker) {
     return [
       'title_id' => $faker->firstNameMale ,
-      'slug_id' => str_slug($faker->firstNameMale),
+      'slug_id' => str_slug($faker->unique()->firstNameMale),
       'title_en' => $faker->firstNameFemale,
-      'slug_en' => str_slug($faker->firstNameFemale),
-    ];
-});
-
-$factory->defineAs(cms\Slider::class, 'no_pic', function (Faker\Generator $faker) {
-    return [
-    	'urutan_slider' => $faker->unique()->numberBetween($min = 1, $max = 99),
-      'gambar' => '',
-    ];
-});
-
-$factory->define(cms\Slider::class, function (Faker\Generator $faker) {
-    return [
-    	'urutan_slider' => $faker->unique()->numberBetween($min = 1, $max = 9999),
-      'gambar' => $faker->imageUrl($width = 1200, $height = 500),
+      'slug_en' => str_slug($faker->unique()->firstNameFemale),
     ];
 });
 
@@ -86,16 +72,22 @@ $factory->defineAs(cms\Post::class, 'article', function (Faker\Generator $faker)
     return [
         'id_kategori' => $faker->numberBetween($min = 2, $max = 5),
         'title_id' => $faker->sentence,
-        'featured' => $faker->randomElement(array(true, false)),
+        'featured' => true,
         'slug_id' => lcfirst($faker->unique()->domainWord),
         'content_id' => $faker->paragraph,
         'title_en' => $faker->sentence,
         'slug_en' => lcfirst($faker->unique()->domainWord),
         'content_en' => $faker->paragraph,
-        'id_gambar' => factory(cms\Slider::class)->create()->id,
         'post_type' => 'article',
         'has_child'=> false,
         'post_parent' => 0,
+    ];
+});
+
+$factory->define(cms\Slider::class, function (Faker\Generator $faker) {
+    return [
+    	'urutan_slider' => $faker->unique()->numberBetween($min = 1, $max = 9999),
+      'gambar' => $faker->imageUrl($width = 1200, $height = 500),
     ];
 });
 
@@ -108,7 +100,6 @@ $factory->defineAs(cms\Post::class, 'singlemenu', function (Faker\Generator $fak
         'title_en' => $faker->country,
         'slug_en' => lcfirst($faker->unique()->domainWord),
         'content_en' => $faker->paragraph,
-        'id_gambar' => 1,
         'post_type' => 'page',
         'has_child'=> false,
         'post_parent' => 0,
@@ -122,7 +113,6 @@ $factory->defineAs(cms\Post::class, 'menu', function (Faker\Generator $faker) {
         'slug_id' => lcfirst($faker->unique()->domainWord),
         'title_en' => $faker->country,
         'slug_en' => lcfirst($faker->unique()->domainWord),
-        'id_gambar' => 1,
         'post_type' => 'page',
         'has_child'=> true,
         'post_parent' => 0,
@@ -138,7 +128,6 @@ $factory->defineAs(cms\Post::class, 'submenu', function (Faker\Generator $faker)
         'title_en' => $faker->country,
         'slug_en' => lcfirst($faker->unique()->domainWord),
         'content_en' => $faker->paragraph,
-        'id_gambar' => 1,
         'post_type' => 'page',
         'has_child' => false,
         'post_parent' => $faker->numberBetween(2, 5),

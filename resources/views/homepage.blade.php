@@ -28,7 +28,7 @@
           @else
           <a href="{{ route('show.post', [$feature->category->slug_id,$feature->slug_id]) }}"
           @endif>{{ $feature->title_id }}</a></h3>
-        <p class="hidden-xs">{{ $feature->content_id }}</p>
+        <p class="hidden-xs">{!! $feature->content_id !!}</p>
         @else
           <h3>
             @if ($feature->post_type == 'page')
@@ -36,7 +36,7 @@
             @else
             <a href="{{ route('show.post', [$feature->category->slug_en,$feature->slug_en]) }}"
             @endif>{{ $feature->title_en }}</a></h3>
-        <p class="hidden-xs">{{ $feature->content_en }}</p>
+        <p class="hidden-xs">{!! $feature->content_en !!}</p>
         @endif
       </div>
       </div>
@@ -100,14 +100,4 @@
 
 @endforeach
 
-@endsection
-
-@section('js')
-@parent
-<script type="text/javascript">
-$('#imageSlider').hide();
-$('.img-responsive').load(function() {
-  $('#imageSlider').fadeIn(2000);
-});
-</script>
 @endsection

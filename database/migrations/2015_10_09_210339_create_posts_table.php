@@ -25,7 +25,6 @@ class CreatePostsTable extends Migration
             $table->string('slug_en')->unique();
             $table->text('content_en');
             $table->string('link_en');
-            $table->integer('id_gambar')->unsigned();
             $table->string('post_type');
             $table->boolean('has_child')->default(false);
             $table->integer('post_parent')->default(0);
@@ -33,10 +32,6 @@ class CreatePostsTable extends Migration
 
             $table->foreign('id_kategori')
                   ->references('id')->on('categories')
-                  ->onDelete('cascade');
-
-            $table->foreign('id_gambar')
-                  ->references('id')->on('sliders')
                   ->onDelete('cascade');
         });
     }

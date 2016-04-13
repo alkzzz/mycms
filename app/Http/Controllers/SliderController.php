@@ -10,20 +10,15 @@ use cms\Post;
 use cms\Slider;
 use Flash;
 use Datatables;
-use DB;
 
 class SliderController extends Controller
 {
     public function daftarslider()
     {
       $title = 'Daftar Slider';
-      $sliders = DB::table('posts')->select('posts.id AS pid', 'title_id', 'title_en', 'post_type', 'id_gambar', 'sliders.id AS id', 'sliders.gambar', 'sliders.urutan_slider')
-                                   ->where('featured', '=', true)
-                                   ->join('sliders', 'posts.id_gambar', '=', 'sliders.id')
-                                   ->orderBy('sliders.urutan_slider', 'asc')
-                                   ->get();
+      $posts = Post::featured()->with('slider')->get();
 
-      return view('slider.listSlider', compact('title', 'sliders'));
+      return view('slider.listSlider', compact('title', 'posts'));
     }
 
     public function urutSlider(Request $request)
@@ -31,9 +26,9 @@ class SliderController extends Controller
       $data = $request->all();
       parse_str($data['urutan'], $urutan);
       $daftarslider = Slider::all();
-      foreach ($urutan['slider'] as $key => $value) {
+      foreach ($urutan['post'] as $key => $value) {
           foreach ($daftarslider as $slider) {
-              $i = array_search($slider->id, $urutan['slider']);
+              $i = array_search($slider->id, $urutan['post']);
               $slider->urutan_slider = $i;
               $slider->save();
           }
@@ -49,23 +44,12 @@ class SliderController extends Controller
 
       return Datatables::of($posts)
               ->addColumn('edit', function ($post) {
-                if ($post->id_gambar == 1) {
                   if ($post->post_type == 'page') {
-                    return '<a href="'.route('dashboard::editPage', $post->id).'" class="btn btn-info"><i class="fa fa-camera fa-fw"></i> Tambahkan gambar</a>';
+                    return '<a href="'.route('dashboard::editPage', $post->id).'" class="btn btn-info"><i class="fa fa-camera fa-fw"></i> Upload gambar</a>';
                   }
                   else {
-                    return '<a href="'.route('dashboard::editPost', $post->id).'" class="btn btn-info"><i class="fa fa-camera fa-fw"></i> Tambahkan gambar</a>';
+                    return '<a href="'.route('dashboard::editPost', $post->id).'" class="btn btn-info"><i class="fa fa-camera fa-fw"></i> Upload gambar</a>';
                   }
-                }
-                else {
-                  return '<form action="'.route('dashboard::addToSlider', $post->id).'" method="post">
-                          <input type="hidden" name="_token" value="'.csrf_token().'">
-                          <input type="hidden" name="_method" value="PATCH">
-                          <button type="submit" class="btn btn-success">
-                          <i class="fa fa-plus-square fa-fw"></i> Tambahkan ke slider
-                          </button>
-                          </form>';
-                }
             })->make(true);
     }
 

@@ -4,7 +4,6 @@
 
 @section('content')
 @include('includes.alert')
-
 @if($page->has_child == 1)
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#id1">Indonesia</a></li>
@@ -54,7 +53,7 @@
   <li class="active"><a data-toggle="tab" href="#id2">Indonesia</a></li>
   <li><a data-toggle="tab" href="#en2">English</a></li>
 </ul>
-<form role="form" action="{{ route('dashboard::updatePage', $page->id) }}" method="POST">
+<form role="form" action="{{ route('dashboard::updatePage', $page->id) }}" method="POST" enctype="multipart/form-data">
   {{ csrf_field() }}
   <input type="hidden" name="_method" value="PATCH">
 <div class="tab-content">
@@ -65,7 +64,7 @@
     </div>
     <div class="form-group">
       <div class="checkbox" style="display:inline-block">
-        <label><input class="check-link" type="checkbox" name="check_link" @if($page->link_id) checked @endif>Custom Link</label>
+        <label><input class="custom-link" type="checkbox" name="check_link" value="1" @if($page->link_id) checked @endif>Custom Link</label>
       </div>
       <div class="div-link">
         <label style="display: block">Link :</label>
@@ -84,7 +83,7 @@
     </div>
     <div class="form-group">
       <div class="checkbox" style="display:inline-block">
-        <label><input class="check-link" type="checkbox" name="check_link" @if($page->link_en) checked @endif>Custom Link</label>
+        <label><input class="custom-link" type="checkbox" name="check_link" @if($page->link_en) checked @endif>Custom Link</label>
       </div>
       <div class="div-link">
         <label style="display: block">Link :</label>
@@ -99,11 +98,11 @@
 </div>
   <br>
   <div id="feature" class="form-group">
-  <label><input id="tampilkan" name="featured" type="checkbox" @if($page->slider->gambar) checked @endif> Tampilkan di slideshow?</label>
+  <label><input id="tampilkan" name="featured" value="1" type="checkbox" @if($page->slider) checked @endif> Tampilkan di slideshow?</label>
   <br>
-  <div id="pilihgambar" class="form-group" @if(!$page->slider->gambar) style="display:none" @endif>
+  <div id="pilihgambar" class="form-group" @if(!$page->slider) style="display:none" @endif>
   <input id="preview" name="gambar" type="file">
-  <img style="width:200px;height:100px" id="img" src="{{ $page->slider->gambar }}" alt="Tidak ada gambar"/>
+  <img style="width:200px;height:100px" id="img" @if($page->slider) src="{{ $page->slider->gambar }}" @else src="" alt="Tidak ada gambar" @endif/>
   <p>Preview</p>
   <button id="clear" class="btn btn-sm btn-danger">Clear</button>
   <p>*Gambar yang diupload akan diresize sesuai ukuran slider</strong></p>
@@ -122,26 +121,27 @@
 @include('includes.tinymce')
 <script type="text/javascript">
   $(document).ready(function() {
-    if ($('.check-link').is(':checked')) {
+    if ($('.custom-link').is(':checked')) {
     $('.text').hide();
     $('#feature').hide();
     }
     else {
     $('.div-link').hide();
     }
-    $('input:checkbox[class="check-link"]').change(
+    $('input:checkbox[class="custom-link"]').change(
         function(){
             if ($(this).is(':checked')) {
               $('.div-link').fadeToggle( "slow", "linear" );
               $('.text').fadeToggle( "slow", "linear" );
               $('#feature').fadeToggle( "slow", "linear" );
-              $('.check-link').prop('checked', true);
+              $('.custom-link').prop('checked', true);
             }
             else {
               $('.div-link').fadeToggle( "slow", "linear" );
               $('.text').fadeToggle( "slow", "linear" );
               $('#feature').fadeToggle( "slow", "linear" );
-              $('.check-link').prop('checked', false);
+              $('.link').val('');
+              $('.custom-link').prop('checked', false);
             }
         });
   });

@@ -12,7 +12,7 @@
 @include('includes.alert')
 <a href="{{ route('dashboard::addSlider') }}"><button type="button" class="btn btn-success">Tambah <i class="fa fa-plus-square fa-fw"></i></button></a>
 <hr>
-@if(!count($sliders))
+@if(!count($posts))
 <h3>Website belum memiliki slider. Silahkan tambahkan slider dengan mengklik tombol <b>Tambah</b>.</h3>
 @else
   <div class="row">
@@ -21,25 +21,25 @@
   <h3 class="col-md-3 col-xs-12 topmenu-title">Judul (EN)</h3>
   </div>
   <ul id="sortable" class="default" style="padding-left:0px">
-    @foreach($sliders as $slider)
-        <li id="slider_{{ $slider->id }}">
+    @foreach($posts as $post)
+        <li id="post_{{ $post->id }}">
           <div class="row">
           <div style="margin-bottom:2%" class="col-md-3 col-xs-12 topmenu-list">
-              <a href="{{ $slider->gambar }}" data-lightbox="image-{{ $slider->id }}" data-title="{{ $slider->title_id }}"><img style="width:200px;height:100px" src="{{ $slider->gambar }}" /></a>
+              <a href="{{ $post->slider->gambar }}" data-lightbox="image-{{ $post->slider->id }}" data-title="{{ $post->title_id }}"><img style="width:200px;height:100px" src="{{ $post->slider->gambar }}" /></a>
           </div>
           <div class="col-md-3 col-xs-12" style="margin-top:0.5em">
-              <p>{{ $slider->title_id }}</p>
+              <p>{{ $post->title_id }}</p>
           </div>
           <div class="col-md-3 col-xs-12" style="margin-top:0.5em">
-              <p>{{ $slider->title_en }}</p>
+              <p>{{ $post->title_en }}</p>
           </div>
           <div style="padding-top:1em;padding-bottom:2em" class="col-md-3 col-xs-12">
-              @if ($slider->post_type == 'page')
-              <a style="margin-bottom:0.5em" href="{{ route('dashboard::editPage', $slider->pid) }}" class="btn btn-warning">Edit <i class="fa fa-edit fa-fw"></i></a>
+              @if ($post->post_type == 'page')
+              <a style="margin-bottom:0.5em" href="{{ route('dashboard::editPage', $post->id) }}" class="btn btn-warning">Edit <i class="fa fa-edit fa-fw"></i></a>
               @else
-              <a style="margin-bottom:0.5em" href="{{ route('dashboard::editPost', $slider->pid) }}" class="btn btn-warning">Edit <i class="fa fa-edit fa-fw"></i></a>
+              <a style="margin-bottom:0.5em" href="{{ route('dashboard::editPost', $post->id) }}" class="btn btn-warning">Edit <i class="fa fa-edit fa-fw"></i></a>
               @endif
-              <a style="margin-bottom:0.5em" href="{{ route('dashboard::showRemoveSlider', $slider->pid) }}" class="btn btn-danger">Delete <i class="fa fa-trash fa-fw"></i></a>
+              <a style="margin-bottom:0.5em" href="{{ route('dashboard::showRemoveSlider', $post->id) }}" class="btn btn-danger">Delete <i class="fa fa-trash fa-fw"></i></a>
            </div>
           </div>
         </li>

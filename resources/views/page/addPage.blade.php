@@ -79,7 +79,7 @@
     </div>
     <div class="form-group">
       <div class="checkbox" style="display:inline-block">
-        <label><input class="check-link" type="checkbox" name="check_link">Custom Link</label>
+        <label><input class="custom-link" type="checkbox" name="check_link" value="true">Custom Link</label>
       </div>
       <div class="div-link">
         <label style="display: block">Link :</label>
@@ -98,7 +98,7 @@
     </div>
     <div class="form-group">
       <div class="checkbox" style="display:inline-block">
-        <label><input class="check-link" type="checkbox" name="check_link">Custom Link</label>
+        <label><input class="custom-link" type="checkbox" name="check_link">Custom Link</label>
       </div>
       <div class="div-link">
         <label style="display: block">Link :</label>
@@ -186,26 +186,26 @@ $(document).ready(function() {
 </script>
 <script type="text/javascript">
   $(document).ready(function() {
-    if ($('.check-link').is(':checked')) {
+    if ($('.custom-link').is(':checked')) {
     $('.text').hide();
     $('#feature').hide();
     }
     else {
     $('.div-link').hide();
     }
-    $('input:checkbox[class="check-link"]').change(
+    $('input:checkbox[class="custom-link"]').change(
         function(){
             if ($(this).is(':checked')) {
               $('.div-link').fadeToggle( "slow", "linear" );
               $('.text').fadeToggle( "slow", "linear" );
               $('#feature').fadeToggle( "slow", "linear" );
-              $('.check-link').prop('checked', true);
+              $('.custom-link').prop('checked', true);
             }
             else {
               $('.div-link').fadeToggle( "slow", "linear" );
               $('.text').fadeToggle( "slow", "linear" );
               $('#feature').fadeToggle( "slow", "linear" );
-              $('.check-link').prop('checked', false);
+              $('.custom-link').prop('checked', false);
             }
         });
   });

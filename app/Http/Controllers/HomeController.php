@@ -21,11 +21,7 @@ class HomeController extends Controller
     public function index()
     {
         $title = 'Home';
-        $sliders = Post::featured()->with('slider', 'category')
-                  ->join('sliders', 'posts.id_gambar', '=', 'sliders.id')
-                  ->orderBy('sliders.urutan_slider', 'asc')
-                  ->get();         
-
+        $sliders = Post::featured()->with('slider', 'category')->get();
         $kategori = Category::with('articles')->where('id', '>', 1)->take(3)->get();
         return view('homepage', compact('title', 'sliders','kategori'));
     }

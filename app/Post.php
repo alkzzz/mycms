@@ -21,7 +21,7 @@ class Post extends Model
 
     public function slider()
     {
-        return $this->hasOne('cms\Slider', 'id', 'id_gambar');
+        return $this->hasOne('cms\Slider')->orderBy('urutan_slider');
     }
 
     public function scopeFeatured($query)

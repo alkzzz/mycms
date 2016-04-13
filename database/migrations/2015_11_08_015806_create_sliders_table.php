@@ -14,8 +14,13 @@ class CreateSlidersTable extends Migration
     {
         Schema::create('sliders', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('post_id')->unsigned();
             $table->integer('urutan_slider');
             $table->string('gambar');
+
+            $table->foreign('post_id')
+                  ->references('id')->on('posts')
+                  ->onDelete('cascade');
         });
     }
 

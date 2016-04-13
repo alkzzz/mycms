@@ -12,6 +12,7 @@ use cms\Slider;
 use cms\Http\Requests\MenuRequest;
 use Flash;
 use Image;
+use File;
 
 class PageController extends Controller
 {
@@ -90,6 +91,7 @@ class PageController extends Controller
           $input['slug_en'] = str_slug($input['title_en']);
           if ($request->hasFile('gambar'))
           {
+            $input['featured'] = true;
             $gambar         = $input['gambar'];
             $filename       = $gambar->getClientOriginalName();
             $save_path      = 'media/image/';
@@ -99,17 +101,15 @@ class PageController extends Controller
             $slider = new Slider;
             $slider->urutan_slider = 1;
             $slider->gambar = asset($save_path.$filename);
-            $slider->save();
-            $input['id_gambar'] = $slider->id;
-            $input['featured'] = true;
           }
           else
           {
-            $input['id_gambar'] = 1;
             $input['featured'] = false;
           }
           try {
-          Post::create($input);
+          $page = Post::create($input);
+          $slider->post_id = $page->id;
+          $slider->save();
           } catch (\Illuminate\Database\QueryException $e) {
             $errorCode = $e->errorInfo[1];
             if($errorCode == 1062) { // duplicate entry
@@ -138,7 +138,6 @@ class PageController extends Controller
                 $input['title_en'] = $judul_en;
                 $input['slug_id'] = str_slug($input['title_id']);
                 $input['slug_en'] = str_slug($input['title_en']);
-                $input['id_gambar'] = 1;
                 try {
                 Post::create($input);
                 } catch (\Illuminate\Database\QueryException $e) {
@@ -157,7 +156,6 @@ class PageController extends Controller
                 $input['slug_en'] = str_slug($input['title_en']);
                 $input['has_child'] = 0;
                 $input['post_parent'] = $parent_id; // masukkan id parent ke child
-                $input['id_gambar'] = 1;
                 try {
                 Post::create($input);
                 } catch (\Illuminate\Database\QueryException $e) {
@@ -215,7 +213,6 @@ class PageController extends Controller
         $input['slug_en'] = str_slug($input['title_en']);
         $input['has_child'] = 0;
         $input['post_parent'] = $parent->id; // masukkan id parent ke child
-        $input['id_gambar'] = 1;
         try {
         Post::create($input);
         } catch (\Illuminate\Database\QueryException $e) {
@@ -232,13 +229,50 @@ class PageController extends Controller
 
     public function updatePage(MenuRequest $request, $id)
     {
-      $page = Post::page()->where('id', '=', $id)->firstOrFail();
+      $page = Post::with('slider')->page()->where('id', '=', $id)->firstOrFail();
       $input = $request->all();
       $input['slug_id'] = str_slug($input['title_id']);
       $input['slug_en'] = str_slug($input['title_en']);
       if ($input['link_id'] and $input['link_en'] != "") { // jika menggunakan link
         $input['content_id'] = ""; // kosongkan text id
         $input['content_en'] = ""; // kosongkan text en
+        $input['featured'] = false; // tidak ditampilkan di slideshow
+        if ($page->slider)
+        {
+          $slider = Slider::where('post_id', '=', $page->id)->firstOrFail();
+          $filename = basename($page->slider->gambar);
+          File::delete(public_path('media/image/'.$filename));
+          $slider->delete();
+        }
+      }
+      else {
+        if ($request->input('featured')) {
+          if ($request->hasFile('gambar')) {
+            $input['featured'] = true;
+            $gambar         = $input['gambar'];
+            $filename       = $gambar->getClientOriginalName();
+            $save_path      = 'media/image/';
+            $resize         = Image::make($gambar->getRealPath())
+                                    ->resize('1200','500')
+                                    ->save($save_path . $filename);
+            $slider = new Slider;
+            $slider->urutan_slider = 1;
+            $slider->gambar = asset($save_path.$filename);
+            $slider->post_id = $page->id;
+            $slider->save();
+          }
+          else {
+            Flash::error('Anda belum mengupload gambar untuk ditampilkan di slideshow!');
+            return redirect()->back();
+          }
+        }
+        else {
+          $input['featured'] = false;
+          $slider = Slider::where('post_id', '=', $page->id)->firstOrFail();
+          $filename = basename($page->slider->gambar);
+          File::delete(public_path('media/image/'.$filename));
+          $slider->delete();
+        }
       }
       try {
       $page->update($input);
@@ -249,7 +283,6 @@ class PageController extends Controller
           return redirect()->back();
         }
       }
-
       Flash::success('Menu telah berhasil diupdate.');
       return redirect()->route('dashboard::menu');
     }
